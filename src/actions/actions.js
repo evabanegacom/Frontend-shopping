@@ -94,3 +94,36 @@ export const postProduct = productInfo => async dispatch => {
       dispatch(setProduct(data));
     });
 };
+
+// GET ALL PRODUCTS
+
+const setProducts = data => ({
+  type: "SET_PRODUCTS",
+  payload: data,
+});
+
+export const getProducts = () => async dispatch => {
+  await fetch('http://localhost:3001/api/v1/products', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(setProducts(data));
+    });
+};
+
+// CART ACTIVITIES
+
+export const addToCart = product => ({
+  type: 'ADD_PRODUCT',
+  product,
+});
+
+export const removeFromCart = product => ({
+  type: 'REMOVE_PRODUCT',
+  product,
+});

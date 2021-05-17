@@ -14,7 +14,7 @@ const initialState = {
         };
   
       case 'LOG_OUT':
-        localStorage.clear();
+        localStorage.removeItem('token');
         return {
           ...state,
           loggedIn: false,

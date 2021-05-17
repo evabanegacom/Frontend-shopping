@@ -1,94 +1,114 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { postProduct } from '../actions/actions';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Product from '../cart/product';
+import Filter from '../containers/filter';
+import ReactPaginate from "react-paginate";
 
-class Products extends Component {
-    constructor(props){
-        super(props)
-       
-        this.state = {
-            avatar: '',
-            description: '',
-            price: '',
-            name: '',
-            category: ''
-        }
+import { getProducts } from '../actions/actions';
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    }
+const Products = () => {
+    const dispatch = useDispatch();
+    const [ sort, setSort] = useState('')
+    const [ size, setSize] = useState('')
+    const products = useSelector((state) => state.products.products);
+    const [currentPage, setCurrentPage ] = useState(0)
+    const [search, setSearch ] = useState('')
+    const [ data, setData] = useState([])
+    const PER_PAGE = 20;
+    const offset = currentPage * PER_PAGE;
+    const pageCount = Math.ceil(data.length / PER_PAGE);
 
-    handleChange = e => {
-        this.setState({
-            [e.target.id]: e.target.value
-          });
+    useEffect (function effectFunction() {
+      fetch('http://localhost:3001/api/v1/products', {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+          .then(response => response.json())
+          .then((data => {
+            setData(data)
+          }))
+  }, []);
 
-          this.setState({
-            category: e.target.value,
-          });
-    }
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
 
-    handleFile = e => {
-        this.setState({
-            avatar: e.target.files[0]
-        })
-    }
-
-    handleSubmit = e => {
-        e.preventDefault();
-        // console.log(this.state)
-        const form_data = new FormData();
-    form_data.append('avatar', this.state.avatar);
-    form_data.append('name', this.state.name);
-    form_data.append('price', this.state.price);
-    form_data.append('description', this.state.description);
-    form_data.append('category', this.state.category);
-    for (var key of form_data.entries()) {
-        console.log(key[0] + ', ' + key[1]);
-    }        
-    this.props.addProduct(form_data)
-      };
-
-    render() {
-      const ImageThumb = ({ avatar }) => {
-        return <img style={{ width: '150px', height: '150px'}} src={URL.createObjectURL(avatar)} alt={avatar.name} />;
-      };
-        return (
-            <div>
-               <form onSubmit={this.handleSubmit}>
-               <div id="upload-box">
-      <input type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
-      <p>Filename: {this.state.avatar.name}</p>
-      <p>File type: {this.state.avatar.type}</p>
-      <p>File size: {this.state.avatar.size} bytes</p>
-      {this.state.avatar && <ImageThumb avatar={this.state.avatar} />}
-    </div>                   <input onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
-                   <input onChange={this.handleChange} type='text' id='description' placeholder='description' />
-                   <input onChange={this.handleChange} type='text' id='price' placeholder='product price' />
-                   <label htmlFor="category">
-              Pick youchoose a product Category:&nbsp;&nbsp;&nbsp;
-              <select className="favCity" value={this.state.category} onChange={this.handleChange}>
-                {' '}
-                <option value="CATEGORY">Select</option>
-                <option value="Sports">Sports</option>
-                <option value="Electronics">Electronics</option>
-                <option value='Mobile'>Mobile</option>
-                <option value="Normandy">Normandy</option>
-                <option value="Tokyo">Tokyo</option>
-                <option value="Madrid">Madrid</option>
-              </select>
-            </label>
-            <button type="submit" className="btn pink lighten-1 z-depth-0">
-              Add Product
-            </button>
-               </form> 
-            </div>
+      const sortProducts = (event) => {
+        const sorted = event.target.value
+        setSort(sorted)
+        setData(data.slice().sort((a, b) => (
+          sorted === 'lowest' ?
+          ((a.price > b.price)? 1: -1):
+          sorted === 'highest' ?
+          ((a.price < b.price)? 1: -1):
+          ((a.id > b.id)? 1: -1)
+        ))
         )
-    }
+      }
+
+      const filterProducts = (event) => {
+        if(event.target.value === ''){
+          setSize(event.target.value)
+          setData(products)
+        }else{
+          console.log(event.target.value)
+        setSize(event.target.value)
+        setData(products.filter(product => product.category.indexOf(event.target.value) >=0))
+        }
+      }
+
+      const handleSearches = (event) => {
+        setSearch(event.target.value)
+      };
+
+      const handlePageClick = ({ selected: selectedPage }) => {
+        setCurrentPage(selectedPage)
+        setSearch('')
+      };
+
+
+    return (
+        <div>
+                <Filter
+                size={size} 
+                sorting={sort}
+                count={data.length}
+                filterProducts={filterProducts}
+                sortProducts={sortProducts}
+                />
+                <input
+          type="text"
+          placeholder="search..."
+          onChange={handleSearches}
+          style={{ width: '300px', height: '30px', borderRadius: '10px', background: 'black', outline: 'none', border: 'none', marginTop: '20px', color: '#FFFFFF'}}
+        />
+          {data && data.length ? (
+            data.filter((product) =>{
+              if(search ===''){
+                return data.slice(offset, offset + PER_PAGE).map((product) => (<Product product={product} key={product.id} />))
+              } else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                return product
+              }
+            }).slice(offset, offset + PER_PAGE).map((product) => (
+              <Product product={product} key={product.id} />
+            ))
+          ) : (<p>no items here</p>)}
+          <ReactPaginate
+          previousLabel={"← Previous"}
+          nextLabel={"Next →"}
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link--disabled"}
+          activeClassName={"pagination__link--active"}
+        />
+        </div>
+    )
 }
 
-const mapDispatchToProps = dispatch => ({
-    addProduct: productInfo => dispatch(postProduct(productInfo)),
-})
-
-export default connect(null, mapDispatchToProps)(Products)
+export default Products
