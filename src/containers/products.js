@@ -9,6 +9,7 @@ import { getProducts } from '../actions/actions';
 
 const Products = () => {
     const dispatch = useDispatch();
+    const storage = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
     const [ sort, setSort] = useState('')
     const [ size, setSize] = useState('')
     const products = useSelector((state) => state.products.products);
@@ -17,7 +18,7 @@ const Products = () => {
     const [ data, setData] = useState([])
     const PER_PAGE = 20;
     const offset = currentPage * PER_PAGE;
-    const [ cartItems, setCartItems ] = useState([])
+    const [ cartItems, setCartItems ] = useState(storage)
     const pageCount = Math.ceil(data.length / PER_PAGE);
 
     useEffect (function effectFunction() {
@@ -64,6 +65,29 @@ const Products = () => {
           cartItem.push({...product, count: 1})
         }
         setCartItems(cartItem)
+        localStorage.setItem("cartItems", JSON.stringify(cartItem))
+      }
+
+      const removeOneItem = (product) => {
+        const cartItem = cartItems.slice()
+        let alreadyInCart = false
+        cartItem.forEach((item) => {
+          if(item.id === product.id){
+            item.count--
+            alreadyInCart = false;
+          }
+          else if (item.count === 1){
+            removeFromCart(product)
+        }
+        })
+        setCartItems(cartItem)
+        localStorage.setItem("cartItems", JSON.stringify(cartItem))
+      }
+
+      const removeFromCart = (product) => {
+        const cartItem = cartItems.slice()
+        setCartItems(cartItem.filter(x=> x.id !== product.id))
+        localStorage.setItem("cartItems", JSON.stringify(cartItem.filter(x=> x.id !== product.id)))
       }
 
       const filterProducts = (event) => {
@@ -85,6 +109,10 @@ const Products = () => {
         setCurrentPage(selectedPage)
         setSearch('')
       };
+
+      const createOrder = (order) => {
+       alert("need to save order" + order.name)
+      }
 
 
     return (
@@ -113,7 +141,12 @@ const Products = () => {
               <Product addToCart={addToCart} product={product} key={product.id} />
             ))
           ) : (<p>no items here</p>)}
-          <Basket cartItems={cartItems} />
+          <Basket 
+          cartItems={cartItems} 
+          removeFromCart={removeFromCart} 
+          removeOneItem={removeOneItem} 
+            createOrder={createOrder}
+          />
           <ReactPaginate
           previousLabel={"← Previous"}
           nextLabel={"Next →"}
