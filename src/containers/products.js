@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Product from '../cart/product';
 import Filter from '../containers/filter';
 import ReactPaginate from "react-paginate";
+import Basket from '../cart/basket';
 
 import { getProducts } from '../actions/actions';
 
@@ -16,6 +17,7 @@ const Products = () => {
     const [ data, setData] = useState([])
     const PER_PAGE = 20;
     const offset = currentPage * PER_PAGE;
+    const [ cartItems, setCartItems ] = useState([])
     const pageCount = Math.ceil(data.length / PER_PAGE);
 
     useEffect (function effectFunction() {
@@ -47,6 +49,21 @@ const Products = () => {
           ((a.id > b.id)? 1: -1)
         ))
         )
+      }
+
+      const addToCart = (product) => {
+        const cartItem = cartItems.slice()
+        let alreadyInCart = false
+        cartItem.forEach((item) => {
+          if(item.id === product.id){
+            item.count++;
+            alreadyInCart = true;
+          }
+        })
+        if(!alreadyInCart){
+          cartItem.push({...product, count: 1})
+        }
+        setCartItems(cartItem)
       }
 
       const filterProducts = (event) => {
@@ -88,14 +105,15 @@ const Products = () => {
           {data && data.length ? (
             data.filter((product) =>{
               if(search ===''){
-                return data.slice(offset, offset + PER_PAGE).map((product) => (<Product product={product} key={product.id} />))
+                return data.slice(offset, offset + PER_PAGE).map((product) => (<Product product={product} key={product.id} addToCart={addToCart}/>))
               } else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                 return product
               }
             }).slice(offset, offset + PER_PAGE).map((product) => (
-              <Product product={product} key={product.id} />
+              <Product addToCart={addToCart} product={product} key={product.id} />
             ))
           ) : (<p>no items here</p>)}
+          <Basket cartItems={cartItems} />
           <ReactPaginate
           previousLabel={"← Previous"}
           nextLabel={"Next →"}
