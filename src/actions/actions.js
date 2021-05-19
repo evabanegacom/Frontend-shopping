@@ -127,3 +127,33 @@ export const removeFromCart = product => ({
   type: 'REMOVE_PRODUCT',
   product,
 });
+
+export const filterProductsB = (product, category) => dispatch =>{
+  dispatch({
+    type: 'FILTER_BY_CATEGORY',
+    payload: {
+     category: category,
+     items: category === "" ? products:
+     products.filter(x => x.category.indexOf(category)>=0)
+    }
+  })
+}
+
+export const sortProducts = (filteredProduct, sort) => dispatch => {
+  const sortedProducts = filteredProduct.slice()
+  if(sort === ''){
+    sortProducts.sort((a, b) =>(Number(a.id) > Number(b.id) ? 1 : -1))
+  }else{
+    sortedProducts.sort((a, b) =>(
+      sort === 'lowest' ? Number(a.price) > Number(b.price) ?  1 : -1
+      : Number(a.price) > Number(b.price) ? -1 : 1
+    ))
+  }
+  dispatch({
+    type: 'ORDER_PRODUCTS_BY_PRICE',
+    payload: {
+      sort: sort,
+      items: sortedProducts,
+    }
+  })
+}
