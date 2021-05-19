@@ -10,7 +10,7 @@ const Product = (props) => {
     const dispatch = useDispatch();
     const [productModal, setProductModal] = useState(null)
 
-    const openModal =  (e, products) => {
+    const openModal =  (products) => {
       setProductModal(products)
       console.log(productModal)
     }
@@ -26,7 +26,7 @@ const Product = (props) => {
                   <p>{Number(product.price)}</p>
                   <p>{product.description}</p>
                   <p>{product.category}</p>
-        <a href={'/product/' +  product.id} onClick={() => openModal(product)}>
+        <a href={'#' +  product.id} onClick={() => openModal(product)}>
                   <img style={{ width: '150px', height: '150px'}} src={product.avatar.url}/>
         </a>
                   <button onClick={() => addToCart(product)}>Add To Cart</button>
@@ -36,7 +36,16 @@ const Product = (props) => {
                           <Modal isOpen={true} onRequestClose={closeModal}>
                               <Zoom>
                               <button onClick={closeModal}>close</button>
-                                  <div>Modal</div>
+                                  <div>
+                                      <img src={product.avatar.url} alt='' />
+                                      <div>
+                                        <p><strong>{product.name}</strong></p>
+                                        <p>{product.description}</p>
+                                        <p>{product.category}</p>
+                                        <p>{product.price}</p>
+                                        <button onClick={() => {addToCart(product); closeModal();}}>Add to cart</button>
+                                      </div>
+                                  </div>
                               </Zoom>
                           </Modal>
                       )

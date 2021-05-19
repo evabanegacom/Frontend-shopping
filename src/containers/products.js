@@ -43,9 +43,9 @@ const Products = () => {
         setSort(sorted)
         setData(data.slice().sort((a, b) => (
           sorted === 'lowest' ?
-          ((a.price > b.price)? 1: -1):
+          ((Number(a.price) > Number(b.price))? 1: -1):
           sorted === 'highest' ?
-          ((a.price < b.price)? 1: -1):
+          ((Number(a.price) < Number(b.price))? 1: -1):
           ((a.created_at < b.created_at)? 1: -1)
         ))
         )
