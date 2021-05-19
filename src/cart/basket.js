@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Fade from 'react-reveal/Fade';
 
 class Basket extends Component {
     constructor(props){
@@ -38,6 +39,7 @@ class Basket extends Component {
         )}
         <div>
           <div>
+          <Fade left cascade>
             <ul>
               {cartItems.map((item) => (
                 <li key={item.id}>
@@ -49,12 +51,14 @@ class Basket extends Component {
                     <div>
                       { item.price} x {item.count}
                       <button onClick={() => this.props.removeFromCart(item)}>Remove</button>
-                      <button onClick={() => this.props.removeOneItem(item)}>Remove 1</button>
+                      <button onClick={() => this.props.removeOneItem(item)}>-</button>
+                      <button onClick={() => this.props.addOneItem(item)}>+</button>
                     </div>
                   </div>
                 </li>
               ))}
             </ul>
+            </Fade>
           </div>
         </div>
         {cartItems.length!==0 && (
@@ -69,6 +73,7 @@ class Basket extends Component {
         </div>
         )}
         {this.state.showCheckout && (
+          <Fade right cascade>
             <div>
                 <form onSubmit={this.createOrder}>
                     <ul>
@@ -90,6 +95,7 @@ class Basket extends Component {
                     </ul>
                 </form>
             </div>
+            </Fade>
         ) }
       </div>
     );

@@ -1,0 +1,84 @@
+0 verbose cli [
+0 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/node',
+0 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/npm',
+0 verbose cli   'install',
+0 verbose cli   '--save',
+0 verbose cli   'react-modal'
+0 verbose cli ]
+1 info using npm@7.5.4
+2 info using node@v14.4.0
+3 timing config:load:defaults Completed in 13ms
+4 timing config:load:file:/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/npmrc Completed in 29ms
+5 timing config:load:builtin Completed in 36ms
+6 timing config:load:cli Completed in 16ms
+7 timing config:load:env Completed in 1ms
+8 timing config:load:file:/home/precious/Desktop/frontend-shopping/.npmrc Completed in 4ms
+9 timing config:load:project Completed in 14ms
+10 timing config:load:file:/home/precious/.npmrc Completed in 37ms
+11 timing config:load:user Completed in 38ms
+12 timing config:load:file:/home/precious/.nvm/versions/node/v14.4.0/etc/npmrc Completed in 1ms
+13 timing config:load:global Completed in 1ms
+14 timing config:load:cafile Completed in 0ms
+15 timing config:load:validate Completed in 1ms
+16 timing config:load:setUserAgent Completed in 1ms
+17 timing config:load:setEnvs Completed in 2ms
+18 timing config:load Completed in 127ms
+19 verbose npm-session 642193c9613c7c8f
+20 timing npm:load Completed in 181ms
+21 http fetch GET 200 https://registry.npmjs.org/npm 1559ms
+22 timing arborist:ctor Completed in 3ms
+23 timing idealTree:init Completed in 5033ms
+24 timing idealTree:userRequests Completed in 8ms
+25 silly idealTree buildDeps
+26 silly fetch manifest axios@^0.21.1
+27 http fetch GET 200 https://registry.npmjs.org/axios 234ms
+28 silly fetch manifest react-modal@^3.13.1
+29 http fetch GET 200 https://registry.npmjs.org/react-modal 24294ms
+30 silly fetch manifest react@^17.0.2
+31 http fetch GET 200 https://registry.npmjs.org/react 607ms
+32 silly fetch manifest react-dom@^17.0.2
+33 http fetch GET 200 https://registry.npmjs.org/react-dom 279ms
+34 silly fetch manifest react-paginate@^7.1.2
+35 http fetch GET 200 https://registry.npmjs.org/react-paginate 1612ms
+36 silly fetch manifest react-reveal@^1.2.2
+37 http fetch GET 200 https://registry.npmjs.org/react-reveal 1680ms
+38 silly fetch manifest react@^15.3.0 || ^16.0.0
+39 timing idealTree Completed in 33889ms
+40 timing command:install Completed in 33917ms
+41 notice [40m[37m[39m[49m
+41 notice [40m[37mNew [33mminor[39m[37m version of npm available! [31m7.5.4[39m[37m -> [32m7.13.0[39m[37m[39m[49m
+41 notice [40m[37mChangelog: [36mhttps://github.com/npm/cli/releases/tag/v7.13.0[39m[37m[39m[49m
+41 notice [40m[37mRun [32mnpm install -g npm@7.13.0[39m[37m to update![39m[49m
+41 notice [40m[37m[39m[49m
+42 verbose stack Error: unable to resolve dependency tree
+42 verbose stack     at Arborist.[failPeerConflict] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1136:25)
+42 verbose stack     at Arborist.[loadPeerSet] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1116:34)
+42 verbose stack     at async Arborist.[buildDepStep] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:834:11)
+42 verbose stack     at async Arborist.buildIdealTree (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:209:7)
+42 verbose stack     at async Promise.all (index 1)
+42 verbose stack     at async Arborist.reify (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:127:5)
+42 verbose stack     at async install (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/lib/install.js:38:3)
+43 verbose cwd /home/precious/Desktop/frontend-shopping
+44 verbose Linux 5.3.0-62-generic
+45 verbose argv "/home/precious/.nvm/versions/node/v14.4.0/bin/node" "/home/precious/.nvm/versions/node/v14.4.0/bin/npm" "install" "--save" "react-modal"
+46 verbose node v14.4.0
+47 verbose npm  v7.5.4
+48 error code ERESOLVE
+49 error ERESOLVE unable to resolve dependency tree
+50 error
+51 error While resolving: [1mfrontend-shopping[22m@[1m0.1.0[22m
+51 error Found: [1mreact[22m@[1m17.0.2[22m[2m[22m
+51 error [2mnode_modules/react[22m
+51 error   [1mreact[22m@"[1m^17.0.2[22m" from the root project
+51 error
+51 error Could not resolve dependency:
+51 error [35mpeer[39m [1mreact[22m@"[1m^15.3.0 || ^16.0.0[22m" from [1mreact-reveal[22m@[1m1.2.2[22m[2m[22m
+51 error [2mnode_modules/react-reveal[22m
+51 error   [1mreact-reveal[22m@"[1m^1.2.2[22m" from the root project
+51 error
+51 error Fix the upstream dependency conflict, or retry
+51 error this command with --force, or --legacy-peer-deps
+51 error to accept an incorrect (and potentially broken) dependency resolution.
+51 error
+51 error See /home/precious/Desktop/frontend-shopping/C:NODEJSnpm-cache/eresolve-report.txt for a full report.
+52 verbose exit 1

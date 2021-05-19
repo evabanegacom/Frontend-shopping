@@ -1,0 +1,72 @@
+# npm resolution error report
+
+2021-05-19T11:41:18.184Z
+
+While resolving: frontend-shopping@0.1.0
+Found: react@17.0.2
+node_modules/react
+  react@"^17.0.2" from the root project
+
+Could not resolve dependency:
+peer react@"^15.3.0 || ^16.0.0" from react-reveal@1.2.2
+node_modules/react-reveal
+  react-reveal@"^1.2.2" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force, or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.
+
+Raw JSON explanation object:
+
+{
+  "code": "ERESOLVE",
+  "current": {
+    "name": "react",
+    "version": "17.0.2",
+    "whileInstalling": {
+      "name": "frontend-shopping",
+      "version": "0.1.0",
+      "path": "/home/precious/Desktop/frontend-shopping"
+    },
+    "location": "node_modules/react",
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "react",
+        "spec": "^17.0.2",
+        "from": {
+          "location": "/home/precious/Desktop/frontend-shopping"
+        }
+      }
+    ]
+  },
+  "edge": {
+    "type": "peer",
+    "name": "react",
+    "spec": "^15.3.0 || ^16.0.0",
+    "error": "INVALID",
+    "from": {
+      "name": "react-reveal",
+      "version": "1.2.2",
+      "whileInstalling": {
+        "name": "frontend-shopping",
+        "version": "0.1.0",
+        "path": "/home/precious/Desktop/frontend-shopping"
+      },
+      "location": "node_modules/react-reveal",
+      "dependents": [
+        {
+          "type": "prod",
+          "name": "react-reveal",
+          "spec": "^1.2.2",
+          "from": {
+            "location": "/home/precious/Desktop/frontend-shopping"
+          }
+        }
+      ]
+    }
+  },
+  "peerConflict": null,
+  "strictPeerDeps": false,
+  "force": false
+}

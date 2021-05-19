@@ -4,7 +4,6 @@ import Product from '../cart/product';
 import Filter from '../containers/filter';
 import ReactPaginate from "react-paginate";
 import Basket from '../cart/basket';
-
 import { getProducts } from '../actions/actions';
 
 const Products = () => {
@@ -47,7 +46,7 @@ const Products = () => {
           ((a.price > b.price)? 1: -1):
           sorted === 'highest' ?
           ((a.price < b.price)? 1: -1):
-          ((a.id > b.id)? 1: -1)
+          ((a.created_at < b.created_at)? 1: -1)
         ))
         )
       }
@@ -68,6 +67,17 @@ const Products = () => {
         localStorage.setItem("cartItems", JSON.stringify(cartItem))
       }
 
+      const addOneItem = (product) => {
+        const cartItem = cartItems.slice()
+        cartItem.forEach((item) => {
+          if(item.id === product.id){
+            item.count++;
+          }
+        })
+        setCartItems(cartItem)
+        localStorage.setItem("cartItems", JSON.stringify(cartItem))
+      }
+
       const removeOneItem = (product) => {
         const cartItem = cartItems.slice()
         let alreadyInCart = false
@@ -76,8 +86,8 @@ const Products = () => {
             item.count--
             alreadyInCart = false;
           }
-          else if (item.count === 1){
-            removeFromCart(product)
+          else{
+            console.log('hello')
         }
         })
         setCartItems(cartItem)
@@ -145,6 +155,7 @@ const Products = () => {
           cartItems={cartItems} 
           removeFromCart={removeFromCart} 
           removeOneItem={removeOneItem} 
+          addOneItem={addOneItem} 
             createOrder={createOrder}
           />
           <ReactPaginate
