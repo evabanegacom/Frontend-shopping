@@ -118,42 +118,63 @@ export const getProducts = () => async dispatch => {
 
 // CART ACTIVITIES
 
-export const addToCart = product => ({
-  type: 'ADD_PRODUCT',
-  product,
-});
-
-export const removeFromCart = product => ({
-  type: 'REMOVE_PRODUCT',
-  product,
-});
-
-export const filterProductsB = (product, category) => dispatch =>{
-  dispatch({
-    type: 'FILTER_BY_CATEGORY',
-    payload: {
-     category: category,
-     items: category === "" ? products:
-     products.filter(x => x.category.indexOf(category)>=0)
+export const addToCart = (product) => (dispatch, getState) => {
+  const cartItem = getState().cart.cartItems.slice()
+  let alreadyInCart = false
+  cartItem.forEach((x) => {
+    if(x.id === product.id){
+      alreadyInCart = true;
+      x.count++;
     }
   })
-}
-
-export const sortProducts = (filteredProduct, sort) => dispatch => {
-  const sortedProducts = filteredProduct.slice()
-  if(sort === ''){
-    sortProducts.sort((a, b) =>(Number(a.id) > Number(b.id) ? 1 : -1))
-  }else{
-    sortedProducts.sort((a, b) =>(
-      sort === 'lowest' ? Number(a.price) > Number(b.price) ?  1 : -1
-      : Number(a.price) > Number(b.price) ? -1 : 1
-    ))
+  if(!alreadyInCart){
+    cartItem.push({...product, count: 1})
   }
   dispatch({
-    type: 'ORDER_PRODUCTS_BY_PRICE',
-    payload: {
-      sort: sort,
-      items: sortedProducts,
+    type: 'ADD_TO_CART',
+    payload: { cartItem },
+  })
+  localStorage.setItem("cartItems", JSON.stringify(cartItem))
+}
+
+export const removeFromCart = product => (dispatch, getState) => {
+  const cartItem = getState().cart.cartItems.slice().filter(x=> x.id !== product.id)  
+  dispatch({
+    type: 'REMOVE_FROM_CART',
+    payload: { cartItem },
+  })
+  localStorage.setItem('cartItems', JSON.stringify(cartItem))
+}
+
+export const addOne = (product) => (dispatch, getState) => {
+  const cartItem = getState().cart.cartItems.slice()
+  let alreadyInCart = false
+  cartItem.forEach((x) => {
+    if(x.id === product.id){
+      x.count++;
+      alreadyInCart = true;
     }
   })
+  dispatch({
+    type: 'ADD_TO_CART',
+    payload: { cartItem },
+  })
+  localStorage.setItem("cartItems", JSON.stringify(cartItem))
+}
+
+export const removeOne = (product) => (dispatch, getState) => {
+  const cartItem = getState().cart.cartItems.slice()
+  let alreadyInCart = true
+  cartItem.forEach((x) => {
+    if(x.id === product.id){
+      console.log('one')
+      x.count--;
+      alreadyInCart = true;
+    }
+  })
+  dispatch({
+    type: 'REMOVE_FROM_CART',
+    payload: { cartItem },
+  })
+  localStorage.setItem("cartItems", JSON.stringify(cartItem))
 }

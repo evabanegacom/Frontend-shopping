@@ -8,7 +8,7 @@ import { getProducts } from '../actions/actions';
 
 const Products = () => {
     const dispatch = useDispatch();
-    const storage = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+    // const storage = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
     const [ sort, setSort] = useState('')
     const [ size, setSize] = useState('')
     const products = useSelector((state) => state.products.products);
@@ -17,7 +17,7 @@ const Products = () => {
     const [ data, setData] = useState([])
     const PER_PAGE = 20;
     const offset = currentPage * PER_PAGE;
-    const [ cartItems, setCartItems ] = useState(storage)
+    const [ cartItems, setCartItems ] = useState('')
     const pageCount = Math.ceil(data.length / PER_PAGE);
 
     useEffect (function effectFunction() {
@@ -143,7 +143,7 @@ const Products = () => {
           {data && data.length ? (
             data.filter((product) =>{
               if(search ===''){
-                return data.slice(offset, offset + PER_PAGE).map((product) => (<Product product={product} key={product.id} addToCart={addToCart}/>))
+                return data.slice(offset, offset + PER_PAGE).map((product) => (<Product product={product} key={product.id} />))
               } else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                 return product
               }
@@ -152,11 +152,11 @@ const Products = () => {
             ))
           ) : (<p>no items here</p>)}
           <Basket 
-          cartItems={cartItems} 
-          removeFromCart={removeFromCart} 
-          removeOneItem={removeOneItem} 
-          addOneItem={addOneItem} 
-            createOrder={createOrder}
+          // cartItems={cartItems} 
+          // removeFromCart={removeFromCart} 
+          // removeOneItem={removeOneItem} 
+          // addOneItem={addOneItem} 
+            // createOrder={createOrder}
           />
           <ReactPaginate
           previousLabel={"← Previous"}

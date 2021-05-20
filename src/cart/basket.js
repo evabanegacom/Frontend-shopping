@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Fade from 'react-reveal/Fade';
+import { connect } from 'react-redux';
+import { addOne, removeFromCart, removeOne } from '../actions/actions';
 
 class Basket extends Component {
     constructor(props){
@@ -50,9 +52,9 @@ class Basket extends Component {
                     <div>{item.name}</div>
                     <div>
                       { item.price} x {item.count}
-                      <button onClick={() => this.props.removeFromCart(item)}>Remove</button>
-                      <button onClick={() => this.props.removeOneItem(item)}>-</button>
-                      <button onClick={() => this.props.addOneItem(item)}>+</button>
+                      <button onClick={() => this.props.removeItem(item)}>Remove</button>
+                      <button onClick={() => this.props.removeOne(item)}>-</button>
+                      <button onClick={() => this.props.addOne(item)}>+</button>
                     </div>
                   </div>
                 </li>
@@ -102,4 +104,16 @@ class Basket extends Component {
   }
 }
 
-export default Basket;
+const mapStateToProps = state => ({
+  cartItems: state.cart.cartItems
+})
+
+const mapDispatchToProps = dispatch => ({
+  removeItem: (product) => dispatch(removeFromCart(product)),
+  addOne: (product) => dispatch(addOne(product)),
+  removeOne: (product) => dispatch(removeOne(product))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Basket)
+
+
