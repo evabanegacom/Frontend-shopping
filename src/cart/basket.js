@@ -16,7 +16,7 @@ class Basket extends Component {
             address: '',
             phone: '',
             cartitems: this.props.cartItems,
-            total: this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),
+            total: this.props.cartItems.reduce((a, c) => a + c.price*c.count, 0),
         }
     }
 
@@ -26,15 +26,15 @@ class Basket extends Component {
 
     createOrder = (e) => {
       e.preventDefault()
-      //const order = {
-        //name: this.state.name,
-        //email: this.state.email,
-       // address: this.state.address,
-        //cartitems: this.props.cartItems,
-       // phone: this.props.phone,
-       // total: this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),
-     // }
-      this.props.createOrder(this.state)
+      const order = {
+        name: this.state.name,
+        email: this.state.email,
+       address: this.state.address,
+        cartitems: this.props.cartItems,
+       phone: this.state.phone,
+       total: this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),
+     }
+      this.props.createOrder(order)
     }
 
     closeModal = () => {
@@ -43,7 +43,7 @@ class Basket extends Component {
 
   render() {
     const { cartItems, orders } = this.props;
-    console.log(this.props.orders)
+    console.log(this.props.cartItems)
 
     return (
       <div>
