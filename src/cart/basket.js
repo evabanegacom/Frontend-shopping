@@ -90,10 +90,14 @@ class Basket extends Component {
                        </div>
                      ))) : (<p>no items</p>)} */}
                      { orders.cartitems.map((x)=> {
-                       const replacement = x.replace('/\uFFFD/g', " ");
-                       console.log(replacement)
+                       const replacement = x.replace(/[&\/\\=]/g, '');
+                       const remove = replacement.replace(/[&\/\\>]/g, ':')
+                       const parsing = JSON.parse(remove)
+                       console.log(JSON.stringify(parsing))
                        return(
-                         <div>{replacement.id}</div>
+                         <div>
+                           {parsing.count} {"x"} {parsing.price} {parsing.name}
+                         </div>
                        )
                      })}
                    </li>
