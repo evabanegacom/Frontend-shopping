@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Fade from 'react-reveal/Fade';
 import { connect } from 'react-redux';
-import { addOne, removeFromCart, removeOne } from '../actions/actions';
+import Modal from 'react-modal';
+import Zoom from 'react-reveal/Zoom';
+import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
 
 class Basket extends Component {
     constructor(props){
@@ -11,7 +13,10 @@ class Basket extends Component {
             showCheckout: false,
             name: '',
             email: '',
-            address: ''
+            address: '',
+            phone: '',
+            cartitems: this.props.cartItems,
+            total: this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),
         }
     }
 
@@ -21,17 +26,25 @@ class Basket extends Component {
 
     createOrder = (e) => {
       e.preventDefault()
-      const order = {
-        name: this.state.name,
-        email: this.state.email,
-        address: this.state.address,
-        cartItems: this.props.cartItems
-      }
-      this.props.createOrder(order)
+      //const order = {
+        //name: this.state.name,
+        //email: this.state.email,
+       // address: this.state.address,
+        //cartitems: this.props.cartItems,
+       // phone: this.props.phone,
+       // total: this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),
+     // }
+      this.props.createOrder(this.state)
+    }
+
+    closeModal = () => {
+      this.props.clearOrder()
     }
 
   render() {
-    const { cartItems } = this.props;
+    const { cartItems, orders } = this.props;
+    console.log(this.props.orders)
+
     return (
       <div>
         {cartItems.length === 0 ? (
@@ -39,6 +52,49 @@ class Basket extends Component {
         ) : (
           <div>you have{cartItems.length}in the cart</div>
         )}
+
+        {
+           orders && <Modal isOpen={true} onRequestClose={this.closeModal}>
+             <Zoom>
+               <button onClick={this.closeModal}>X</button>
+               <div>
+                 <h3>your order has been placed</h3>
+                 <h2>order number{orders.id}</h2>
+                 <ul>
+                   <li>
+                     <div>Name</div>
+                     <div>Name: {orders.name}</div>
+                   </li>
+                   <li>
+                     <div>Email</div>
+                     <div>Email: {orders.email}</div>
+                   </li>
+                   <li>
+                     <div>Address</div>
+                     <div>Address: {orders.address}</div>
+                   </li>
+                   <li>
+                     <div>Phone</div>
+                     <div>Phone: {orders.phone}</div>
+                   </li>
+                   <li>
+                     <div>Total</div>
+                     <div>Total: {Number(orders.total)}</div>
+                   </li>
+                   {/* <li>
+                     {orders.cartitems.length ? (orders.cartitems.map((x) =>(
+                       <div>
+                         {x.count} {"x"} {x.name}
+                       </div>
+                     ))) : (<p>no items</p>)}
+                   </li> */}
+                 </ul>
+               </div>
+             </Zoom>
+           </Modal>
+        }
+
+
         <div>
           <div>
           <Fade left cascade>
@@ -92,6 +148,10 @@ class Basket extends Component {
                           <input name='address' type='text' required onChange={this.handleInput} />
                       </li>
                       <li>
+                          <label>phone</label>
+                          <input name='phone' type='text' required onChange={this.handleInput} />
+                      </li>
+                      <li>
                           <button type='submit'>Checkout</button>
                       </li>    
                     </ul>
@@ -105,13 +165,16 @@ class Basket extends Component {
 }
 
 const mapStateToProps = state => ({
-  cartItems: state.cart.cartItems
+  cartItems: state.cart.cartItems,
+  orders: state.orders.order
 })
 
 const mapDispatchToProps = dispatch => ({
   removeItem: (product) => dispatch(removeFromCart(product)),
   addOne: (product) => dispatch(addOne(product)),
-  removeOne: (product) => dispatch(removeOne(product))
+  removeOne: (product) => dispatch(removeOne(product)),
+  createOrder: (items) => dispatch(postOrder(items)),
+  clearOrder: () => dispatch(clearOrder())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Basket)

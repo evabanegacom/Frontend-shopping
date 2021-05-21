@@ -1,5 +1,5 @@
 const initState = {
-  cartItems: JSON.parse(localStorage.getItem("cartItems"))
+  cartItems: []
 }
 
 

@@ -66,21 +66,6 @@ const setProduct = data => ({
   payload: data,
 });
 
-// export const postProduct = productInfo => async dispatch => {
-//   await fetch('http://localhost:3001/api/v1/products', {
-//     method: 'POST',
-//     headers: {
-//       'content-type': 'multipart/form-data',
-//       Accept: 'application/json',
-//       Authorization: `Bearer ${localStorage.getItem('token')}`,
-//     },
-//     body: JSON.stringify(productInfo),
-//   })
-//     .then(res => res.json())
-//     .then(data => {
-//       dispatch(setProduct(data));
-//     });
-// };
 
 export const postProduct = productInfo => async dispatch => {
   await axios.post('http://localhost:3001/api/v1/products', productInfo, {
@@ -178,3 +163,34 @@ export const removeOne = (product) => (dispatch, getState) => {
   })
   localStorage.setItem("cartItems", JSON.stringify(cartItem))
 }
+
+// ORDERS
+
+export const createOrder = data => ({
+  type: "CREATE_ORDER",
+  payload: { data },
+});
+
+export const clearCart = () => ({
+  type: "CLEAR_CART",
+});
+
+export const clearOrder = () => dispatch => {
+  dispatch({ type: 'CLEAR_ORDER'})
+}
+
+export const postOrder = productInfo => async dispatch => {
+  await axios.post('http://localhost:3001/api/v1/orders', productInfo, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    }
+  })
+    .then(data => { console.log(data)
+      dispatch(createOrder(data.data));
+      localStorage.removeItem('cartItems')
+      dispatch(clearCart())
+    });
+};
+
