@@ -39,12 +39,14 @@ class Basket extends Component {
 
     closeModal = () => {
       this.props.clearOrder()
+      document.querySelector('.orderform').reset()
+      this.setState({
+        showCheckout: false
+      })
     }
 
   render() {
     const { cartItems, orders } = this.props;
-    console.log(this.props.cartItems)
-
     return (
       <div>
         {cartItems.length === 0 ? (
@@ -81,13 +83,20 @@ class Basket extends Component {
                      <div>Total</div>
                      <div>Total: {Number(orders.total)}</div>
                    </li>
-                   {/* <li>
-                     {orders.cartitems.length ? (orders.cartitems.map((x) =>(
+                   <li>
+                     {/* {orders.cartitems.length ? (orders.cartitems.map((x) =>(
                        <div>
-                         {x.count} {"x"} {x.name}
+                         {x}
                        </div>
-                     ))) : (<p>no items</p>)}
-                   </li> */}
+                     ))) : (<p>no items</p>)} */}
+                     { orders.cartitems.map((x)=> {
+                       const replacement = x.replace('/\uFFFD/g', " ");
+                       console.log(replacement)
+                       return(
+                         <div>{replacement.id}</div>
+                       )
+                     })}
+                   </li>
                  </ul>
                </div>
              </Zoom>
@@ -133,7 +142,7 @@ class Basket extends Component {
         {this.state.showCheckout && (
           <Fade right cascade>
             <div>
-                <form onSubmit={this.createOrder}>
+                <form onSubmit={this.createOrder} className='orderform'>
                     <ul>
                       <li>
                           <label>Email</label>
