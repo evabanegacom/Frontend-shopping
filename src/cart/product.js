@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import {addToCart} from '../actions/actions'
 import Fade from 'react-reveal/Fade'
 import { useSelector, useDispatch } from "react-redux";
 import Modal from 'react-modal';

@@ -1,6 +1,6 @@
 const initState = {
-  cartItems: []
-}
+    cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+  }
 
 
 const cartReducer = (state=initState, action) => {

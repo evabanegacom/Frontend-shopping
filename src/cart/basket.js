@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
+import Paystack from './paystack';
 import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
 
 class Basket extends Component {
@@ -32,7 +34,7 @@ class Basket extends Component {
        address: this.state.address,
         cartitems: this.props.cartItems,
        phone: this.state.phone,
-       total: this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),
+       total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
      }
       this.props.createOrder(order)
     }
@@ -84,11 +86,6 @@ class Basket extends Component {
                      <div>Total: {Number(orders.total)}</div>
                    </li>
                    <li>
-                     {/* {orders.cartitems.length ? (orders.cartitems.map((x) =>(
-                       <div>
-                         {x}
-                       </div>
-                     ))) : (<p>no items</p>)} */}
                      { orders.cartitems.map((x)=> {
                        const replacement = x.replace(/[&\/\\=]/g, '');
                        const remove = replacement.replace(/[&\/\\>]/g, ':')
@@ -172,6 +169,7 @@ class Basket extends Component {
             </div>
             </Fade>
         ) }
+        <Paystack />
       </div>
     );
   }
@@ -179,7 +177,7 @@ class Basket extends Component {
 
 const mapStateToProps = state => ({
   cartItems: state.cart.cartItems,
-  orders: state.orders.order
+  orders: state.orders.order,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -187,7 +185,7 @@ const mapDispatchToProps = dispatch => ({
   addOne: (product) => dispatch(addOne(product)),
   removeOne: (product) => dispatch(removeOne(product)),
   createOrder: (items) => dispatch(postOrder(items)),
-  clearOrder: () => dispatch(clearOrder())
+  clearOrder: () => dispatch(clearOrder()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Basket)

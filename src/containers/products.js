@@ -4,6 +4,7 @@ import Product from '../cart/product';
 import Filter from '../containers/filter';
 import ReactPaginate from "react-paginate";
 import Basket from '../cart/basket';
+import { Link } from 'react-router-dom'
 import { getProducts } from '../actions/actions';
 
 const Products = () => {
@@ -12,6 +13,7 @@ const Products = () => {
     const [ sort, setSort] = useState('')
     const [ size, setSize] = useState('')
     const products = useSelector((state) => state.products.products);
+    const cart = useSelector((state) => state.cart.cartItems);
     const [currentPage, setCurrentPage ] = useState(0)
     const [search, setSearch ] = useState('')
     const [ data, setData] = useState([])
@@ -151,13 +153,16 @@ const Products = () => {
               <Product addToCart={addToCart} product={product} key={product.id} />
             ))
           ) : (<p>no items here</p>)}
-          <Basket 
+          {/* <Basket 
           // cartItems={cartItems} 
           // removeFromCart={removeFromCart} 
           // removeOneItem={removeOneItem} 
           // addOneItem={addOneItem} 
             // createOrder={createOrder}
-          />
+          /> */}
+          <p>you have {cart.length} items in your cart</p>
+          <Link to='/cart'>Cart</Link>
+
           <ReactPaginate
           previousLabel={"← Previous"}
           nextLabel={"Next →"}
