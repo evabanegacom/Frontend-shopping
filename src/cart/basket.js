@@ -167,9 +167,9 @@ class Basket extends Component {
                     </ul>
                 </form>
             </div>
+            <Paystack />
             </Fade>
         ) }
-        <Paystack />
       </div>
     );
   }
