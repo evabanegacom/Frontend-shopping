@@ -167,7 +167,7 @@ class Basket extends Component {
                     </ul>
                 </form>
             </div>
-            <Paystack />
+            <Paystack closeModal={this.closeModal}/>
             </Fade>
         ) }
       </div>

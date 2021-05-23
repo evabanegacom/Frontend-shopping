@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PaystackButton } from 'react-paystack'
 import { useSelector, useDispatch } from "react-redux";
 import { usePaystackPayment } from 'react-paystack';
+import { autoLogin } from '../actions/actions';
 
 
 const API_KEY =`${process.env.REACT_APP_API_KEY}`
@@ -27,18 +28,19 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     console.log('closed')
   }
 
-  
+  const Paystack = () => {
+    const dispatch = useDispatch();
 
-  const Paystack = (props) => {
   const cart = useSelector((state) => state.cart.cartItems);
   const user = useSelector((state) => state.user);
-  console.log(user)
 
-  console.log(typeof cart.reduce((a, c) => a + c.price*c.count, 0))
+  useEffect(() => {
+    dispatch(autoLogin())
+  }, []);
   
     const initializePayment = usePaystackPayment({ 
       reference:(new Date()).getTime(),
-       email: 'user@example.com', 
+       email: JSON.stringify(user.loggedIn === 'true') ? user.user.email : null, 
        amount: Math.trunc(cart.reduce((a, c) => a + c.price*c.count, 0))*100, 
        publicKey:API_KEY
      });
