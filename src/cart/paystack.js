@@ -57,12 +57,9 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     initializePayment(onSuccess, onClose)
     }
   }
-
-    
     // const initializePayment = usePaystackPayment(config);
     return (
       <div>
-      <button onClick={handlePay}>test closed</button>
           <button onClick={handlePay}>Paystack Hooks Implementation</button>
       </div>
     );
