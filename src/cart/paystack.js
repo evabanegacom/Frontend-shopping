@@ -37,6 +37,13 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     dispatch(autoLogin())
   }, []);
 
+  const initializePayment = usePaystackPayment({ 
+    reference:(new Date()).getTime(),
+     email: JSON.stringify(user.loggedIn === 'true') ? user.user.email : null, 
+     amount: Math.trunc(cart.reduce((a, c) => a + c.price*c.count, 0))*100, 
+     publicKey:API_KEY
+   });
+
   const onSuccess = (reference) => {
     // const validate
     // Implementation for whatever you want to do with reference and after success call.
@@ -45,22 +52,18 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
   };
 
   const handlePay = () => {
-    createOrderPaystack()
+    const validate = isValid()
+    if(validate){
+    initializePayment(onSuccess, onClose)
+    }
   }
 
-    const initializePayment = usePaystackPayment({ 
-      reference:(new Date()).getTime(),
-       email: JSON.stringify(user.loggedIn === 'true') ? user.user.email : null, 
-       amount: Math.trunc(cart.reduce((a, c) => a + c.price*c.count, 0))*100, 
-       publicKey:API_KEY
-     });
+    
     // const initializePayment = usePaystackPayment(config);
     return (
       <div>
       <button onClick={handlePay}>test closed</button>
-          <button onClick={() => {
-              initializePayment(onSuccess, onClose)
-          }}>Paystack Hooks Implementation</button>
+          <button onClick={handlePay}>Paystack Hooks Implementation</button>
       </div>
     );
 };
