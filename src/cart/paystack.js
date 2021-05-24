@@ -10,10 +10,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
       
   // you can call this function anything
 
-  const onSuccess = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log(reference);
-  };
+  
 
   const config = {
     reference: (new Date()).getTime(),
@@ -23,21 +20,32 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
 };
 
   // you can call this function anything
-  const onClose = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log('closed')
-  }
+  
 
-  const Paystack = () => {
+  const Paystack = ({ closeModal, consoleLog, createOrderPaystack }) => {
     const dispatch = useDispatch();
+    const onClose = () => {
+      // implementation for  whatever you want to do when the Paystack dialog closed.
+      console.log('closed')
+    }
 
+    
   const cart = useSelector((state) => state.cart.cartItems);
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(autoLogin())
   }, []);
-  
+
+  const handlePay = () => {
+    createOrderPaystack()
+  }
+
+  const onSuccess = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    createOrderPaystack()
+    console.log(reference);
+  };
     const initializePayment = usePaystackPayment({ 
       reference:(new Date()).getTime(),
        email: JSON.stringify(user.loggedIn === 'true') ? user.user.email : null, 
@@ -47,6 +55,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     // const initializePayment = usePaystackPayment(config);
     return (
       <div>
+      <button onClick={handlePay}>test closed</button>
           <button onClick={() => {
               initializePayment(onSuccess, onClose)
           }}>Paystack Hooks Implementation</button>

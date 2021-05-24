@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
+
 
 const Header = () => {
+    const cart = useSelector((state) => state.cart.cartItems);
+
     return (
         <header>
             <div>
@@ -9,8 +14,8 @@ const Header = () => {
                 </a>
             </div>
             <div>
-                <a href="#/cart">Cart</a>
-                <a href="#/signIn">signIn</a>
+            <p>you have {cart.length} items in your cart</p>
+          <Link to='/cart'>Cart</Link>
             </div>
         </header>
     )

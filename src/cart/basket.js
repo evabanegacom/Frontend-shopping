@@ -39,12 +39,29 @@ class Basket extends Component {
       this.props.createOrder(order)
     }
 
+    createOrderPaystack = () => {
+      // e.preventDefault()
+      const order = {
+        name: this.state.name,
+        email: this.state.email,
+       address: this.state.address,
+        cartitems: this.props.cartItems,
+       phone: this.state.phone,
+       total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
+     }
+      this.props.createOrder(order)
+    }
+
     closeModal = () => {
       this.props.clearOrder()
       document.querySelector('.orderform').reset()
       this.setState({
         showCheckout: false
       })
+    }
+
+    consoleLog = () => {
+      console.log('hello')
     }
 
   render() {
@@ -147,19 +164,19 @@ class Basket extends Component {
                     <ul>
                       <li>
                           <label>Email</label>
-                          <input name='email' type='email' required onChange={this.handleInput} />
+                          <input id='inputemail'name='email' type='email' required onChange={this.handleInput} />
                       </li>
                       <li>
                           <label>Name</label>
-                          <input name='name' type='text' required onChange={this.handleInput} />
+                          <input id='inputname' name='name' type='text' required onChange={this.handleInput} />
                       </li>
                       <li>
                           <label>Address</label>
-                          <input name='address' type='text' required onChange={this.handleInput} />
+                          <input id='inputAddress' name='address' type='text' required onChange={this.handleInput} />
                       </li>
                       <li>
                           <label>phone</label>
-                          <input name='phone' type='text' required onChange={this.handleInput} />
+                          <input id='inputphone' name='phone' type='text' required onChange={this.handleInput} />
                       </li>
                       <li>
                           <button type='submit'>Checkout</button>
@@ -167,7 +184,7 @@ class Basket extends Component {
                     </ul>
                 </form>
             </div>
-            <Paystack closeModal={this.closeModal}/>
+            <Paystack closeModal={this.closeModal} createOrderPaystack={this.createOrderPaystack} consoleLog={this.consoleLog}/>
             </Fade>
         ) }
       </div>

@@ -150,7 +150,7 @@ const Products = () => {
                 return product
               }
             }).slice(offset, offset + PER_PAGE).map((product) => (
-              <Product addToCart={addToCart} product={product} key={product.id} />
+              <Product product={product} key={product.id} />
             ))
           ) : (<p>no items here</p>)}
           {/* <Basket 
@@ -160,8 +160,7 @@ const Products = () => {
           // addOneItem={addOneItem} 
             // createOrder={createOrder}
           /> */}
-          <p>you have {cart.length} items in your cart</p>
-          <Link to='/cart'>Cart</Link>
+          
 
           <ReactPaginate
           previousLabel={"← Previous"}
