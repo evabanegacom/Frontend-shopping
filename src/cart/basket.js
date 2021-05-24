@@ -13,12 +13,14 @@ class Basket extends Component {
 
         this.state = {
             showCheckout: false,
-            name: '',
+            nameError: '',
+            emailError: '',
+            addressError: '',
+            phoneError: '',
             email: '',
-            address: '',
             phone: '',
-            cartitems: this.props.cartItems,
-            total: this.props.cartItems.reduce((a, c) => a + c.price*c.count, 0),
+            address: '',
+            name: '',
         }
     }
 
@@ -26,8 +28,44 @@ class Basket extends Component {
       this.setState({[e.target.name]: e.target.value})
     }
 
+    isValid = () => {
+      const { name, email, address, phone } = this.state
+      let nameError = '';
+      let addressError = '';
+      let phoneError = '';
+      let emailError = '';
+      const inputName = document.querySelector('#inputname')
+      const inputEmail = document.querySelector('#inputemail')
+      const inputAddress = document.querySelector('#inputAddress')
+      const inputPhone = document.querySelector('#inputphone')
+      if(name.length < 5){
+        nameError = 'please input full name'
+        console.log(nameError)
+      }
+
+      if(email.length < 5){
+        emailError = 'please input email'
+      }
+
+      if(address.length < 5){
+        addressError = 'please input full name'
+      }
+
+      if(address.length < 5){
+        phoneError = 'please input full name'
+      }
+
+      if (emailError || nameError || phoneError || addressError) {
+        this.setState({ emailError, phoneError, addressError, nameError });
+        return false;
+      }
+  
+      return true;
+    }
+
     createOrder = (e) => {
       e.preventDefault()
+      const validate = this.isValid()
       const order = {
         name: this.state.name,
         email: this.state.email,
@@ -36,7 +74,9 @@ class Basket extends Component {
        phone: this.state.phone,
        total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
      }
+     if(validate){
       this.props.createOrder(order)
+     }
     }
 
     createOrderPaystack = () => {
@@ -66,6 +106,8 @@ class Basket extends Component {
 
   render() {
     const { cartItems, orders } = this.props;
+    const { nameError, emailError, addressError, phoneError } = this.state
+
     return (
       <div>
         {cartItems.length === 0 ? (
@@ -165,18 +207,25 @@ class Basket extends Component {
                       <li>
                           <label>Email</label>
                           <input id='inputemail'name='email' type='email' required onChange={this.handleInput} />
+                          <p>{emailError}</p>
+
                       </li>
                       <li>
                           <label>Name</label>
                           <input id='inputname' name='name' type='text' required onChange={this.handleInput} />
+                          <p style={{color: 'red'}}>{nameError}</p>
                       </li>
                       <li>
                           <label>Address</label>
                           <input id='inputAddress' name='address' type='text' required onChange={this.handleInput} />
+                          <p>{addressError}</p>
+
                       </li>
                       <li>
                           <label>phone</label>
                           <input id='inputphone' name='phone' type='text' required onChange={this.handleInput} />
+                          <p>{phoneError}</p>
+
                       </li>
                       <li>
                           <button type='submit'>Checkout</button>
@@ -184,7 +233,7 @@ class Basket extends Component {
                     </ul>
                 </form>
             </div>
-            <Paystack closeModal={this.closeModal} createOrderPaystack={this.createOrderPaystack} consoleLog={this.consoleLog}/>
+            <Paystack createOrderPaystack={this.createOrderPaystack} isValid={this.isValid}/>
             </Fade>
         ) }
       </div>

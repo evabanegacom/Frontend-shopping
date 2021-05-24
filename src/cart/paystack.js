@@ -22,7 +22,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
   // you can call this function anything
   
 
-  const Paystack = ({ closeModal, consoleLog, createOrderPaystack }) => {
+  const Paystack = ({ isValid, createOrderPaystack }) => {
     const dispatch = useDispatch();
     const onClose = () => {
       // implementation for  whatever you want to do when the Paystack dialog closed.
@@ -37,15 +37,17 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     dispatch(autoLogin())
   }, []);
 
-  const handlePay = () => {
-    createOrderPaystack()
-  }
-
   const onSuccess = (reference) => {
+    // const validate
     // Implementation for whatever you want to do with reference and after success call.
     createOrderPaystack()
     console.log(reference);
   };
+
+  const handlePay = () => {
+    createOrderPaystack()
+  }
+
     const initializePayment = usePaystackPayment({ 
       reference:(new Date()).getTime(),
        email: JSON.stringify(user.loggedIn === 'true') ? user.user.email : null, 
