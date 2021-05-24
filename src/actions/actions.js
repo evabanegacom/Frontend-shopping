@@ -194,3 +194,23 @@ export const postOrder = productInfo => async dispatch => {
     });
 };
 
+// USER'S ORDERS
+
+const setOrders = data => ({
+  type: 'SET_ORDERS',
+  payload: data
+})
+
+export const getOrders = () => async dispatch => {
+  await fetch('http://localhost:3001/api/v1/orders', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(setOrders(data));
+    });
+};
