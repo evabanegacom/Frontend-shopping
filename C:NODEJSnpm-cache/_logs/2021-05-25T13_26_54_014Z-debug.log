@@ -1,0 +1,215 @@
+0 verbose cli [
+0 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/node',
+0 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/npm',
+0 verbose cli   'install',
+0 verbose cli   'emailjs-com',
+0 verbose cli   '--save',
+0 verbose cli   '--force'
+0 verbose cli ]
+1 info using npm@7.5.4
+2 info using node@v14.4.0
+3 timing config:load:defaults Completed in 17ms
+4 timing config:load:file:/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/npmrc Completed in 7ms
+5 timing config:load:builtin Completed in 7ms
+6 timing config:load:cli Completed in 6ms
+7 timing config:load:env Completed in 1ms
+8 timing config:load:file:/home/precious/Desktop/frontend-shopping/.npmrc Completed in 0ms
+9 timing config:load:project Completed in 3ms
+10 timing config:load:file:/home/precious/.npmrc Completed in 5ms
+11 timing config:load:user Completed in 5ms
+12 timing config:load:file:/home/precious/.nvm/versions/node/v14.4.0/etc/npmrc Completed in 1ms
+13 timing config:load:global Completed in 1ms
+14 timing config:load:cafile Completed in 1ms
+15 timing config:load:validate Completed in 1ms
+16 timing config:load:setUserAgent Completed in 1ms
+17 timing config:load:setEnvs Completed in 3ms
+18 timing config:load Completed in 49ms
+19 warn using --force Recommended protections disabled.
+20 verbose npm-session ef3c04a32bedbb76
+21 timing npm:load Completed in 79ms
+22 http fetch GET 304 https://registry.npmjs.org/npm 552ms (from cache)
+23 timing arborist:ctor Completed in 5ms
+24 timing idealTree:init Completed in 4528ms
+25 timing idealTree:userRequests Completed in 7ms
+26 silly idealTree buildDeps
+27 silly fetch manifest axios@^0.21.1
+28 http fetch GET 304 https://registry.npmjs.org/axios 5698ms (from cache)
+29 silly fetch manifest emailjs@^3.4.0
+30 http fetch GET 200 https://registry.npmjs.org/emailjs 141ms (from cache)
+31 silly fetch manifest react-modal@^3.13.1
+32 http fetch GET 304 https://registry.npmjs.org/react-modal 130ms (from cache)
+33 silly fetch manifest react@^17.0.2
+34 http fetch GET 304 https://registry.npmjs.org/react 150ms (from cache)
+35 silly fetch manifest react-dom@^17.0.2
+36 http fetch GET 304 https://registry.npmjs.org/react-dom 138ms (from cache)
+37 silly fetch manifest react-paginate@^7.1.2
+38 http fetch GET 200 https://registry.npmjs.org/react-paginate 9ms (from cache)
+39 silly fetch manifest react-paystack@^3.0.3
+40 http fetch GET 200 https://registry.npmjs.org/react-paystack 10ms (from cache)
+41 silly fetch manifest react@^15.0.0 || ^16.0.0
+42 silly fetch manifest react-dom@^15.0.0 || ^16.0.0
+43 silly fetch manifest react-reveal@^1.2.2
+44 http fetch GET 200 https://registry.npmjs.org/react-reveal 146ms
+45 silly fetch manifest react@^15.3.0 || ^16.0.0
+46 silly fetch manifest emailjs-com@*
+47 http fetch GET 200 https://registry.npmjs.org/emailjs-com 106ms
+48 silly placeDep ROOT axios@0.21.1 OK for: frontend-shopping@0.1.0 want: ^0.21.1
+49 silly placeDep ROOT emailjs@3.4.0 OK for: frontend-shopping@0.1.0 want: ^3.4.0
+50 silly placeDep ROOT emailjs-com@2.6.4 OK for: frontend-shopping@0.1.0 want: *
+51 silly placeDep ROOT react-modal@3.13.1 OK for: frontend-shopping@0.1.0 want: ^3.13.1
+52 silly placeDep ROOT react-paginate@7.1.3 OK for: frontend-shopping@0.1.0 want: ^7.1.2
+53 silly placeDep ROOT react-paystack@3.0.3 OK for: frontend-shopping@0.1.0 want: ^3.0.3
+54 silly placeDep ROOT react@17.0.2 KEEP for: react-paystack@3.0.3 want: ^15.0.0 || ^16.0.0
+55 warn ERESOLVE overriding peer dependency
+56 warn Found: [1mreact[22m@[1m17.0.2[22m[2m[22m
+56 warn [2mnode_modules/react[22m
+56 warn   [35mpeer[39m [1mreact[22m@"[1m^16.8.0 || ^17.0.0[22m" from [1m@material-ui/core[22m@[1m4.11.4[22m[2m[22m
+56 warn   [2mnode_modules/@material-ui/core[22m
+56 warn     [35mpeer[39m [1m@material-ui/core[22m@"[1m^4.0.0[22m" from [1m@material-ui/icons[22m@[1m4.11.2[22m[2m[22m
+56 warn     [2mnode_modules/@material-ui/icons[22m
+56 warn     1 more (the root project)
+56 warn   16 more (@material-ui/icons, @material-ui/styles, ...)
+56 warn
+56 warn Could not resolve dependency:
+56 warn [35mpeer[39m [1mreact[22m@"[1m^15.0.0 || ^16.0.0[22m" from [1mreact-paystack[22m@[1m3.0.3[22m[2m[22m
+56 warn [2mnode_modules/react-paystack[22m
+56 warn   [1mreact-paystack[22m@"[1m^3.0.3[22m" from the root project
+57 silly placeDep ROOT react-dom@17.0.2 KEEP for: react-paystack@3.0.3 want: ^15.0.0 || ^16.0.0
+58 warn ERESOLVE overriding peer dependency
+59 warn Found: [1mreact-dom[22m@[1m17.0.2[22m[2m[22m
+59 warn [2mnode_modules/react-dom[22m
+59 warn   [35mpeer[39m [1mreact-dom[22m@"[1m^16.8.0 || ^17.0.0[22m" from [1m@material-ui/core[22m@[1m4.11.4[22m[2m[22m
+59 warn   [2mnode_modules/@material-ui/core[22m
+59 warn     [35mpeer[39m [1m@material-ui/core[22m@"[1m^4.0.0[22m" from [1m@material-ui/icons[22m@[1m4.11.2[22m[2m[22m
+59 warn     [2mnode_modules/@material-ui/icons[22m
+59 warn     1 more (the root project)
+59 warn   8 more (@material-ui/icons, @material-ui/styles, ...)
+59 warn
+59 warn Could not resolve dependency:
+59 warn [35mpeer[39m [1mreact-dom[22m@"[1m^15.0.0 || ^16.0.0[22m" from [1mreact-paystack[22m@[1m3.0.3[22m[2m[22m
+59 warn [2mnode_modules/react-paystack[22m
+59 warn   [1mreact-paystack[22m@"[1m^3.0.3[22m" from the root project
+60 silly placeDep ROOT react-reveal@1.2.2 OK for: frontend-shopping@0.1.0 want: ^1.2.2
+61 silly placeDep ROOT react@17.0.2 KEEP for: react-reveal@1.2.2 want: ^15.3.0 || ^16.0.0
+62 warn ERESOLVE overriding peer dependency
+63 warn Found: [1mreact[22m@[1m17.0.2[22m[2m[22m
+63 warn [2mnode_modules/react[22m
+63 warn   [35mpeer[39m [1mreact[22m@"[1m^16.8.0 || ^17.0.0[22m" from [1m@material-ui/core[22m@[1m4.11.4[22m[2m[22m
+63 warn   [2mnode_modules/@material-ui/core[22m
+63 warn     [35mpeer[39m [1m@material-ui/core[22m@"[1m^4.0.0[22m" from [1m@material-ui/icons[22m@[1m4.11.2[22m[2m[22m
+63 warn     [2mnode_modules/@material-ui/icons[22m
+63 warn     1 more (the root project)
+63 warn   16 more (@material-ui/icons, @material-ui/styles, ...)
+63 warn
+63 warn Could not resolve dependency:
+63 warn [35mpeer[39m [1mreact[22m@"[1m^15.3.0 || ^16.0.0[22m" from [1mreact-reveal[22m@[1m1.2.2[22m[2m[22m
+63 warn [2mnode_modules/react-reveal[22m
+63 warn   [1mreact-reveal[22m@"[1m^1.2.2[22m" from the root project
+64 silly fetch manifest exenv@^1.2.0
+65 silly fetch manifest react-lifecycles-compat@^3.0.0
+66 silly fetch manifest warning@^4.0.3
+67 http fetch GET 200 https://registry.npmjs.org/exenv 141ms
+68 http fetch GET 200 https://registry.npmjs.org/warning 268ms
+69 http fetch GET 200 https://registry.npmjs.org/react-lifecycles-compat 294ms
+70 timing idealTree:#root Completed in 7159ms
+71 timing idealTree:node_modules/axios Completed in 0ms
+72 timing idealTree:node_modules/emailjs Completed in 0ms
+73 timing idealTree:node_modules/emailjs-com Completed in 0ms
+74 silly placeDep ROOT exenv@1.2.2 OK for: react-modal@3.13.1 want: ^1.2.0
+75 silly placeDep ROOT react-lifecycles-compat@3.0.4 OK for: react-modal@3.13.1 want: ^3.0.0
+76 silly placeDep ROOT warning@4.0.3 OK for: react-modal@3.13.1 want: ^4.0.3
+77 timing idealTree:node_modules/react-modal Completed in 13ms
+78 timing idealTree:node_modules/exenv Completed in 0ms
+79 timing idealTree:node_modules/react-lifecycles-compat Completed in 0ms
+80 timing idealTree:node_modules/react-paginate Completed in 0ms
+81 timing idealTree:node_modules/react-paystack Completed in 0ms
+82 timing idealTree:node_modules/react-reveal Completed in 0ms
+83 timing idealTree:node_modules/warning Completed in 0ms
+84 timing idealTree:buildDeps Completed in 7179ms
+85 timing idealTree:fixDepFlags Completed in 80ms
+86 timing idealTree Completed in 11806ms
+87 timing reify:loadTrees Completed in 11809ms
+88 silly reify mark deleted [
+88 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/express/node_modules/path-to-regexp'
+88 silly reify ]
+89 silly reify mark deleted [
+89 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/http-proxy/node_modules/follow-redirects'
+89 silly reify ]
+90 silly reify mark deleted [
+90 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/path-to-regexp/node_modules/isarray'
+90 silly reify ]
+91 timing reify:diffTrees Completed in 132ms
+92 silly reify mark retired [
+92 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-jest/node_modules/json5',
+92 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-jest/node_modules/.bin/json5'
+92 silly reify ]
+93 silly reify mark retired [
+93 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-preset-react-app/node_modules/json5',
+93 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-preset-react-app/node_modules/.bin/json5'
+93 silly reify ]
+94 silly reify mark retired [
+94 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/eslint-plugin-testing-library/node_modules/semver',
+94 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/eslint-plugin-testing-library/node_modules/.bin/semver'
+94 silly reify ]
+95 silly reify mark retired [
+95 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/express/node_modules/path-to-regexp'
+95 silly reify ]
+96 silly reify mark retired [
+96 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/http-proxy/node_modules/follow-redirects'
+96 silly reify ]
+97 silly reify mark retired [
+97 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/path-to-regexp/node_modules/isarray'
+97 silly reify ]
+98 silly reify mark retired [
+98 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/react-paginate'
+98 silly reify ]
+99 silly reify mark retired [
+99 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/react-scripts/node_modules/json5',
+99 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/react-scripts/node_modules/.bin/json5'
+99 silly reify ]
+100 silly reify mark retired [
+100 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/which',
+100 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/.bin/which'
+100 silly reify ]
+101 silly reify mark retired [
+101 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/@babel/helper-create-class-features-plugin/node_modules/json5',
+101 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/@babel/helper-create-class-features-plugin/node_modules/.bin/json5'
+101 silly reify ]
+102 silly reify moves {
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-jest/node_modules/json5': '/home/precious/Desktop/frontend-shopping/node_modules/babel-jest/node_modules/.json5-G2p51CsT',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-jest/node_modules/.bin/json5': '/home/precious/Desktop/frontend-shopping/node_modules/babel-jest/node_modules/.bin/.json5-p016wkoZ',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-preset-react-app/node_modules/json5': '/home/precious/Desktop/frontend-shopping/node_modules/babel-preset-react-app/node_modules/.json5-oCZVJFJH',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/babel-preset-react-app/node_modules/.bin/json5': '/home/precious/Desktop/frontend-shopping/node_modules/babel-preset-react-app/node_modules/.bin/.json5-0pLGIfaN',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/eslint-plugin-testing-library/node_modules/semver': '/home/precious/Desktop/frontend-shopping/node_modules/eslint-plugin-testing-library/node_modules/.semver-UATexZue',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/eslint-plugin-testing-library/node_modules/.bin/semver': '/home/precious/Desktop/frontend-shopping/node_modules/eslint-plugin-testing-library/node_modules/.bin/.semver-kSb60al1',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/express/node_modules/path-to-regexp': '/home/precious/Desktop/frontend-shopping/node_modules/express/node_modules/.path-to-regexp-ygxdMoyB',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/http-proxy/node_modules/follow-redirects': '/home/precious/Desktop/frontend-shopping/node_modules/http-proxy/node_modules/.follow-redirects-oFM8C4Zn',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/path-to-regexp/node_modules/isarray': '/home/precious/Desktop/frontend-shopping/node_modules/path-to-regexp/node_modules/.isarray-axEooCcf',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/react-paginate': '/home/precious/Desktop/frontend-shopping/node_modules/.react-paginate-RR7XEhkd',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/react-scripts/node_modules/json5': '/home/precious/Desktop/frontend-shopping/node_modules/react-scripts/node_modules/.json5-9uqO4XjV',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/react-scripts/node_modules/.bin/json5': '/home/precious/Desktop/frontend-shopping/node_modules/react-scripts/node_modules/.bin/.json5-aTxSFrLW',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/which': '/home/precious/Desktop/frontend-shopping/node_modules/.which-Z8ctVeeF',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/.bin/which': '/home/precious/Desktop/frontend-shopping/node_modules/.bin/.which-8nCkXaVw',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/@babel/helper-create-class-features-plugin/node_modules/json5': '/home/precious/Desktop/frontend-shopping/node_modules/@babel/helper-create-class-features-plugin/node_modules/.json5-HySHa13b',
+102 silly reify   '/home/precious/Desktop/frontend-shopping/node_modules/@babel/helper-create-class-features-plugin/node_modules/.bin/json5': '/home/precious/Desktop/frontend-shopping/node_modules/@babel/helper-create-class-features-plugin/node_modules/.bin/.json5-n7NSoem3'
+102 silly reify }
+103 timing reify:rollback:retireShallow Completed in 26ms
+104 timing command:install Completed in 12061ms
+105 notice [40m[37m[39m[49m
+105 notice [40m[37mNew [33mminor[39m[37m version of npm available! [31m7.5.4[39m[37m -> [32m7.14.0[39m[37m[39m[49m
+105 notice [40m[37mChangelog: [36mhttps://github.com/npm/cli/releases/tag/v7.14.0[39m[37m[39m[49m
+105 notice [40m[37mRun [32mnpm install -g npm@7.14.0[39m[37m to update![39m[49m
+105 notice [40m[37m[39m[49m
+106 verbose stack Error: ENOTEMPTY: directory not empty, rename '/home/precious/Desktop/frontend-shopping/node_modules/which' -> '/home/precious/Desktop/frontend-shopping/node_modules/.which-Z8ctVeeF'
+107 verbose cwd /home/precious/Desktop/frontend-shopping
+108 verbose Linux 5.3.0-62-generic
+109 verbose argv "/home/precious/.nvm/versions/node/v14.4.0/bin/node" "/home/precious/.nvm/versions/node/v14.4.0/bin/npm" "install" "emailjs-com" "--save" "--force"
+110 verbose node v14.4.0
+111 verbose npm  v7.5.4
+112 error code ENOTEMPTY
+113 error syscall rename
+114 error path /home/precious/Desktop/frontend-shopping/node_modules/which
+115 error dest /home/precious/Desktop/frontend-shopping/node_modules/.which-Z8ctVeeF
+116 error errno -39
+117 error ENOTEMPTY: directory not empty, rename '/home/precious/Desktop/frontend-shopping/node_modules/which' -> '/home/precious/Desktop/frontend-shopping/node_modules/.which-Z8ctVeeF'
+118 verbose exit -39

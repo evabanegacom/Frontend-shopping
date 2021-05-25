@@ -9,7 +9,6 @@ const Orders = (props) => {
   const orders = useSelector((state) => state.userOrders.orders);
   const [ newOrder, setNewOrder ] = useState(orders ? orders : [])
   const products = useSelector((state) => state.products.products);
-  console.log(newOrder)
 
   useEffect (function effectFunction() {
     fetch('http://localhost:3001/api/v1/orders', {
@@ -43,6 +42,7 @@ const Orders = (props) => {
   const userId = newOrder.filter(
     (order) => order.user_id === parseInt(props.match.params.id, 10)
   );
+  
 // New mapping methods
   //   let totals = userId.map(function(x){
   //       return (

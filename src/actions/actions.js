@@ -205,7 +205,7 @@ export const postOrder = productInfo => async dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     }
   })
-    .then(data => { console.log(data)
+    .then(data => {
       dispatch(createOrder(data.data));
       localStorage.removeItem('cartItems')
       dispatch(clearCart())

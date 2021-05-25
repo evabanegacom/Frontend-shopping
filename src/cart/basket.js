@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 import Paystack from './paystack';
+import emailjs from 'emailjs-com';
 import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
 
 class Basket extends Component {
@@ -71,7 +72,8 @@ class Basket extends Component {
        total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
      }
      if(validate){
-      this.props.createOrder(order)
+       this.props.createOrder(order)
+       this.sendEmail(e)
      }
     }
 
@@ -88,9 +90,38 @@ class Basket extends Component {
       this.props.createOrder(order)
     }
 
+    sendEmail = e => {
+      e.preventDefault();
+      let totals = this.props.cartItems.map((x)=> {
+        const items = [['  id: ' + ' ' + x.id + ' '] +' ' + ' ' + ' ' + ['  quantity: ' + ' ' + x.count + ' '] +' ' + ' ' + ' ' + ['  name: ' + ' ' + x.name + ' '] +' ' + ' ' + ' ' + ['  description: ' + ' ' + x.description + ' ']+
+        ' ' + ' ' + ' ' + ['  image: ' + ' ' + x.avatar.url + ' ']]
+
+        return items
+      });
+      
+      const order = {
+        name: this.state.name,
+        email: this.state.email,
+       address: this.state.address,
+        cartitems: totals,
+       phone: this.state.phone,
+       type: 'Payment On deilvery',
+       business: this.state.email,
+       total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
+     }
+      emailjs.send('service_ey6p9rp', 'template_l4w8jep', order, 'user_p6RgQH7YhWPsKwWBkmYPP')
+      .then(result => {
+      console.log(result.text);
+      }, error => {
+      console.log(error.text);
+      });
+      // e.target.reset();
+      }
+
     closeModal = () => {
       this.props.clearOrder()
-      document.querySelector('.orderform').reset()
+      const form = document.querySelector('.orderform')
+      form && form.reset()
       this.setState({
         showCheckout: false
       })
@@ -98,6 +129,12 @@ class Basket extends Component {
 
     consoleLog = () => {
       console.log('hello')
+    }
+
+    // SENDING ORDERED EMAIL CONTENT
+
+    handleEmail = () => {
+      console.log('for email')
     }
 
   render() {
@@ -145,7 +182,7 @@ class Basket extends Component {
                        const replacement = x.replace(/[&\/\\=]/g, '');
                        const remove = replacement.replace(/[&\/\\>]/g, ':')
                        const parsing = JSON.parse(remove)
-                       console.log(JSON.stringify(parsing))
+                       {/* console.log(JSON.stringify(parsing)) */}
                        return(
                          <div>
                            {parsing.count} {"x"} {parsing.price} {parsing.name}
