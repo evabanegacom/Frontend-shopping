@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { postProduct } from '../actions/actions';
+import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
 
 class AddProduct extends Component {
     constructor(props){
@@ -16,6 +16,11 @@ class AddProduct extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidMount(){
+      this.props.autoLogin()
+      this.props.getProducts()
     }
 
     handleChange = e => {
@@ -50,6 +55,10 @@ class AddProduct extends Component {
       };
 
     render() {
+      const { products, user, deleteProduct } = this.props
+      const userProducts = products && products.filter((product) => (product.user_id) === user.id)
+      console.log(userProducts)
+  
       const ImageThumb = ({ avatar }) => {
         return <img style={{ width: '150px', height: '150px'}} src={URL.createObjectURL(avatar)} alt={avatar.name} />;
       };
@@ -73,22 +82,40 @@ class AddProduct extends Component {
                 <option value="Sports">Sports</option>
                 <option value="Electronics">Electronics</option>
                 <option value='Mobile'>Mobile</option>
-                <option value="Normandy">Normandy</option>
-                <option value="Tokyo">Tokyo</option>
-                <option value="Madrid">Madrid</option>
+                <option value="Fashiony">Fashion</option>
+                <option value="Automobile">Automobile</option>
+                <option value="Accessories">Accessories</option>
               </select>
             </label>
             <button type="submit" className="btn pink lighten-1 z-depth-0">
               Add Product
             </button>
-               </form> 
+               </form>
+               {userProducts.map((x) => (
+                 <div key={x.id}>
+                   <p>{x.name}</p>
+                   <p>{x.price}</p>
+                   <p>{x.description}</p>
+                   <p>{x.category}</p>
+                   <img src={x.avatar.url} alt={x.name} />
+                   <button type='submit' onClick={() => deleteProduct(x.id) }>Remove</button>
+                 </div>
+               ))} 
             </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    addProduct: productInfo => dispatch(postProduct(productInfo)),
+const mapStateToProps = state => ({
+  products: state.products.products,
+  user: state.user.user
 })
 
-export default connect(null, mapDispatchToProps)(AddProduct)
+const mapDispatchToProps = dispatch => ({
+    addProduct: productInfo => dispatch(postProduct(productInfo)),
+    autoLogin: () => dispatch(autoLogin()),
+    getProducts: () => dispatch(getProducts()),
+    deleteProduct: (id) => dispatch(deleteProduct(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddProduct)

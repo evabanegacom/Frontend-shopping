@@ -101,6 +101,25 @@ export const getProducts = () => async dispatch => {
     });
 };
 
+// DELETE PRODUCT
+
+const removeProduct = () => ({
+  type: 'REMOVE_PRODUCT',
+});
+
+export const deleteProduct = id => async dispatch => {
+  await axios.delete(`http://localhost:3001/api/v1/products/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then(
+      dispatch(removeProduct())
+    );
+};
+
 // CART ACTIVITIES
 
 export const addToCart = (product) => (dispatch, getState) => {
@@ -151,8 +170,7 @@ export const removeOne = (product) => (dispatch, getState) => {
   const cartItem = getState().cart.cartItems.slice()
   let alreadyInCart = true
   cartItem.forEach((x) => {
-    if(x.id === product.id){
-      console.log('one')
+    if(x.id === product.id && x.count !=1){
       x.count--;
       alreadyInCart = true;
     }
@@ -213,4 +231,23 @@ export const getOrders = () => async dispatch => {
     .then(data => {
       dispatch(setOrders(data));
     });
+};
+
+// DELETE ORDER
+
+const removeOrder = () => ({
+  type: 'REMOVE_ORDER',
+});
+
+export const deleteOrder = id => async dispatch => {
+  await axios.delete(`http://localhost:3001/api/v1/orders/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then(
+      dispatch(removeOrder())
+    );
 };

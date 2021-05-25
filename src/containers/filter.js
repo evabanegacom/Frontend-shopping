@@ -16,6 +16,9 @@ class Filter extends Component {
                    <option value="Mobile">Mobile</option>
                    <option value="Electronics">Electronics</option>
                    <option value="Sports">Sports</option>
+                   <option value="Accessories">Accessories</option>
+                   <option value="Automobile">Automobile</option>
+                   <option value="Fashion">Fashion</option>
                </select></div> 
             </div>
         )

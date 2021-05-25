@@ -34,10 +34,6 @@ class Basket extends Component {
       let addressError = '';
       let phoneError = '';
       let emailError = '';
-      const inputName = document.querySelector('#inputname')
-      const inputEmail = document.querySelector('#inputemail')
-      const inputAddress = document.querySelector('#inputAddress')
-      const inputPhone = document.querySelector('#inputphone')
       if(name.length < 5){
         nameError = 'please input full name'
         console.log(nameError)
@@ -51,7 +47,7 @@ class Basket extends Component {
         addressError = 'please input full name'
       }
 
-      if(address.length < 5){
+      if(phone.length < 5){
         phoneError = 'please input full name'
       }
 

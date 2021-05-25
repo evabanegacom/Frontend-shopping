@@ -13,6 +13,11 @@ const initialState = {
         orders: action.payload,
         error: null
         };
+
+        case 'REMOVE_ORDER':
+          return {
+            ...state
+          }
   
       default:
         return state;

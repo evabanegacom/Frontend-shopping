@@ -1,26 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { getOrders, autoLogin, getProducts } from "../actions/actions";
+import { getOrders, autoLogin, getProducts, deleteOrder } from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from '../actions/actions';
 
 const Orders = (props) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  // const user = useSelector((state) => state.user.user);
   const orders = useSelector((state) => state.userOrders.orders);
+  const [ newOrder, setNewOrder ] = useState(orders ? orders : [])
   const products = useSelector((state) => state.products.products);
+  console.log(newOrder)
+
+  useEffect (function effectFunction() {
+    fetch('http://localhost:3001/api/v1/orders', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+        .then(response => response.json())
+        .then((data => {
+          setNewOrder(data)
+        }))
+}, []);
+  // useEffect(() => {
+  //   dispatch(autoLogin());
+  // }, []);
 
   useEffect(() => {
-    dispatch(autoLogin());
-  }, []);
+    if(newOrder){
+      dispatch(getOrders());
+
+    }
+  }, [newOrder]);
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
 
-  useEffect(() => {
-    dispatch(getOrders());
-  }, []);
 
-  const userId = orders.filter(
+  const userId = newOrder.filter(
     (order) => order.user_id === parseInt(props.match.params.id, 10)
   );
 // New mapping methods
@@ -62,7 +82,7 @@ const Orders = (props) => {
               <p>{parsing.id}</p>
               {totals}
               {/* <img src={images.avatar.url} alt='' /> */}
-              <button>Delete</button>
+              <button type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Delete</button>
             </div>
           );
         });
