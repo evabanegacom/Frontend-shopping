@@ -22,7 +22,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
   // you can call this function anything
   
 
-  const Paystack = ({ isValid, createOrderPaystack }) => {
+  const Paystack = ({ isValid, createOrderPaystack, paidWithCard }) => {
     const dispatch = useDispatch();
     const onClose = () => {
       // implementation for  whatever you want to do when the Paystack dialog closed.
@@ -55,6 +55,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     const validate = isValid()
     if(validate){
     initializePayment(onSuccess, onClose)
+    paidWithCard()
     }
   }
     // const initializePayment = usePaystackPayment(config);

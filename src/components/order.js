@@ -10,36 +10,33 @@ const Orders = (props) => {
   const [ newOrder, setNewOrder ] = useState(orders ? orders : [])
   const products = useSelector((state) => state.products.products);
 
-  useEffect (function effectFunction() {
-    fetch('http://localhost:3001/api/v1/orders', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-        .then(response => response.json())
-        .then((data => {
-          setNewOrder(data)
-        }))
-}, []);
+//   useEffect (function effectFunction() {
+//     fetch('http://localhost:3001/api/v1/orders', {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Accept: 'application/json',
+//         Authorization: `Bearer ${localStorage.getItem('token')}`,
+//       },
+//     })
+//         .then(response => response.json())
+//         .then((data => {
+//           setNewOrder(data)
+//         }))
+// }, []);
   // useEffect(() => {
   //   dispatch(autoLogin());
   // }, []);
 
   useEffect(() => {
-    if(newOrder){
-      dispatch(getOrders());
-
-    }
-  }, [newOrder]);
+    dispatch(getOrders());
+  }, []);
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
 
 
-  const userId = newOrder.filter(
+  const userId = orders.filter(
     (order) => order.user_id === parseInt(props.match.params.id, 10)
   );
   
@@ -81,12 +78,12 @@ const Orders = (props) => {
               <p>{parsing.created_at}</p>
               <p>{parsing.id}</p>
               {totals}
-              {/* <img src={images.avatar.url} alt='' /> */}
-              <button type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Delete</button>
+      <button type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Delete</button>
             </div>
           );
         });
       })}
+
     </div>
   );
 };

@@ -93,8 +93,8 @@ class Basket extends Component {
     sendEmail = e => {
       e.preventDefault();
       let totals = this.props.cartItems.map((x)=> {
-        const items = [['  id: ' + ' ' + x.id + ' '] +' ' + ' ' + ' ' + ['  quantity: ' + ' ' + x.count + ' '] +' ' + ' ' + ' ' + ['  name: ' + ' ' + x.name + ' '] +' ' + ' ' + ' ' + ['  description: ' + ' ' + x.description + ' ']+
-        ' ' + ' ' + ' ' + ['  image: ' + ' ' + x.avatar.url + ' ']]
+        const items = [['  Product-ID: ' + ' ' + x.id + ' '] +' ' + ' ' + ' ' + ['  Quantity: ' + ' ' + x.count + ' '] +' ' + ' ' + ' ' + ['  Name: ' + ' ' + x.name + ' '] +' ' + ' ' + ' ' + ['  Description: ' + ' ' + x.description + ' ']+
+        ' ' + ' ' + ' ' + ['  Price: ' + ' ' + x.price + ' '] +' ' + ' ' + ' ' +  ['  Image: ' + ' ' + x.avatar.url + ' ']]
 
         return items
       });
@@ -117,6 +117,34 @@ class Basket extends Component {
       });
       // e.target.reset();
       }
+
+      sendEmailPaystack = () => {
+        // e.preventDefault();
+        let totals = this.props.cartItems.map((x)=> {
+          const items = [['  Product-ID: ' + ' ' + x.id + ' '] +' ' + ' ' + ' ' + ['  Quantity: ' + ' ' + x.count + ' '] +' ' + ' ' + ' ' + ['  Name: ' + ' ' + x.name + ' '] +' ' + ' ' + ' ' + ['  Description: ' + ' ' + x.description + ' ']+
+          ' ' + ' ' + ' ' + ['  Price: ' + ' ' + x.price + ' '] +' ' + ' ' + ' ' +  ['  Image: ' + ' ' + x.avatar.url + ' ']]
+  
+          return items
+        });
+        
+        const order = {
+          name: this.state.name,
+          email: this.state.email,
+         address: this.state.address,
+          cartitems: totals,
+         phone: this.state.phone,
+         type: 'Paid with credit card',
+         business: this.state.email,
+         total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
+       }
+        emailjs.send('service_ey6p9rp', 'template_l4w8jep', order, 'user_p6RgQH7YhWPsKwWBkmYPP')
+        .then(result => {
+        console.log(result.text);
+        }, error => {
+        console.log(error.text);
+        });
+        // e.target.reset();
+        }
 
     closeModal = () => {
       this.props.clearOrder()
@@ -266,7 +294,7 @@ class Basket extends Component {
                     </ul>
                 </form>
             </div>
-            <Paystack createOrderPaystack={this.createOrderPaystack} isValid={this.isValid}/>
+            <Paystack createOrderPaystack={this.createOrderPaystack} paidWithCard={this.sendEmailPaystack} isValid={this.isValid}/>
             </Fade>
         ) }
       </div>
