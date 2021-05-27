@@ -10,20 +10,6 @@ const Orders = (props) => {
   const [ newOrder, setNewOrder ] = useState([])
   const products = useSelector((state) => state.products.products);
 
-  useEffect (function effectFunction() {
-    fetch('http://localhost:3001/api/v1/orders', {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-        .then(response => response.json())
-        .then((data => {
-          setNewOrder(data)
-        }))
-}, []);
-
 useEffect(() => {
     dispatch(getOrders())
 }, [JSON.stringify([orders])]);
@@ -76,7 +62,6 @@ useEffect(() => {
               <p>{parsing.id}</p>
               {totals}
       <button type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Delete</button>
-      <button type='submit' onClick={() => dispatch(removeFromOrder(y.id))}>Delete one</button>
             </div>
           );
         });

@@ -73,7 +73,7 @@ class Basket extends Component {
      }
      if(validate){
        this.props.createOrder(order)
-      //  this.sendEmail(e)
+       this.sendEmail(e)
      }
     }
 
@@ -155,15 +155,7 @@ class Basket extends Component {
       })
     }
 
-    consoleLog = () => {
-      console.log('hello')
-    }
-
     // SENDING ORDERED EMAIL CONTENT
-
-    handleEmail = () => {
-      console.log('for email')
-    }
 
   render() {
     const { cartItems, orders, user } = this.props;
@@ -261,7 +253,7 @@ class Basket extends Component {
             </div>
         </div>
         )}
-        {this.state.showCheckout && (
+        {this.state.showCheckout && cartItems.length!==0 &&(
           <Fade right cascade>
             <div>
                 <form onSubmit={this.createOrder} className='orderform'>
