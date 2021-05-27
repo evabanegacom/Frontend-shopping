@@ -1,42 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { getOrders, autoLogin, getProducts, deleteOrder } from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from '../actions/actions';
+import { addToCart, removeFromOrder } from '../actions/actions';
 
 const Orders = (props) => {
   const dispatch = useDispatch();
   // const user = useSelector((state) => state.user.user);
   const orders = useSelector((state) => state.userOrders.orders);
-  const [ newOrder, setNewOrder ] = useState(orders ? orders : [])
+  const [ newOrder, setNewOrder ] = useState([])
   const products = useSelector((state) => state.products.products);
 
-//   useEffect (function effectFunction() {
-//     fetch('http://localhost:3001/api/v1/orders', {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Accept: 'application/json',
-//         Authorization: `Bearer ${localStorage.getItem('token')}`,
-//       },
-//     })
-//         .then(response => response.json())
-//         .then((data => {
-//           setNewOrder(data)
-//         }))
-// }, []);
-  // useEffect(() => {
-  //   dispatch(autoLogin());
-  // }, []);
+  useEffect (function effectFunction() {
+    fetch('http://localhost:3001/api/v1/orders', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+        .then(response => response.json())
+        .then((data => {
+          setNewOrder(data)
+        }))
+}, []);
 
-  useEffect(() => {
-    dispatch(getOrders());
-  }, []);
+useEffect(() => {
+  
+    dispatch(getOrders())
+}, [JSON.stringify([orders])]);
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
 
 
-  const userId = orders.filter(
+  const userId = orders.length && orders.filter(
     (order) => order.user_id === parseInt(props.match.params.id, 10)
   );
   
@@ -58,7 +56,7 @@ const Orders = (props) => {
 
   return (
     <div>
-      {userId.map((x) => {
+      {userId && userId.map((x) => {
         return x.cartitems.map((y) => {
           const replacement = y.replace(/[&\/\\=]/g, "");
           const remove = replacement.replace(/[&\/\\>]/g, ":");
@@ -79,6 +77,7 @@ const Orders = (props) => {
               <p>{parsing.id}</p>
               {totals}
       <button type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Delete</button>
+      <button type='submit' onClick={() => dispatch(removeFromOrder(y.id))}>Delete one</button>
             </div>
           );
         });

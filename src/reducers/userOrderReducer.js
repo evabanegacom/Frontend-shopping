@@ -16,7 +16,8 @@ const initialState = {
 
         case 'REMOVE_ORDER':
           return {
-            ...state
+            ...state,
+            orders: action.payload,
           }
   
       default:

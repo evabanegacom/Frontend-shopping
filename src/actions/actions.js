@@ -235,8 +235,9 @@ export const getOrders = () => async dispatch => {
 
 // DELETE ORDER
 
-const removeOrder = () => ({
+const removeOrder = (data) => ({
   type: 'REMOVE_ORDER',
+  payload: data
 });
 
 export const deleteOrder = id => async dispatch => {
@@ -247,7 +248,20 @@ export const deleteOrder = id => async dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   })
-    .then(
-      dispatch(removeOrder())
+    .then((data) => {
+      dispatch(removeOrder(data))
+    }
     );
 };
+
+// DELETE AN ITEM FROM ORDERS
+
+export const removeFromOrder = product => (dispatch, getState) => {
+  const cartItem = getState().userOrders.orders.cartitems //slice().filter(x=> x.id !== product.id)
+  console.log(cartItem)
+
+  dispatch({
+    type: 'REMOVE_ORDER',
+    payload: cartItem,
+  })
+}

@@ -73,7 +73,7 @@ class Basket extends Component {
      }
      if(validate){
        this.props.createOrder(order)
-       this.sendEmail(e)
+      //  this.sendEmail(e)
      }
     }
 
@@ -166,11 +166,12 @@ class Basket extends Component {
     }
 
   render() {
-    const { cartItems, orders } = this.props;
+    const { cartItems, orders, user } = this.props;
     const { nameError, emailError, addressError, phoneError } = this.state
 
     return (
       <div>
+       <Link to={`/users/${user.id}/orders`}>Orders</Link>
         {cartItems.length === 0 ? (
           <div> cart is empty</div>
         ) : (
@@ -305,6 +306,7 @@ class Basket extends Component {
 const mapStateToProps = state => ({
   cartItems: state.cart.cartItems,
   orders: state.orders.order,
+  user: state.user.user
 })
 
 const mapDispatchToProps = dispatch => ({
