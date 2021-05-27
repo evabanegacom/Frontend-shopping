@@ -12,11 +12,6 @@ const initialState = {
           waiting: 'here we are',
           products: action.payload,
         };
-
-        case 'REMOVE_PRODUCT':
-          return {
-            ...state
-          }
   
       default:
         return state;

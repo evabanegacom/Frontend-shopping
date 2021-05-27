@@ -25,7 +25,6 @@ const Orders = (props) => {
 }, []);
 
 useEffect(() => {
-  
     dispatch(getOrders())
 }, [JSON.stringify([orders])]);
 

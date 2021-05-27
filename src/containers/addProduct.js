@@ -23,6 +23,13 @@ class AddProduct extends Component {
       this.props.getProducts()
     }
 
+    componentDidUpdate(prevProps, prevState){
+      const { products, getProducts } = this.props
+      if(JSON.stringify(prevProps.products) !== JSON.stringify(products)){
+        getProducts()
+      }
+    }
+
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
@@ -56,9 +63,7 @@ class AddProduct extends Component {
 
     render() {
       const { products, user, deleteProduct } = this.props
-      const userProducts = products && products.filter((product) => (product.user_id) === user.id)
-      console.log(userProducts)
-  
+      const userProducts = products.length && products.filter((product) => (product.user_id) === user.id)
       const ImageThumb = ({ avatar }) => {
         return <img style={{ width: '150px', height: '150px'}} src={URL.createObjectURL(avatar)} alt={avatar.name} />;
       };
@@ -91,7 +96,7 @@ class AddProduct extends Component {
               Add Product
             </button>
                </form>
-               {userProducts.map((x) => (
+               {userProducts && userProducts.map((x) => (
                  <div key={x.id}>
                    <p>{x.name}</p>
                    <p>{x.price}</p>

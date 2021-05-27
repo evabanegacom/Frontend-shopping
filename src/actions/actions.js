@@ -61,12 +61,6 @@ export const autoLogin = () => async dispatch => {
 
 // CReating A form for the products
 
-const setProduct = data => ({
-  type: "SET_PRODUCT",
-  payload: data,
-});
-
-
 export const postProduct = productInfo => async dispatch => {
   await axios.post('http://localhost:3001/api/v1/products', productInfo, {
     headers: {
@@ -75,9 +69,10 @@ export const postProduct = productInfo => async dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     }
   })
-    .then(data => {
-      dispatch(setProduct(data));
-    });
+    .then((data) =>{
+      dispatch(setProducts(data))
+    }
+    );
 };
 
 // GET ALL PRODUCTS
@@ -103,10 +98,6 @@ export const getProducts = () => async dispatch => {
 
 // DELETE PRODUCT
 
-const removeProduct = () => ({
-  type: 'REMOVE_PRODUCT',
-});
-
 export const deleteProduct = id => async dispatch => {
   await axios.delete(`http://localhost:3001/api/v1/products/${id}`, {
     headers: {
@@ -115,8 +106,9 @@ export const deleteProduct = id => async dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   })
-    .then(
-      dispatch(removeProduct())
+    .then((data) => {
+      dispatch(setProducts(data))
+    }
     );
 };
 
