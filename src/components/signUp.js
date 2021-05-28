@@ -19,12 +19,11 @@ const reviewSchema = yup.object().shape({
     })
 })
 
-// {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-
-
 export default function SignUp(props) {
   const dispatch = useDispatch();
   const addUser = user => dispatch(signUserUp(user));
+  const user = useSelector((state) => state.user);
+  user.loggedIn === true ? props.history.push('/') : console.log('cool')
   return (
     <div>
       <Formik

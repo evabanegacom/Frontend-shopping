@@ -50,3 +50,8 @@
   background: url('./images/bg-2.jpg') no-repeat;
   background-size: cover;
 }
+
+.textInput {
+  margin-top: 20px;
+  border: 1px solid red;
+}

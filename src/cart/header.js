@@ -15,7 +15,7 @@ const Header = () => {
     }, [JSON.stringify(user)]);
 
     return (
-        <header>
+        <header style={{ height:'7vh'}}>
           {user.loggedIn === false ? (<div>
           <SignedOutLinks />
           </div>) 

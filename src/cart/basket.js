@@ -73,7 +73,7 @@ class Basket extends Component {
      }
      if(validate){
        this.props.createOrder(order)
-       this.sendEmail(e)
+      //  this.sendEmail(e)
      }
     }
 
@@ -160,6 +160,7 @@ class Basket extends Component {
   render() {
     const { cartItems, orders, user } = this.props;
     const { nameError, emailError, addressError, phoneError } = this.state
+    console.log(cartItems)
 
     return (
       <div>

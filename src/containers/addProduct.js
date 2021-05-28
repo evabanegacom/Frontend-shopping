@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
-import { Redirect } from 'react-router'
 
 class AddProduct extends Component {
     constructor(props){
@@ -20,7 +19,7 @@ class AddProduct extends Component {
     }
 
     componentDidMount(){
-      const { user, autoLogin, getProducts } = this.props;
+      const { autoLogin, getProducts } = this.props;
       autoLogin()
       getProducts()
     }
