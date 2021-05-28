@@ -30,6 +30,7 @@ function Login(props ) {
               placeholder="enter email"
               onChange={formikProps.handleChange("email")}
               value={formikProps.values.email}
+              type='text'
               onBlur={formikProps.handleBlur('email')}
             />
 
@@ -39,6 +40,7 @@ function Login(props ) {
               placeholder="password 6 chars min"
               onChange={formikProps.handleChange("password")}
               value={formikProps.values.password}
+              type='password'
               onBlur={formikProps.handleBlur('password')}
 
             />
