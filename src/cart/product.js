@@ -32,7 +32,7 @@ const Product = (props) => {
         <a href={'#' +  product.id} onClick={() => openModal(product)}>
                   <img style={{ width: '150px', height: '150px'}} src={product.avatar.url}/>
         </a>
-                  <button onClick={() => handleAdd(product)}>Add To Cart</button>
+                  <button className='neon' onClick={() => handleAdd(product)}>Add To Cart</button>
                   </Fade>
                   {
                       productModal && (

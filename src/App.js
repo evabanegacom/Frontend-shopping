@@ -20,7 +20,7 @@ function App() {
       <Switch>
         <Route exact path={ROUTES.LOGIN} component={Login} />
         <Route exact path={ROUTES.SIGNUP} component={SignUp} />
-        <Route exact path={ROUTES.HOME} component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/ejovial" component={AddProduct} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Basket} />

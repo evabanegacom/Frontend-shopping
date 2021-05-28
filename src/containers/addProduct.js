@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
+import { Redirect } from 'react-router'
 
 class AddProduct extends Component {
     constructor(props){
@@ -19,8 +20,9 @@ class AddProduct extends Component {
     }
 
     componentDidMount(){
-      this.props.autoLogin()
-      this.props.getProducts()
+      const { user, autoLogin, getProducts } = this.props;
+      autoLogin()
+      getProducts()
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -63,6 +65,7 @@ class AddProduct extends Component {
 
     render() {
       const { products, user, deleteProduct } = this.props
+      user.admin === false ? this.props.history.push('/') : console.log('cool')
       const userProducts = products.length && products.filter((product) => (product.user_id) === user.id)
       const ImageThumb = ({ avatar }) => {
         return <img style={{ width: '150px', height: '150px'}} src={URL.createObjectURL(avatar)} alt={avatar.name} />;
