@@ -10,11 +10,11 @@ const Home = () => {
     const handleLogout = () =>{
         dispatch(logout())
       }
-      const user = useSelector((state) => state.user.user);
+      const user = useSelector((state) => state.user);
 
       useEffect(() => {
         dispatch(autoLogin());
-      }, [user.id]);
+      }, [JSON.stringify(user)]);
 
 
     const gridStyle = { height: '100vh', display: 'flex', alignItems:'center', justifyContent: 'center' }
@@ -23,7 +23,7 @@ const Home = () => {
     const btnStyle = { margin: '8px 0'}
     return (
         <div style={gridStyle}>
-        {JSON.stringify(user && user != '{}') ? (<p>{user.name} {user.email}</p>) : (<p>nobody is here</p>)}
+        {user.loggedIn !== false ? (<p>{user.user.name} {user.user.email}</p>) : (<p>nobody is here</p>)}
         <button onClick={handleLogout}>logout</button>
         <Grid>
             <Paper elevation={10} style={paperStyle}>
