@@ -1,7 +1,6 @@
 import './App.css';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import * as ROUTES from './components/routes';
 import Header from './cart/header';
 
 const Login = lazy(() => import('./components/login'));
@@ -18,8 +17,8 @@ function App() {
      <Suspense fallback={<p>...Loading</p>}>
      <Header />
       <Switch>
-        <Route exact path={ROUTES.LOGIN} component={Login} />
-        <Route exact path={ROUTES.SIGNUP} component={SignUp} />
+        <Route exact path='login' component={Login} />
+        <Route exact path='signUp' component={SignUp} />
         <Route exact path="/" component={Home} />
         <Route exact path="/ejovial" component={AddProduct} />
         <Route exact path="/products" component={Products} />
