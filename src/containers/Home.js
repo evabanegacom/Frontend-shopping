@@ -17,15 +17,15 @@ const Home = () => {
       }, [JSON.stringify(user)]);
 
 
-    const gridStyle = { height: '100vh', display: 'flex', alignItems:'center', justifyContent: 'center' }
+    const gridStyle = {  display: 'flex', alignItems:'center', justifyContent: 'center' }
     const paperStyle = { background: 'transparent', padding: 20, height: '70vh', width: 280, borderRadius: '20px'}
     const avatarStyle = { backgroundColor: '#264e0cf5' }
     const btnStyle = { margin: '8px 0'}
     return (
-        <div style={gridStyle}>
-        {user.loggedIn !== false ? (<p>{user.user.name} {user.user.email}</p>) : (<p>nobody is here</p>)}
-        <button onClick={handleLogout}>logout</button>
-        <Grid>
+        <div>
+        {/* {user.loggedIn !== false ? (<p>{user.user.name} {user.user.email}</p>) : (<p>nobody is here</p>)} */}
+        {/* <button onClick={handleLogout}>logout</button> */}
+        {/* <Grid>
             <Paper elevation={10} style={paperStyle}>
               <Grid align='center'>
                 <Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar>
@@ -41,7 +41,8 @@ const Home = () => {
 </Link>
       </Typography>
             </Paper>
-        </Grid>
+        </Grid> */}
+        <p>hello</p>
         </div>
     )
 }

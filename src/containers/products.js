@@ -120,12 +120,7 @@ const Products = () => {
       const handlePageClick = ({ selected: selectedPage }) => {
         setCurrentPage(selectedPage)
         setSearch('')
-      };
-
-      const createOrder = (order) => {
-       alert("need to save order" + order.name)
       }
-
 
     return (
         <div>

@@ -2,6 +2,8 @@ import './App.css';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './cart/header';
+import { ThemeProvider } from '@material-ui/core'
+import theme from './utils/theme';
 
 const Login = lazy(() => import('./components/login'));
 const SignUp = lazy(() => import('./components/signUp'));
@@ -15,7 +17,9 @@ function App() {
   return (
     <Router>
      <Suspense fallback={<p>...Loading</p>}>
+     <ThemeProvider theme={theme}>
      <Header />
+     </ThemeProvider>
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signUp' component={SignUp} />

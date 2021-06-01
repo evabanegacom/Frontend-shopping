@@ -1,0 +1,68 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   '/home/precious/.nvm/versions/node/v14.15.1/bin/node',
+1 verbose cli   '/home/precious/.nvm/versions/node/v14.15.1/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'react-icons',
+1 verbose cli   '--save'
+1 verbose cli ]
+2 info using npm@6.14.8
+3 info using node@v14.15.1
+4 verbose npm-session d4f8eafa8ad48de8
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 http fetch GET 200 https://registry.npmjs.org/react-icons 1219ms
+8 http fetch GET 200 https://registry.npmjs.org/react-icons/-/react-icons-4.2.0.tgz 86733ms
+9 silly pacote tag manifest for react-icons@latest fetched in 88095ms
+10 timing stage:loadCurrentTree Completed in 130108ms
+11 silly install loadIdealTree
+12 silly install cloneCurrentTreeToIdealTree
+13 timing stage:loadIdealTree:cloneCurrentTree Completed in 158ms
+14 silly install loadShrinkwrap
+15 warn read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@2. I'll try to do my best with it!
+16 http fetch GET 200 https://registry.npmjs.org/@babel%2fcore 5335ms
+17 http fetch GET 200 https://registry.npmjs.org/@babel/core/-/core-7.12.3.tgz 1020ms
+18 silly pacote version manifest for @babel/core@7.12.3 fetched in 6445ms
+19 silly pacote version manifest for @babel/core@7.12.3 fetched in 12ms
+20 http fetch GET 200 https://registry.npmjs.org/@babel/core/-/core-7.12.17.tgz 1965ms
+21 silly pacote version manifest for @babel/core@7.12.17 fetched in 1981ms
+22 silly pacote version manifest for @babel/core@7.12.17 fetched in 4ms
+23 silly pacote version manifest for @babel/core@7.12.17 fetched in 5ms
+24 silly pacote version manifest for @babel/core@7.12.17 fetched in 4ms
+25 silly pacote version manifest for @babel/core@7.12.17 fetched in 4ms
+26 silly pacote version manifest for @babel/core@7.12.17 fetched in 10ms
+27 silly pacote version manifest for @babel/core@7.12.17 fetched in 5ms
+28 http fetch GET 200 https://registry.npmjs.org/jest-resolve 3549ms
+29 http fetch GET 200 https://registry.npmjs.org/jest-resolve/-/jest-resolve-26.6.0.tgz 522ms
+30 silly pacote version manifest for jest-resolve@26.6.0 fetched in 4103ms
+31 timing stage:loadIdealTree:loadShrinkwrap Completed in 19810ms
+32 silly install loadAllDepsIntoIdealTree
+33 silly resolveWithNewModule react-icons@4.2.0 checking installable status
+34 http fetch GET 200 https://registry.npmjs.org/fsevents 1142ms
+35 http fetch GET 200 https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz 715ms
+36 silly pacote range manifest for fsevents@^2.1.2 fetched in 1904ms
+37 silly resolveWithNewModule fsevents@2.3.2 checking installable status
+38 verbose stack RangeError: Maximum call stack size exceeded
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:439:27)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+38 verbose stack     at failedDependency (/home/precious/.nvm/versions/node/v14.15.1/lib/node_modules/npm/lib/install/deps.js:457:9)
+39 verbose cwd /home/precious/Desktop/frontend-shopping
+40 verbose Linux 5.3.0-62-generic
+41 verbose argv "/home/precious/.nvm/versions/node/v14.15.1/bin/node" "/home/precious/.nvm/versions/node/v14.15.1/bin/npm" "install" "react-icons" "--save"
+42 verbose node v14.15.1
+43 verbose npm  v6.14.8
+44 error Maximum call stack size exceeded
+45 verbose exit [ 1, true ]

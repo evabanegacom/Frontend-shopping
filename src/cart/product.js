@@ -24,6 +24,7 @@ const Product = (props) => {
 
     return (
         <div>
+        
         <Fade bottom cascade>
            <p>{product.name}</p>
                   <p>{Number(product.price)}</p>

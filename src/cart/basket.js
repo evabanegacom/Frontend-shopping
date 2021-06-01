@@ -73,7 +73,7 @@ class Basket extends Component {
      }
      if(validate){
        this.props.createOrder(order)
-      //  this.sendEmail(e)
+       this.sendEmail(e)
      }
     }
 
