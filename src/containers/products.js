@@ -6,8 +6,11 @@ import ReactPaginate from "react-paginate";
 import Basket from '../cart/basket';
 import { Link } from 'react-router-dom'
 import { getProducts } from '../actions/actions';
+import { Box, Grid } from '@material-ui/core';
+import useStyles from './styles';
 
 const Products = () => {
+  const classes = useStyles();
     const dispatch = useDispatch();
     // const storage = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
     const [ sort, setSort] = useState('')
@@ -123,7 +126,7 @@ const Products = () => {
       }
 
     return (
-        <div>
+        <Box component='div' display='flex' flexDirection='column' border={1} borderColor="primary.main">
                 <Filter
                 size={size} 
                 sorting={sort}
@@ -137,17 +140,22 @@ const Products = () => {
           onChange={handleSearches}
           style={{ width: '300px', height: '30px', borderRadius: '10px', background: 'black', outline: 'none', border: 'none', marginTop: '20px', color: '#FFFFFF'}}
         />
-          {data && data.length ? (
+        <main className={classes.content}>
+      <Grid container justify="center" spacing={4}>
+                {data && data.length ? (
             data.filter((product) =>{
               if(search ===''){
-                return data.slice(offset, offset + PER_PAGE).map((product) => (<Product product={product} key={product.id} />))
+                return data.slice(offset, offset + PER_PAGE).map((product) => (
+                  <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>))
               } else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                 return product
               }
             }).slice(offset, offset + PER_PAGE).map((product) => (
-              <Product product={product} key={product.id} />
+              <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>
             ))
           ) : (<p>no items here</p>)}
+          </Grid>
+          </main>
           {/* <Basket 
           // cartItems={cartItems} 
           // removeFromCart={removeFromCart} 
@@ -168,7 +176,7 @@ const Products = () => {
           disabledClassName={"pagination__link--disabled"}
           activeClassName={"pagination__link--active"}
         />
-        </div>
+        </Box>
     )
 }
 

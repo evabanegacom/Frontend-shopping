@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect, withRouter } from 'react-router-dom';
 import { Formik } from "formik";
 import { Link } from 'react-router-dom'
 import * as yup from 'yup';
@@ -9,6 +8,7 @@ import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { IoLogoFacebook } from 'react-icons/io';
 
 const reviewSchema = yup.object().shape({
   email: yup.string().required().min(5),
@@ -20,15 +20,16 @@ function Login(props ) {
   const addUser = user => dispatch(fetchUser(user));
   const user = useSelector((state) => state.user);
   user.loggedIn === true ? props.history.push('/') : console.log('cool')
-  const gridStyle = { height: '93vh', display: 'flex', alignItems:'center', justifyContent: 'center' }
-    const paperStyle = { background: 'transparent', padding: 20, height: '70vh', width: 280, borderRadius: '20px'}
+  const gridStyle = { display: 'flex', alignItems:'center', justifyContent: 'center' }
+    const paperStyle = { marginTop: '50px', marginBottom: '50px', background: 'transparent', padding: 20, height: '70vh', width: 280, borderRadius: '20px'}
     const avatarStyle = { backgroundColor: '#264e0cf5' }
     const textMargin = { marginTop: '20px', color: 'cyan', fontWeight:'bold', borderRadius: '10px'}
     const inputMargin = { marginTop: '5px', color: 'white', fontWeight:'bold'}
 
     const btnStyle = { margin: '8px 0'}
     return (
-    <div className='loginBackground' style={gridStyle}>
+    <div className='loginBackground'>
+    <div style={gridStyle}>
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={reviewSchema}
@@ -89,6 +90,10 @@ function Login(props ) {
           </Grid>
         )}
       </Formik>
+    </div>
+      <div>
+        <Link to='facebook.com'><IoLogoFacebook/></Link>
+      </div>
     </div>
   );
 }

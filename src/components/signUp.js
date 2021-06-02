@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { Formik } from "formik";
 import * as yup from 'yup';
 import { signUserUp } from '../actions/actions';
-
+import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core';
 
 const reviewSchema = yup.object().shape({
   name: yup.string().required().min(4),
