@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
+import './filterCss.css';
 
 class Filter extends Component {
     render() {
         return (
-            <div>
-               <div>{this.props.count} Products</div>
-               <div> order {" "}  <select value={this.props.sorting} onChange={this.props.sortProducts}>
+            <div className='theFilter'>
+               <div className='filterOrder'>
+                 <select value={this.props.sorting} onChange={this.props.sortProducts}>
                    <option>LATEST</option>
                    <option value="lowest">Lowest</option>
                    <option value="highest">Highest</option>
                </select>
                </div> 
-               <div>Filter  <select value={this.props.size} onChange={this.props.filterProducts}>
-                   <option value="">ALL</option>
+               <div className='filterInput'><select value={this.props.size} onChange={this.props.filterProducts}>
+                   <option value="">All Categories</option>
                    <option value="Mobile">Mobile</option>
                    <option value="Electronics">Electronics</option>
                    <option value="Sports">Sports</option>

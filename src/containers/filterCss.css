@@ -1,0 +1,94 @@
+.theFilter {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: center;
+}
+
+.filterContainer {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #003049;
+}
+
+.inputDiv {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  margin: auto;
+}
+
+.inputDiv input {
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border:1px solid white;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 15px;
+    background: #003049;
+}
+
+.filterInput {
+  margin-left: 20px;
+  width: 40%;
+}
+
+.filterInput select {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    text-align-last: center;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    background: #003049;
+}
+
+.filterOrder {
+    width: 40%;
+}
+
+.filterOrder select {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    text-align-last: center;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+  background: #003049;
+}
+
+select#xyz {
+    border:0px;
+    outline:0px;
+}
+
+@media only screen and (max-width: 960px){
+    .filterContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .theFilter{
+        width: 97%;
+        margin: auto;
+    }
+
+    .inputDiv {
+        width: 97%;
+        margin-left: 0;
+        margin: auto;
+        margin-top: 10px;
+    }
+}

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import { getProducts } from '../actions/actions';
 import { Box, Grid } from '@material-ui/core';
 import useStyles from './styles';
+import '../containers/filterCss.css';
 
 const Products = () => {
   const classes = useStyles();
@@ -127,6 +128,7 @@ const Products = () => {
 
     return (
         <Box component='div' display='flex' flexDirection='column' border={1} borderColor="primary.main">
+                <div className='filterContainer'>
                 <Filter
                 size={size} 
                 sorting={sort}
@@ -134,12 +136,21 @@ const Products = () => {
                 filterProducts={filterProducts}
                 sortProducts={sortProducts}
                 />
+                <div className='inputDiv'>
                 <input
           type="text"
           placeholder="search..."
           onChange={handleSearches}
-          style={{ width: '300px', height: '30px', borderRadius: '10px', background: 'black', outline: 'none', border: 'none', marginTop: '20px', color: '#FFFFFF'}}
-        />
+          
+        /></div>
+        </div>
+        {/* <div>
+          {data && data.length && (
+            data.map((product) => (
+              pro
+            ))
+          )}
+        </div> */}
         <main className={classes.content}>
       <Grid container justify="center" spacing={4}>
                 {data && data.length ? (
