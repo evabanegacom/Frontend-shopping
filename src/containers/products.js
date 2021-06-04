@@ -9,6 +9,9 @@ import { getProducts } from '../actions/actions';
 import { Box, Grid } from '@material-ui/core';
 import useStyles from './styles';
 import '../containers/filterCss.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const Products = () => {
   const classes = useStyles();
@@ -56,6 +59,15 @@ const Products = () => {
         ))
         )
       }
+
+      var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        autoplay: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
 
       const addToCart = (product) => {
         const cartItem = cartItems.slice()
@@ -144,13 +156,26 @@ const Products = () => {
           
         /></div>
         </div>
-        {/* <div>
+
+        
+        
+        <div>
+        <Slider {...settings}>
           {data && data.length && (
-            data.map((product) => (
-              pro
-            ))
+            data.map((product) => {
+              return product.category === 'Mobile' ? (
+               
+                <div style={{ display: 'flex'}}>
+                <img src={product.avatar.url} alt='' />
+                <p>{product.name}</p>
+                </div>
+                
+              ) : (console.log('no item'))
+            })
           )}
-        </div> */}
+          </Slider>
+          
+        </div>
         <main className={classes.content}>
       <Grid container justify="center" spacing={4}>
                 {data && data.length ? (
