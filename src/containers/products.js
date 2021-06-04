@@ -159,15 +159,15 @@ const Products = () => {
 
         
         
-        <div>
-        <Slider {...settings}>
+        <div className='carousel'>
+        <Slider className='slider' {...settings}>
           {data && data.length && (
             data.map((product) => {
               return product.category === 'Mobile' ? (
                
-                <div style={{ display: 'flex'}}>
-                <img src={product.avatar.url} alt='' />
+                <div>
                 <p>{product.name}</p>
+                <img src={product.avatar.url} alt='' />
                 </div>
                 
               ) : (console.log('no item'))

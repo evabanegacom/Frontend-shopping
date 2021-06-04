@@ -69,9 +69,20 @@
   background: #003049;
 }
 
-select#xyz {
-    border:0px;
-    outline:0px;
+.carousel {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    border: 1px solid red
+}
+
+.slider {
+    width: 50%;
+    border: 2px solid blue;
+}
+
+.slider div{
+    width: 100%;
 }
 
 @media only screen and (max-width: 960px){
