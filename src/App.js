@@ -2,6 +2,7 @@ import './App.css';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './cart/header';
+import Footer from './components/footer';
 import { ThemeProvider } from '@material-ui/core'
 import theme from './utils/theme';
 
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/cart" component={Basket} />
         <Route exact path="/users/:id/orders" component={Order} />
       </Switch>
+      <Footer />
     </Suspense>
     </Router>
   );

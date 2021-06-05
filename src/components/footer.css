@@ -1,0 +1,5 @@
+.footer {
+    border: 1px solid red;
+    background: blue;
+min-height: calc(100vh - 500px);
+}
