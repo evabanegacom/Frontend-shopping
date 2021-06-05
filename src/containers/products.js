@@ -61,7 +61,7 @@ const Products = () => {
       }
 
       var settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         autoplay: true,
@@ -159,15 +159,15 @@ const Products = () => {
 
         
         
-        <div className='carousel'>
+        <section className='carousel'>
         <Slider className='slider' {...settings}>
           {data && data.length && (
             data.map((product) => {
-              return product.category === 'Mobile' ? (
+              return product.category === 'BestDeals' ? (
                
-                <div>
-                <p>{product.name}</p>
+                <div className='carouselItem'>
                 <img src={product.avatar.url} alt='' />
+                
                 </div>
                 
               ) : (console.log('no item'))
@@ -175,7 +175,7 @@ const Products = () => {
           )}
           </Slider>
           
-        </div>
+        </section>
         <main className={classes.content}>
       <Grid container justify="center" spacing={4}>
                 {data && data.length ? (

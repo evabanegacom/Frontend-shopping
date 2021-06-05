@@ -92,6 +92,7 @@ class AddProduct extends Component {
                 <option value="Fashiony">Fashion</option>
                 <option value="Automobile">Automobile</option>
                 <option value="Accessories">Accessories</option>
+                <option value="BestDeals">BestDeals</option>
               </select>
             </label>
             <button type="submit" className="btn pink lighten-1 z-depth-0">
