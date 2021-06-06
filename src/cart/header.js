@@ -172,6 +172,9 @@ const Header = () => {
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/products'>Products</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to={`/users/${user.user.id}/orders`}>Orders</Link></MenuItem>
         <MenuItem><Link onClick={handleClick} style={{textDecoration: 'none', color: 'green'}} to='/'>Logout</Link></MenuItem>
+        {user.user.admin === true ? 
+        <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/ejovial'>Add Products</Link></MenuItem>
+        : console.log('null')}
         </Menu>
         }
 

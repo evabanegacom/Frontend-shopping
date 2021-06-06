@@ -1,5 +1,55 @@
 .footer {
-    border: 1px solid red;
-    background: blue;
+    background: #003049;
 min-height: calc(100vh - 500px);
+display: flex;
+justify-content: center;
+align-items: center;
 }
+
+.footerDiv {
+  text-align: center;
+}
+
+.contactIcons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.contactNumber {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.footerDiv h2 {
+    color: #eee;
+    -webkit-animation: glow 2s ease-in-out infinite alternate;
+    -moz-animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 2s ease-in-out infinite alternate;
+    font-weight: 700;
+    margin-top: 20px;
+  }
+
+.contactNumber p {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.contactIcons a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+@keyframes glow {
+    from {
+      color: #fff;
+      text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 90px #00fff2;
+    }
+  
+    to {
+      color: gray;
+      text-shadow: 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 80px #00fff2, 0 1 90px #00fff2;
+    }
+  }
