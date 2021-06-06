@@ -16,7 +16,7 @@ const Footer = () => {
         <p>Call us at +2348064129038</p><br />
         <p>Email us at udegbue69@gmail.com</p>
         </div>
-        <p style={{ color: 'black', fontStyle: 'italic', fontWeight: '600', marginBottom: '20px'}}>&#169; copyright Ejovial Electronics 2021</p>
+        <p style={{ color: 'gold', fontStyle: 'italic', fontWeight: '600', marginBottom: '20px'}}>&#169; copyright Ejovial Electronics 2021</p>
       </div>
     </footer>
   );
