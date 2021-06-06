@@ -16,6 +16,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 import { AddShoppingCart } from '@material-ui/icons';
+import './modalCss.css';
 
 const Product = (props) => {
     const { product } = props
@@ -90,10 +91,10 @@ const Product = (props) => {
     </Card>
                   </Fade>                  {
                       productModal && (
-                          <Modal isOpen={true} onRequestClose={closeModal}>
+                          <Modal isOpen={true} className='theModal' onRequestClose={closeModal}>
                               <Zoom>
-                              <button onClick={closeModal}>close</button>
-                                  <div>
+                              <button onClick={closeModal}>X</button>
+                                  <div className='modalDiv'>
                                       <img src={product.avatar.url} alt='' />
                                       <div>
                                         <p><strong>{product.name}</strong></p>
