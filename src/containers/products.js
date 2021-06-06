@@ -157,8 +157,6 @@ const Products = () => {
         /></div>
         </div>
 
-        
-        
         <section className='carousel'>
         <Slider className='slider' {...settings}>
           {data && data.length && (
