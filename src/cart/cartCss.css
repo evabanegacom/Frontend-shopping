@@ -1,5 +1,5 @@
 .basket {
-  border: 1px solid red;
+  
   display: flex;
   flex-direction: column;
 }
@@ -7,23 +7,39 @@
 .cartItems {
     display: flex;
     flex-wrap: wrap;
-    
-   
 }
 
 .cartItemsDiv {
-  border: 1px solid red;
   margin: auto;
- 
+  margin-top: 20px;
 }
 
 .cartItemsDiv img {
-    width: 100%;
+    width: 300px;
+    height: 150px;
+}
+
+.cartItemsButtons button{
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 18px;
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+.checkoutDiv {
+  border: 1px solid red;
 }
 
 @media only screen and (max-width: 960px){
     .cartItemsDiv {
         width: 100%;
-        margin: 0;
       }
+
+      .cartItemsDiv img {
+        width: 100%;
+    }
 }

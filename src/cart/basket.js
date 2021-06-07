@@ -229,11 +229,14 @@ class Basket extends Component {
                   
                     <img src={item.avatar.url} alt="" />
                   
-                  <div>
-                    <div>{item.name}</div>
-                    <div>
-                      { item.price} x {item.count}
-                      <button onClick={() => this.props.removeItem(item)}>Remove</button>
+                  <div style={{ background: 'blue', color: 'white'}}>
+                    <div style={{ textAlign: 'center', lineHeight: '20px'}}>
+                    <p><strong>{item.name}</strong></p>
+                    <p>{ item.price} x {item.count}</p>
+                    </div>
+                    <div className='cartItemsButtons' style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '10px'}}>
+    
+                      <button style={{ color: 'rgb(29, 18, 18)'}} onClick={() => this.props.removeItem(item)}>X</button>
                       <button onClick={() => this.props.removeOne(item)}>-</button>
                       <button onClick={() => this.props.addOne(item)}>+</button>
                     </div>
@@ -245,15 +248,15 @@ class Basket extends Component {
           
         </div>
         {cartItems.length!==0 && (
-            <div>
-            <div>
+           
+            <div className='checkoutDiv'>
                 <div>
                   Total: {" "}
                     {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
                 </div>
                 <button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</button>
             </div>
-        </div>
+        
         )}
         {this.state.showCheckout && cartItems.length!==0 &&(
           <Fade right cascade>
