@@ -63,7 +63,7 @@ const Product = (props) => {
       <CardMedia
           component="img"
           alt={product.name}
-          height="140"
+          height="150"
           image={product.avatar.url}
           title={product.name}
         />    </Link>
@@ -93,16 +93,16 @@ const Product = (props) => {
                       productModal && (
                           <Modal isOpen={true} className='theModal' onRequestClose={closeModal}>
                               <Zoom>
-                              <button onClick={closeModal}>X</button>
+                              <button className='modalClose' onClick={closeModal}>X</button>
                                   <div className='modalDiv'>
                                       <img src={product.avatar.url} alt='' />
                                       <div>
-                                        <p><strong>{product.name}</strong></p>
-                                        <p>{product.description}</p>
-                                        <p>{product.category}</p>
-                                        <p>{product.price}</p>
-                                        <button onClick={() => {handleAdd(product); closeModal();}}>Add to cart</button>
+                                        <p>Name: &nbsp;&nbsp; <strong>{product.name}</strong></p>
+                                        <p>Description: &nbsp;&nbsp;{product.description}</p>
+                                        <p>Category: &nbsp;&nbsp; {product.category}</p>
+                                        <p>Price: &nbsp;&nbsp; {product.price}</p>
                                       </div>
+                                        <button className='cartButton' onClick={() => {handleAdd(product); closeModal();}}><AddShoppingCart /></button>
                                   </div>
                               </Zoom>
                           </Modal>

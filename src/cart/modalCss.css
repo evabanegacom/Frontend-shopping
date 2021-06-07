@@ -1,4 +1,72 @@
 .theModal {
-    background: green;
+    background: rgb(12, 12, 46);
     margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.modalClose {
+    width: 30px;
+    background: red;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.cartButton {
+    width: 50%;
+    background: transparent;
+    color: cyan;
+    border: 3px solid white;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modalDiv {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modalDiv p {
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.modalDiv img {
+    width: 50%;
+}
+
+@media only screen and (max-width: 960px) {
+    .theModal {
+        max-width: 100%;
+    }
+
+    .modalDiv {
+        width: 100%;
+    }
+
+    .cartButton {
+        max-width: 100%;
+    }
+
+    .modalDiv img {
+        width: 100%;
+    }
+
+    .modalDiv p {
+        font-size: 20px;
+    }
 }
