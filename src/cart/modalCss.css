@@ -69,4 +69,8 @@
     .modalDiv p {
         font-size: 20px;
     }
+
+    .cartButton {
+        width: 100%;
+    }
 }

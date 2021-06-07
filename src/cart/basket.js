@@ -7,6 +7,7 @@ import Zoom from 'react-reveal/Zoom';
 import Paystack from './paystack';
 import emailjs from 'emailjs-com';
 import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
+import './cartCss.css';
 
 class Basket extends Component {
     constructor(props){
@@ -163,12 +164,12 @@ class Basket extends Component {
     console.log(cartItems)
 
     return (
-      <div>
+      <div className='basket'>
        <Link to={`/users/${user.id}/orders`}>Orders</Link>
         {cartItems.length === 0 ? (
           <div> cart is empty</div>
         ) : (
-          <div>you have{cartItems.length}in the cart</div>
+          <div>you have {cartItems.length} items in the cart</div>
         )}
 
         {
@@ -220,14 +221,14 @@ class Basket extends Component {
 
 
         <div>
-          <div>
+         
           <Fade left cascade>
-            <ul>
+            <div className='cartItems'>
               {cartItems.map((item) => (
-                <li key={item.id}>
-                  <div>
+                <div className='cartItemsDiv' key={item.id}>
+                  
                     <img src={item.avatar.url} alt="" />
-                  </div>
+                  
                   <div>
                     <div>{item.name}</div>
                     <div>
@@ -237,11 +238,11 @@ class Basket extends Component {
                       <button onClick={() => this.props.addOne(item)}>+</button>
                     </div>
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
             </Fade>
-          </div>
+          
         </div>
         {cartItems.length!==0 && (
             <div>

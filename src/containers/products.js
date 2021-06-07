@@ -139,7 +139,7 @@ const Products = () => {
       }
 
     return (
-        <Box component='div' display='flex' flexDirection='column' border={1} borderColor="primary.main">
+        <Box component='div' display='flex' flexDirection='column'>
                 <div className='filterContainer'>
                 <Filter
                 size={size} 

@@ -1,0 +1,29 @@
+.basket {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItems {
+    display: flex;
+    flex-wrap: wrap;
+    
+   
+}
+
+.cartItemsDiv {
+  border: 1px solid red;
+  margin: auto;
+ 
+}
+
+.cartItemsDiv img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 960px){
+    .cartItemsDiv {
+        width: 100%;
+        margin: 0;
+      }
+}
