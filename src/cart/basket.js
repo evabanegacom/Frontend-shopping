@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 import Paystack from './paystack';
 import emailjs from 'emailjs-com';
+import { Button } from '@material-ui/core';
 import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
 import './cartCss.css';
 
@@ -250,17 +251,17 @@ class Basket extends Component {
         {cartItems.length!==0 && (
            
             <div className='checkoutDiv'>
-                <div>
+                <Button color='primary'>
                   Total: {" "}
                     {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
-                </div>
-                <button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</button>
+                </Button>
+                <Button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</Button>
             </div>
         
         )}
         {this.state.showCheckout && cartItems.length!==0 &&(
           <Fade right cascade>
-            <div>
+            <div className='orderForm'>
                 <form onSubmit={this.createOrder} className='orderform'>
                     <ul>
                       <li>
@@ -287,6 +288,7 @@ class Basket extends Component {
 
                       </li>
                       <li>
+                      <Button onClick={() => {this.setState({showCheckout: false})}}>Cancel</Button>
                           <button type='submit'>Checkout</button>
                       </li>    
                     </ul>

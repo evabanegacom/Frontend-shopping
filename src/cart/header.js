@@ -15,6 +15,7 @@ import { FcContacts } from 'react-icons/fc';
 import { FaShoppingBasket } from 'react-icons/fa';
 import { RiShoppingBag2Fill } from 'react-icons/ri'
 import { ShoppingCart } from '@material-ui/icons';
+import { FcPlus } from 'react-icons/fc';
 
 const Header = () => {
   const cart = useSelector((state) => state.cart.cartItems);
@@ -144,7 +145,7 @@ const Header = () => {
           <Tabs onChange={handleClickTab} indicatorColor='secondary' value={value}>
           <Tab icon={<BiLogOut className={classes.logout}/> } label={<NavLink onClick={handleClick} to="/" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Logout</NavLink>} />
 
-            {user.user.admin === true ? <Tab icon={<FiBookOpen/> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/ejovial'>Add Product</Link>}/>
+            {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/ejovial'>Add Product</Link>}/>
  : console.log('null')}
  <Tab icon={<FcContacts className={classes.smallerIcon} />} style={{fontWeight: 700}} label='Contact'/>
  <Tab icon={<FaShoppingBasket className={classes.smallerIcon}/> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />
