@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 import Paystack from './paystack';
 import emailjs from 'emailjs-com';
-import { Button } from '@material-ui/core';
+import { Button, TextField, Typography, Paper } from '@material-ui/core';
 import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
 import './cartCss.css';
 
@@ -262,39 +262,33 @@ class Basket extends Component {
         {this.state.showCheckout && cartItems.length!==0 &&(
           <Fade right cascade>
             <div className='orderForm'>
-                <form onSubmit={this.createOrder} className='orderform'>
-                    <ul>
-                      <li>
-                          <label>Email</label>
-                          <input id='inputemail'name='email' type='email' required onChange={this.handleInput} />
+            <Paper className='orderField' style={{ borderRadius: '20px'}} elevation={10}>
+                <form>
+                    
+                         
+                          <TextField id='inputemail' name='email' fullWidth type='email' label='Email' required onChange={this.handleInput} />
                           <p>{emailError}</p>
-
-                      </li>
-                      <li>
-                          <label>Name</label>
-                          <input id='inputname' name='name' type='text' required onChange={this.handleInput} />
+                          
+                          <TextField id='inputname' name='name' type='text' fullWidth label='Name' required onChange={this.handleInput} />
                           <p style={{color: 'red'}}>{nameError}</p>
-                      </li>
-                      <li>
-                          <label>Address</label>
-                          <input id='inputAddress' name='address' type='text' required onChange={this.handleInput} />
+                     
+                         
+                          <TextField id='inputAddress' fullWidth name='address' type='text' label='Address' required onChange={this.handleInput} />
                           <p>{addressError}</p>
 
-                      </li>
-                      <li>
-                          <label>phone</label>
-                          <input id='inputphone' name='phone' type='text' required onChange={this.handleInput} />
+                      
+                          
+                          <TextField id='inputphone' fullWidth name='phone' type='text' label='Phone' required onChange={this.handleInput} />
                           <p>{phoneError}</p>
 
-                      </li>
-                      <li>
-                      <Button onClick={() => {this.setState({showCheckout: false})}}>Cancel</Button>
-                          <button type='submit'>Checkout</button>
-                      </li>    
-                    </ul>
+                      
+                      <Button fullWidth color='secondary' onClick={() => {this.setState({showCheckout: false})}}>Cancel</Button>
+                          <Button color='primary' fullWidth onClick={this.createOrder} type='submit'>Pay On Delivery</Button>
+                          <Paystack createOrderPaystack={this.createOrderPaystack} paidWithCard={this.sendEmailPaystack} isValid={this.isValid}/>
+                     
                 </form>
+                </Paper>
             </div>
-            <Paystack createOrderPaystack={this.createOrderPaystack} paidWithCard={this.sendEmailPaystack} isValid={this.isValid}/>
             </Fade>
         ) }
       </div>

@@ -40,15 +40,31 @@
   outline: none;
 }
 
+.orderForm {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.orderField {
+  width: 40%;
+  padding: 10px;
+}
+
 @media only screen and (max-width: 960px) and (min-width: 768px){
 
   .cartItemsDiv {
     width: 47%;
+    margin: auto;
   }
 
       .cartItemsDiv img {
         width: 100%;
         height: 200px;
+    }
+
+    .orderField {
+      width: 100%;
     }
 }
 
@@ -60,5 +76,9 @@
   .cartItemsDiv img {
     width: 100%;
     height: 200px;
+}
+
+.orderField {
+  width: 100%;
 }
 }

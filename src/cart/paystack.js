@@ -3,6 +3,7 @@ import { PaystackButton } from 'react-paystack'
 import { useSelector, useDispatch } from "react-redux";
 import { usePaystackPayment } from 'react-paystack';
 import { autoLogin } from '../actions/actions';
+import { Button } from '@material-ui/core';
 
 
 const API_KEY =`${process.env.REACT_APP_API_KEY}`
@@ -61,7 +62,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     // const initializePayment = usePaystackPayment(config);
     return (
       <div>
-          <button onClick={handlePay}>Paystack Hooks Implementation</button>
+          <Button style={{color: 'green'}} fullWidth onClick={handlePay}>Pay With Credit Card</Button>
       </div>
     );
 };
