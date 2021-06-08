@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 import Paystack from './paystack';
 import emailjs from 'emailjs-com';
-import { Button, TextField, Typography, Paper } from '@material-ui/core';
+import { Button, TextField, Typography, Paper, Box } from '@material-ui/core';
 import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
 import './cartCss.css';
 
@@ -166,18 +166,18 @@ class Basket extends Component {
 
     return (
       <div className='basket'>
-       <Link to={`/users/${user.id}/orders`}>Orders</Link>
+       {/* <Link to={`/users/${user.id}/orders`}>Orders</Link> */}
         {cartItems.length === 0 ? (
-          <div> cart is empty</div>
+          <div style={{ textAlign: 'center', marginTop: '20px'}}> cart is empty</div>
         ) : (
-          <div>you have {cartItems.length} items in the cart</div>
+          <div style={{ textAlign: 'center', marginTop: '20px'}}>you have {cartItems.length} items in the cart</div>
         )}
 
         {
-           orders && <Modal isOpen={true} onRequestClose={this.closeModal}>
+           orders && <Modal className='modalOrder' isOpen={true} onRequestClose={this.closeModal}>
              <Zoom>
-               <button onClick={this.closeModal}>X</button>
-               <div>
+               <Button className='modalCloseOrder' onClick={this.closeModal}>X</Button>
+               <Box component='div' display="flex" flexDirection="column" border={1} justifyContent="center">
                  <h3>your order has been placed</h3>
                  <h2>order number{orders.id}</h2>
                  <ul>
@@ -215,7 +215,7 @@ class Basket extends Component {
                      })}
                    </li>
                  </ul>
-               </div>
+               </Box>
              </Zoom>
            </Modal>
         }
@@ -251,7 +251,7 @@ class Basket extends Component {
         {cartItems.length!==0 && (
            
             <div className='checkoutDiv'>
-                <Button color='primary'>
+                <Button color='primary' className='totalPrice'>
                   Total: {" "}
                     {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
                 </Button>

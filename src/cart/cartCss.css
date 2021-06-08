@@ -51,6 +51,24 @@
   padding: 10px;
 }
 
+.totalPrice {
+  font-weight: 700;
+}
+
+.modalCloseOrder {
+  width: 30px;
+  background: red;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: bolder;
+}
+
+.modalOrder {
+  margin-top: 120px;
+}
+
 @media only screen and (max-width: 960px) and (min-width: 768px){
 
   .cartItemsDiv {
