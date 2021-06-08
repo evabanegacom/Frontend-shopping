@@ -174,32 +174,33 @@ class Basket extends Component {
         )}
 
         {
+          
            orders && <Modal className='modalOrder' isOpen={true} onRequestClose={this.closeModal}>
              <Zoom>
-               <Box className='boxOrder' component='div' display="flex" flexDirection="column" border={1} justifyContent="center">
+               <Box className='boxOrder' component='div' display="flex" flexDirection="column" justifyContent="center">
                <Button className='modalCloseOrder' onClick={this.closeModal}>X</Button>
                  <h3>your order has been placed</h3>
-                 <h2>order number{orders.id}</h2>
+                 <h2>order number: &nbsp;{orders.id}</h2>
                  <ul>
                    <li>
-                     <div>Name</div>
-                     <div>Name: {orders.name}</div>
+                     
+                     <div>Name: &nbsp;{orders.name}</div>
                    </li>
                    <li>
-                     <div>Email</div>
-                     <div>Email: {orders.email}</div>
+                     
+                     <div>Email: &nbsp;{orders.email}</div>
                    </li>
                    <li>
-                     <div>Address</div>
-                     <div>Address: {orders.address}</div>
+                     
+                     <div>Address: &nbsp;{orders.address}</div>
                    </li>
                    <li>
-                     <div>Phone</div>
-                     <div>Phone: {orders.phone}</div>
+                     
+                     <div>Phone: &nbsp;{orders.phone}</div>
                    </li>
                    <li>
-                     <div>Total</div>
-                     <div>Total: {Number(orders.total)}</div>
+                     
+                     <div>Total: &nbsp;{Number(orders.total)}</div>
                    </li>
                    <li>
                      { orders.cartitems.map((x)=> {
@@ -209,7 +210,8 @@ class Basket extends Component {
                        {/* console.log(JSON.stringify(parsing)) */}
                        return(
                          <div>
-                           {parsing.count} {"x"} {parsing.price} {parsing.name}
+                           
+                           <p style={{ marginBottom: '20px'}}>{parsing.count} {"x"} {parsing.price} {parsing.name} </p>
                          </div>
                        )
                      })}
@@ -218,6 +220,7 @@ class Basket extends Component {
                </Box>
              </Zoom>
            </Modal>
+          
         }
 
 
