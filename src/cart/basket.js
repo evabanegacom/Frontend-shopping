@@ -176,8 +176,8 @@ class Basket extends Component {
         {
            orders && <Modal className='modalOrder' isOpen={true} onRequestClose={this.closeModal}>
              <Zoom>
+               <Box className='boxOrder' component='div' display="flex" flexDirection="column" border={1} justifyContent="center">
                <Button className='modalCloseOrder' onClick={this.closeModal}>X</Button>
-               <Box component='div' display="flex" flexDirection="column" border={1} justifyContent="center">
                  <h3>your order has been placed</h3>
                  <h2>order number{orders.id}</h2>
                  <ul>
