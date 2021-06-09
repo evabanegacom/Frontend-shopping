@@ -90,11 +90,12 @@ li {
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 960px) and (min-width: 650px){
+@media only screen and (max-width: 960px) and (min-width: 620px){
 
   .cartItemsDiv {
     width: 47%;
     margin: auto;
+    margin-top: 20px;
   }
 
       .cartItemsDiv img {
@@ -107,9 +108,10 @@ li {
     }
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 610px){
   .cartItemsDiv {
     width: 100%;
+   
   }
 
   .cartItemsDiv img {

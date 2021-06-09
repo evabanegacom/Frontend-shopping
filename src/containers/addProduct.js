@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
+import './addProduct.css';
+import { Button } from '@material-ui/core'
 
 class AddProduct extends Component {
     constructor(props){
@@ -63,6 +65,7 @@ class AddProduct extends Component {
       };
 
     render() {
+      
       const { products, user, deleteProduct } = this.props
       user.admin === false ? this.props.history.push('/') : console.log('cool')
       const userProducts = products.length && products.filter((product) => (product.user_id) === user.id)
@@ -70,7 +73,19 @@ class AddProduct extends Component {
         return <img style={{ width: '150px', height: '150px'}} src={URL.createObjectURL(avatar)} alt={avatar.name} />;
       };
         return (
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column'}}>
+            <div className='addProduct'>
+            {userProducts && userProducts.map((x) => (
+                 <div className='addProductItem' key={x.id}>
+                   <img src={x.avatar.url} alt={x.name} />
+                   <p>{x.name}</p>
+                   <p>{x.price}</p>
+                   <p>{x.description}</p>
+                   <p>{x.category}</p>
+                   <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
+                 </div>
+               ))}
+               </div> 
                <form onSubmit={this.handleSubmit}>
                <div id="upload-box">
       <input type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
@@ -95,20 +110,11 @@ class AddProduct extends Component {
                 <option value="BestDeals">BestDeals</option>
               </select>
             </label>
-            <button type="submit" className="btn pink lighten-1 z-depth-0">
+            <Button type="submit" className="btn pink lighten-1 z-depth-0">
               Add Product
-            </button>
+            </Button>
                </form>
-               {userProducts && userProducts.map((x) => (
-                 <div key={x.id}>
-                   <p>{x.name}</p>
-                   <p>{x.price}</p>
-                   <p>{x.description}</p>
-                   <p>{x.category}</p>
-                   <img src={x.avatar.url} alt={x.name} />
-                   <button type='submit' onClick={() => deleteProduct(x.id) }>Remove</button>
-                 </div>
-               ))} 
+               
             </div>
         )
     }
