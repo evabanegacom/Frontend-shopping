@@ -102,7 +102,7 @@ class AddProduct extends Component {
                  </div>
                ))}
                </div>
-               <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button onClick={this.openTheModal}>+</Button></div>
+               <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button fullWidth className='addProductButton' onClick={this.openTheModal}>+</Button></div>
                <Modal isOpen={this.state.showform} onRequestClose={this.closeModal}>
                <Button onClick={this.closeModal}>X</Button>
                <form className='contentForm' onSubmit={this.handleSubmit}>
