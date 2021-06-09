@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
 import './addProduct.css';
 import { Button } from '@material-ui/core'
+import Modal from 'react-modal';
 
 class AddProduct extends Component {
     constructor(props){
@@ -13,7 +14,8 @@ class AddProduct extends Component {
             description: '',
             price: '',
             name: '',
-            category: ''
+            category: '',
+            showform: false
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,10 +45,24 @@ class AddProduct extends Component {
           });
     }
 
+    closeModal = () => {
+      const form = document.querySelector('.contentForm')
+      form && form.reset()
+      this.setState({
+        showform: false
+      })
+    }
+
     handleFile = e => {
         this.setState({
             avatar: e.target.files[0]
         })
+    }
+
+    openTheModal = () => {
+      this.setState({
+        showform: true
+      })
     }
 
     handleSubmit = e => {
@@ -73,7 +89,7 @@ class AddProduct extends Component {
         return <img style={{ width: '150px', height: '150px'}} src={URL.createObjectURL(avatar)} alt={avatar.name} />;
       };
         return (
-            <div style={{ display: 'flex', flexDirection: 'column'}}>
+            <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '30px'}}>
             <div className='addProduct'>
             {userProducts && userProducts.map((x) => (
                  <div className='addProductItem' key={x.id}>
@@ -85,8 +101,11 @@ class AddProduct extends Component {
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
                  </div>
                ))}
-               </div> 
-               <form onSubmit={this.handleSubmit}>
+               </div>
+               <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button onClick={this.openTheModal}>+</Button></div>
+               <Modal isOpen={this.state.showform} onRequestClose={this.closeModal}>
+               <Button onClick={this.closeModal}>X</Button>
+               <form className='contentForm' onSubmit={this.handleSubmit}>
                <div id="upload-box">
       <input type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
       <p>Filename: {this.state.avatar.name}</p>
@@ -114,7 +133,7 @@ class AddProduct extends Component {
               Add Product
             </Button>
                </form>
-               
+               </Modal>
             </div>
         )
     }
