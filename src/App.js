@@ -5,6 +5,7 @@ import Header from './cart/header';
 import Footer from './components/footer';
 import { ThemeProvider } from '@material-ui/core'
 import theme from './utils/theme';
+import Loading from './components/loader';
 
 const Login = lazy(() => import('./components/login'));
 const SignUp = lazy(() => import('./components/signUp'));
@@ -17,7 +18,7 @@ const Basket = lazy(() => import('./cart/basket'));
 function App() {
   return (
     <Router>
-     <Suspense fallback={<p>...Loading</p>}>
+     <Suspense fallback={<Loading />}>
      <ThemeProvider theme={theme}>
      <Header />
      </ThemeProvider>

@@ -2,6 +2,8 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { getOrders, autoLogin, getProducts, deleteOrder } from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromOrder } from '../actions/actions';
+import { Button } from '@material-ui/core';
+import './orderCss.css';
 
 const Orders = (props) => {
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ useEffect(() => {
 // })
 
   return (
-    <div>
+    <div className='theOrderDiv'>
       {userId && userId.map((x) => {
         return x.cartitems.map((y) => {
           const replacement = y.replace(/[&\/\\=]/g, "");
@@ -53,15 +55,15 @@ useEffect(() => {
             return <img src={x.avatar.url} alt="" />;
           });
           return (
-            <div key={parsing.id}>
-              <p>{parsing.name}</p>
-              <p>{parsing.price}</p>
-              <p>{parsing.count}</p>
-              <p>{parsing.description}</p>
-              <p>{parsing.created_at}</p>
-              <p>{parsing.id}</p>
+            <div className='orderContent' key={parsing.id}>
               {totals}
-      <button type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Delete</button>
+              <p>Name: &nbsp;{parsing.name}</p>
+              <p>Price: &nbsp;{parsing.price}</p>
+              <p>Quantity: &nbsp;{parsing.count}</p>
+              <p>Description: &nbsp;{parsing.description}</p>
+              <p>Date: &nbsp;{parsing.created_at}</p>
+              
+      <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
             </div>
           );
         });
