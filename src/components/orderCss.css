@@ -1,12 +1,20 @@
 .theOrderDiv {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .orderContent {
   margin: auto;
   text-align: center;
+  background: black;
+  color: cyan;
+  margin-top: 20px;
+}
+
+.orderContent img {
+    width: 300px;
+    height: 200px;
 }
 
 @media only screen and (max-width: 960px) and (min-width: 768px){
@@ -23,6 +31,7 @@
     .orderContent {
       width: 100%;
       margin: 0;
+      margin-top: 20px;
     }
 
     .orderContent img {

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromOrder } from '../actions/actions';
 import { Button } from '@material-ui/core';
 import './orderCss.css';
+import dateFormat from 'dateformat';
 
 const Orders = (props) => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ useEffect(() => {
               <p>Price: &nbsp;{parsing.price}</p>
               <p>Quantity: &nbsp;{parsing.count}</p>
               <p>Description: &nbsp;{parsing.description}</p>
-              <p>Date: &nbsp;{parsing.created_at}</p>
+              <p>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
               
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
             </div>
