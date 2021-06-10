@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
 import './addProduct.css';
-import { Button } from '@material-ui/core'
+import { Button, TextField, Input } from '@material-ui/core'
 import Modal from 'react-modal';
 
 class AddProduct extends Component {
@@ -78,6 +78,7 @@ class AddProduct extends Component {
         console.log(key[0] + ', ' + key[1]);
     }        
     this.props.addProduct(form_data)
+    document.querySelector('.contentForm').reset()
       };
 
     render() {
@@ -96,25 +97,30 @@ class AddProduct extends Component {
                    <img src={x.avatar.url} alt={x.name} />
                    <p>{x.name}</p>
                    <p>{x.price}</p>
-                   <p>{x.description}</p>
+                   <p style={{ width: '300px'}}>{x.description}</p>
                    <p>{x.category}</p>
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
                  </div>
                ))}
                </div>
                <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button fullWidth className='addProductButton' onClick={this.openTheModal}>+</Button></div>
-               <Modal isOpen={this.state.showform} onRequestClose={this.closeModal}>
-               <Button onClick={this.closeModal}>X</Button>
+               <Modal className='addProductModal' isOpen={this.state.showform} onRequestClose={this.closeModal}>
+               <Button color='secondary' onClick={this.closeModal}>X</Button>
                <form className='contentForm' onSubmit={this.handleSubmit}>
                <div id="upload-box">
-      <input type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
+               <label class="custom-file-upload">
+      <input  className='fileUpload' type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
+      custom upload
+      </label>
+      <div style={{marginTop: '20px'}}>
       <p>Filename: {this.state.avatar.name}</p>
       <p>File type: {this.state.avatar.type}</p>
       <p>File size: {this.state.avatar.size} bytes</p>
+      </div>
       {this.state.avatar && <ImageThumb avatar={this.state.avatar} />}
-    </div>                   <input onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
-                   <input onChange={this.handleChange} type='text' id='description' placeholder='description' />
-                   <input onChange={this.handleChange} type='text' id='price' placeholder='product price' />
+    </div>                   <TextField fullWidth onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
+                   <TextField fullWidth onChange={this.handleChange} type='text' id='description' placeholder='description' />
+                   <TextField fullWidth onChange={this.handleChange} type='text' id='price' placeholder='product price' />
                    <label htmlFor="category">
               Pick choose a product Category:&nbsp;&nbsp;&nbsp;
               <select className="favCity" value={this.state.category} onChange={this.handleChange}>
@@ -129,7 +135,7 @@ class AddProduct extends Component {
                 <option value="BestDeals">BestDeals</option>
               </select>
             </label>
-            <Button type="submit" className="btn pink lighten-1 z-depth-0">
+            <Button fullWidth type="submit" className="btn pink lighten-1 z-depth-0">
               Add Product
             </Button>
                </form>
