@@ -8,7 +8,8 @@ import dateFormat from 'dateformat';
 
 const Orders = (props) => {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user);
+  {user.loggedIn === false ? props.history.push('/') : (<p>you are not logged in </p>)}
   const orders = useSelector((state) => state.userOrders.orders);
   const [ newOrder, setNewOrder ] = useState([])
   const products = useSelector((state) => state.products.products);

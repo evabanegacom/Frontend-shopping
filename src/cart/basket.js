@@ -160,8 +160,9 @@ class Basket extends Component {
     // SENDING ORDERED EMAIL CONTENT
 
   render() {
-    const { cartItems, orders, user } = this.props;
+    const { cartItems, orders, user, secondUser } = this.props;
     const { nameError, emailError, addressError, phoneError } = this.state
+    secondUser.loggedIn === false ? (this.props.history.push('/')) : (console.log('null'))
     console.log(cartItems)
 
     return (
@@ -302,7 +303,8 @@ class Basket extends Component {
 const mapStateToProps = state => ({
   cartItems: state.cart.cartItems,
   orders: state.orders.order,
-  user: state.user.user
+  user: state.user.user,
+  secondUser: state.user,
 })
 
 const mapDispatchToProps = dispatch => ({
