@@ -30,7 +30,7 @@ const Products = () => {
     const pageCount = Math.ceil(data.length / PER_PAGE);
 
     useEffect (function effectFunction() {
-      fetch('http://localhost:3001/api/v1/products', {
+      fetch('https://neptune-spear.herokuapp.com/api/v1/products', {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
