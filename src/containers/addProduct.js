@@ -119,7 +119,7 @@ class AddProduct extends Component {
       </div>
       {this.state.avatar && <ImageThumb avatar={this.state.avatar} />}
     </div>                   <TextField fullWidth onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
-                   <TextField fullWidth onChange={this.handleChange} type='text' id='description' placeholder='description' />
+                   <TextField fullWidth onChange={this.handleChange} multiline type='text' id='description' placeholder='description' />
                    <TextField fullWidth onChange={this.handleChange} type='text' id='price' placeholder='product price' />
                    <label htmlFor="category">
               Pick choose a product Category:&nbsp;&nbsp;&nbsp;

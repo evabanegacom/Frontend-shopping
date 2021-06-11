@@ -28,6 +28,7 @@ align-items: center;
     animation: glow 2s ease-in-out infinite alternate;
     font-weight: 700;
     margin-top: 20px;
+    -webkit-transform: translateZ(0);
   }
 
 .contactNumber p {

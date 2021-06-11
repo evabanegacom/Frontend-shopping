@@ -276,7 +276,7 @@ class Basket extends Component {
                           <p style={{color: 'red'}}>{nameError}</p>
                      
                          
-                          <TextField id='inputAddress' fullWidth name='address' type='text' label='Address' required onChange={this.handleInput} />
+                          <TextField id='inputAddress' multiline fullWidth name='address' type='text' label='Address' required onChange={this.handleInput} />
                           <p>{addressError}</p>
 
                       
