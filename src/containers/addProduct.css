@@ -14,12 +14,14 @@
     background: rgb(46, 46, 12);
     color: cyan;
     margin-top: 20px;
+    text-align: center;
 }
 
 .addProductButton {
     font-size: 30px;
     color: #ffffff;
     font-weight: 700;
+    
 }
 
 .addProductModal {
@@ -29,7 +31,7 @@
     background: grey;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+   
 }
 
 .contentForm {
@@ -47,6 +49,11 @@ input[type="file"] {
     cursor: pointer;
 }
 
+.productDesc {
+    width: 300px;
+   
+}
+
 @media only screen and (max-width: 960px) and (min-width: 650px){
     .addProductItem {
         width: 47%
@@ -54,6 +61,10 @@ input[type="file"] {
 
     .addProduct img {
         width: 100%;
+    }
+
+    .productDesc {
+        width:100%;
     }
 }
 
@@ -65,4 +76,9 @@ input[type="file"] {
     .addProduct img {
         width: 100%;
     }
+
+    .productDesc {
+        width:100%;
+    }
+    
 }

@@ -73,7 +73,7 @@ const Product = (props) => {
             {product.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {product.description}
+            {product.category}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -98,7 +98,7 @@ const Product = (props) => {
                                       <img src={product.avatar.url} alt='' />
                                       <div>
                                         <p>Name: &nbsp;&nbsp; <strong>{product.name}</strong></p>
-                                        <p>Description: &nbsp;&nbsp;{product.description}</p>
+                                        <p className='productDesc'><span style={{ fontWeight: 700}}>Description</span>: &nbsp;&nbsp;{product.description}</p>
                                         <p>Category: &nbsp;&nbsp; {product.category}</p>
                                         <p>Price: &nbsp;&nbsp; {product.price}</p>
                                       </div>

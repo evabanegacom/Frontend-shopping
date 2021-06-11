@@ -61,7 +61,7 @@ useEffect(() => {
               <p>Name: &nbsp;{parsing.name}</p>
               <p>Price: &nbsp;{parsing.price}</p>
               <p>Quantity: &nbsp;{parsing.count}</p>
-              <p>Description: &nbsp;{parsing.description}</p>
+             
               <p>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
               
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>

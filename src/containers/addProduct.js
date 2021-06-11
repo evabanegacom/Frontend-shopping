@@ -97,7 +97,7 @@ class AddProduct extends Component {
                    <img src={x.avatar.url} alt={x.name} />
                    <p>{x.name}</p>
                    <p>{x.price}</p>
-                   <p style={{ width: '300px'}}>{x.description}</p>
+                   <p className='productDesc'>{x.description}</p>
                    <p>{x.category}</p>
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
                  </div>
