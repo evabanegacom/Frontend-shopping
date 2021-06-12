@@ -54,7 +54,7 @@ useEffect(() => {
             (product) => product.id === parsing.id
           );
           let totals = images.map(function (x) {
-            return <img src={x.avatar.url} alt="" />;
+            return <img src={x.avatar.url.replace(/http/g, "https")} alt="" />;
           });
           return (
             <div className='orderContent' key={parsing.id}>

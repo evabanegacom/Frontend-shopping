@@ -94,7 +94,7 @@ class AddProduct extends Component {
             <div className='addProduct'>
             {userProducts && userProducts.map((x) => (
                  <div className='addProductItem' key={x.id}>
-                   <img src={x.avatar.url} alt={x.name} />
+                   <img src={x.avatar.url.replace(/http/g, "https")} alt={x.name} />
                    <p>{x.name}</p>
                    <p>{x.price}</p>
                    <p className='productDesc'>{x.description}</p>

@@ -232,7 +232,7 @@ class Basket extends Component {
               {cartItems.map((item) => (
                 <div className='cartItemsDiv' key={item.id}>
                   
-                    <img src={item.avatar.url} alt="" />
+                    <img src={item.avatar.url.replace(/http/g, "https")} alt="" />
                   
                   <div style={{ background: 'blue', color: 'white'}}>
                     <div style={{ textAlign: 'center', lineHeight: '20px'}}>
