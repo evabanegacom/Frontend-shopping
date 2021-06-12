@@ -95,7 +95,7 @@ const Product = (props) => {
                               <Zoom>
                               <button className='modalClose' onClick={closeModal}>X</button>
                                   <div className='modalDiv'>
-                                      <img src={product.avatar.url} alt='' />
+                                      <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                                       <div>
                                         <p>Name: &nbsp;&nbsp; <strong>{product.name}</strong></p>
                                         <p className='productDesc'><span style={{ fontWeight: 700}}>Description</span>: &nbsp;&nbsp;{product.description}</p>
