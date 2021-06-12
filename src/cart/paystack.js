@@ -42,21 +42,25 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     reference:(new Date()).getTime(),
      email: JSON.stringify(user.loggedIn === 'true') ? user.user.email : null, 
      amount: Math.trunc(cart.reduce((a, c) => a + c.price*c.count, 0))*100, 
-     publicKey:API_KEY
+     publicKey: API_KEY
    });
 
   const onSuccess = (reference) => {
     // const validate
     // Implementation for whatever you want to do with reference and after success call.
+    
     createOrderPaystack()
     console.log(reference);
+    paidWithCard()
   };
 
-  const handlePay = () => {
+  const handlePay = (amount) => {
     const validate = isValid()
-    if(validate){
-    initializePayment(onSuccess, onClose)
-    paidWithCard()
+    if(validate ){
+      initializePayment(onSuccess)
+      // if(amount.status === 'success'){
+      // paidWithCard()
+      // }
     }
   }
     // const initializePayment = usePaystackPayment(config);
