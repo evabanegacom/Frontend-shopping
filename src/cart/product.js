@@ -64,7 +64,7 @@ const Product = (props) => {
           component="img"
           alt={product.name}
           height="150"
-          image={product.avatar.url}
+          image={product.avatar.url.replace(/http/g, "https")}
           title={product.name}
         />    </Link>
 
