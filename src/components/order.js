@@ -50,15 +50,18 @@ useEffect(() => {
           const replacement = y.replace(/[&\/\\=]/g, "");
           const remove = replacement.replace(/[&\/\\>]/g, ":");
           const parsing = JSON.parse(remove);
-          const images = products.filter(
+          {/* const images = products.filter(
             (product) => product.id === parsing.id
           );
           let totals = images.map(function (x) {
             return <img src={x.avatar.url.replace(/http/g, "https")} alt="" />;
-          });
+          }); */}
+          
+          
           return (
             <div className='orderContent' key={parsing.id}>
-              {totals}
+              {/* {totals} */}
+              <img src={parsing.avatar.url.replace(/http/g, "https")} alt='name' />
               <p>Name: &nbsp;{parsing.name}</p>
               <p>Price: &nbsp;{parsing.price}</p>
               <p>Quantity: &nbsp;{parsing.count}</p>
