@@ -187,7 +187,7 @@ const Products = () => {
             }).slice(offset, offset + PER_PAGE).map((product) => (
               <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>
             ))
-          ) : (<p>no items here</p>)}
+          ) : (<p>WAIT FOR IT...</p>)}
           </Grid>
           </main>
           {/* <Basket 

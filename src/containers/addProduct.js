@@ -76,9 +76,13 @@ class AddProduct extends Component {
     form_data.append('category', this.state.category);
     for (var key of form_data.entries()) {
         console.log(key[0] + ', ' + key[1]);
-    }        
+    }
+    if(document.querySelector('.fileUpload').files.length === 0){
+        console.log('hi error')
+    }else {        
     this.props.addProduct(form_data)
     document.querySelector('.contentForm').reset()
+    }
       };
 
     render() {
@@ -95,6 +99,7 @@ class AddProduct extends Component {
             {userProducts && userProducts.map((x) => (
                  <div className='addProductItem' key={x.id}>
                    <img src={x.avatar.url.replace(/http/g, "https")} alt={x.name} />
+                   
                    <p>{x.name}</p>
                    <p>{x.price}</p>
                    <p className='productDesc'>{x.description}</p>
@@ -106,10 +111,10 @@ class AddProduct extends Component {
                <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button fullWidth className='addProductButton' onClick={this.openTheModal}>+</Button></div>
                <Modal className='addProductModal' isOpen={this.state.showform} onRequestClose={this.closeModal}>
                <Button color='secondary' onClick={this.closeModal}>X</Button>
-               <form className='contentForm' onSubmit={this.handleSubmit}>
+               <form className='contentForm' onSubmit={this.handleSubmit} name='form'>
                <div id="upload-box">
                <label class="custom-file-upload">
-      <input  className='fileUpload' type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
+      <input  className='fileUpload' required type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
       custom upload
       </label>
       <div style={{marginTop: '20px'}}>
@@ -118,9 +123,9 @@ class AddProduct extends Component {
       <p>File size: {this.state.avatar.size} bytes</p>
       </div>
       {this.state.avatar && <ImageThumb avatar={this.state.avatar} />}
-    </div>                   <TextField fullWidth onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
-                   <TextField fullWidth onChange={this.handleChange} multiline type='text' id='description' placeholder='description' />
-                   <TextField fullWidth onChange={this.handleChange} type='text' id='price' placeholder='product price' />
+    </div>                   <TextField fullWidth  required onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
+                   <TextField fullWidth required onChange={this.handleChange} multiline type='text' id='description' placeholder='description' />
+                   <TextField fullWidth required onChange={this.handleChange} type='text' id='price' placeholder='product price' />
                    <label htmlFor="category">
               Pick choose a product Category:&nbsp;&nbsp;&nbsp;
               <select className="favCity" value={this.state.category} onChange={this.handleChange}>
