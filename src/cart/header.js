@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SignedInLinks from "../components/signInLInks";
-import SignedOutLinks from "../components/signOutLinks";
 import { useSelector, useDispatch } from "react-redux";
 import { autoLogin, logout } from "../actions/actions";
 import withStyles from '@material-ui/core/styles/withStyles';

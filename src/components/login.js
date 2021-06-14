@@ -8,7 +8,6 @@ import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { IoLogoFacebook } from 'react-icons/io';
 
 const reviewSchema = yup.object().shape({
   email: yup.string().required().min(5),
@@ -91,9 +90,6 @@ function Login(props ) {
         )}
       </Formik>
     </div>
-      <div>
-        <Link to='facebook.com'><IoLogoFacebook/></Link>
-      </div>
     </div>
   );
 }

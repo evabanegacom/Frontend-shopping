@@ -1,0 +1,40 @@
+.signUpDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../images/shopping.jpg') no-repeat;
+  background-size: cover;
+}
+
+.formik {
+    width: 40%;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.formik p {
+    color: red;
+    font-weight: 700;
+}
+
+.signUpButton {
+  margin-top: 20px;
+  background: green;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.avatarLogo {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px){
+    .formik {
+        width: 100%
+    }
+}
