@@ -5,6 +5,11 @@ import { addToCart, removeFromOrder } from '../actions/actions';
 import { Button } from '@material-ui/core';
 import './orderCss.css';
 import dateFormat from 'dateformat';
+import 'react-notifications/lib/notifications.css';
+import {
+   NotificationContainer,
+   NotificationManager,
+ } from 'react-notifications';
 
 const Orders = (props) => {
   const dispatch = useDispatch();
@@ -22,6 +27,10 @@ useEffect(() => {
     dispatch(getProducts());
   }, []);
 
+  const addingToCart = product => {
+   dispatch(addToCart(product))
+   NotificationManager.success('Item add to cart', 'success', 2000);
+  }
 
   const userId = orders.length && orders.filter(
     (order) => order.user_id === parseInt(props.match.params.id, 10)
@@ -70,13 +79,13 @@ useEffect(() => {
              
               <p>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
               
-      <Button color='secondary' type='submit' onClick={() => dispatch(addToCart(parsing))}>addtocart</Button>
+      <Button color='secondary' type='submit' onClick={() => addingToCart(parsing)}>addtocart</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
             </div>
           );
         });
       })}
-
+      <NotificationContainer />
     </div>
   );
 };

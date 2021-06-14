@@ -17,12 +17,18 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 import { AddShoppingCart } from '@material-ui/icons';
 import './modalCss.css';
+import 'react-notifications/lib/notifications.css';
+import {
+   NotificationContainer,
+   NotificationManager,
+ } from 'react-notifications';
 
 const Product = (props) => {
     const { product } = props
     const dispatch = useDispatch();
     const handleAdd = product => {
         dispatch(addToCart(product))
+        NotificationManager.success('Item add to cart', 'success', 3000);
     }
     const [productModal, setProductModal] = useState(null)
     const openModal =  (products) => {
@@ -107,7 +113,8 @@ const Product = (props) => {
                               </Zoom>
                           </Modal>
                       )
-                  } 
+                  }
+                  <NotificationContainer /> 
         </div>
     )
 }
