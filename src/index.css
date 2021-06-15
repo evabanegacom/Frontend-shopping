@@ -30,6 +30,17 @@
   border: 1px solid red;
 }
 
+.companyLogo {
+  margin-left: -24px;
+  background: rgb(172,44,36);
+  border: 2px solid rgb(172,44,36);
+  margin-top: 0;
+  margin-bottom: 0;
+  min-height: 68px;
+}
+
+
+
 @keyframes animate {
   0% {
     background-position: -500%;

@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { autoLogin, logout } from "../actions/actions";
-import withStyles from '@material-ui/core/styles/withStyles';
 import { AppBar, Typography, Toolbar, Tabs, Tab, Button, IconButton, Badge, useMediaQuery, useTheme,
 Menu, MenuList, MenuItem, makeStyles, Paper } from "@material-ui/core";
 import { NavLink, useHistory } from "react-router-dom";
 import { GiBookAura } from 'react-icons/gi';
 import { FiBookOpen } from 'react-icons/fi';
 import { BiLogOut } from 'react-icons/bi';
-import { FcContacts } from 'react-icons/fc';
+import { FcContacts, FcPlus } from 'react-icons/fc';
 import { FaShoppingBasket } from 'react-icons/fa';
-import { RiShoppingBag2Fill } from 'react-icons/ri'
+import { RiShoppingBag2Fill, RiAccountCircleLine } from 'react-icons/ri'
 import { ShoppingCart } from '@material-ui/icons';
-import { FcPlus } from 'react-icons/fc';
+import ejovialLogo from '../images/ejovial-logo.png';
 
 const Header = () => {
   const cart = useSelector((state) => state.cart.cartItems);
@@ -44,6 +43,7 @@ const Header = () => {
 
     visual: {
       width: '100%',
+      paddingLeft: 0,
     },
 
     smallerIcon: {
@@ -57,6 +57,10 @@ const Header = () => {
 
     cartPosition: {
       margin: 'auto',
+    },
+
+    fixLogo: {
+      float: 'left'
     },
 
     cartMargin: {
@@ -103,13 +107,13 @@ const Header = () => {
       <AppBar className={classes.visual} position='sticky'>
         <Toolbar>
         {user.loggedIn === false ? (<>
-          <Typography><Link to='/'><GiBookAura /></Link></Typography>
+         <Link className='companyLogo' to='/'><img style={{ width: '50px', height: '64x'}} src={ejovialLogo} alt='company logo' /></Link>
             { isMatch ? (
               <Button color='secondary' aria-controls='simple-menu' aria-haspopup={true} onClick={handleMenuOpen} className={classes.accountButton} variant='contained'><p className='nameOfUser'>Menu</p></Button>
 
             ) : (<>
               <Tabs onChange={handleClickTab} indicatorColor='secondary' value={value}>
-              <Tab icon={<FiBookOpen/> } disableRipple label={<Link style={{ textDecoration: 'none', color: 'white', cursor: 'pointer'}} to='/SignUp'>SignUp</Link>} />
+              <Tab icon={<RiAccountCircleLine className={classes.smallerIcon}/> } disableRipple label={<Link style={{ textDecoration: 'none', color: 'white', cursor: 'pointer'}} to='/SignUp'>SignUp</Link>} />
 
               <Tab icon={<FiBookOpen/> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/login'>Login</Link>}/>
 
@@ -125,7 +129,7 @@ const Header = () => {
         ) : (
           <>
           
-          <Typography><Link to='/'><GiBookAura className={classes.iconLogo} /></Link></Typography>
+          <Link className='companyLogo' to='/'><img style={{ width: '50px', height: '64x'}} src={ejovialLogo} alt='company logo' /></Link>
            { isMatch ? (<>
             <IconButton className={classes.cartPosition} component={Link} to='/cart' aria-label='show cart items' color='inherit'>
                     <Badge badgeContent={cart.length} color='secondary'>
