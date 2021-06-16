@@ -40,7 +40,11 @@ export const fetchUser = (userInfo) => async (dispatch) => {
       .then((data) => {
         localStorage.setItem("token", (data.token));
         dispatch(setUser(data));
-      });
+      })
+      .catch((error) =>{
+        console.log(error)
+        dispatch(setUser(error))
+      })
   };
 
 

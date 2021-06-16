@@ -8,9 +8,14 @@ import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import 'react-notifications/lib/notifications.css';
+import {
+   NotificationContainer,
+   NotificationManager,
+ } from 'react-notifications';
 
 const reviewSchema = yup.object().shape({
-  email: yup.string().required().min(5),
+  email: yup.string().required().min(7),
   password: yup.string().required().min(6),
 })
 
@@ -34,8 +39,15 @@ function Login(props ) {
         validationSchema={reviewSchema}
         onSubmit={(values, actions) => {
           addUser(values);
+          setTimeout(() => {
+            if(user.loggedIn === false){
+            NotificationManager.warning('Incorrect password or email ', 'failed', 2000);
+          } else {
           actions.resetForm();
           props.history.push('/')
+          }
+          }, 2000);
+          
         }}
       >
         {(formikProps) => (
@@ -50,7 +62,7 @@ function Login(props ) {
               placeholder="enter email"
               onChange={formikProps.handleChange("email")}
               value={formikProps.values.email}
-              type='text'
+              type='email'
               label='Email'
               fullWidth
               required
@@ -85,6 +97,8 @@ function Login(props ) {
             </Typography>
 
           </form>
+          <NotificationContainer />
+
           </Paper>
           </Grid>
         )}
