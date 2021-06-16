@@ -23,12 +23,16 @@ function Login(props ) {
   const dispatch = useDispatch();
   const addUser = user => dispatch(fetchUser(user));
   const user = useSelector((state) => state.user);
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
 
   useEffect(() =>{
     setTimeout(() => {
     if(user.error === 'invalid'){
       NotificationManager.warning('Incorrect password or email ', 'failed', 2000);
-      console.log('true login')
     }
     }, 2000);
   }, [JSON.stringify(user)])
@@ -78,7 +82,7 @@ function Login(props ) {
               placeholder="password 6 chars min"
               onChange={formikProps.handleChange("password")}
               value={formikProps.values.password}
-              type='password'
+              type={passwordShown ? "text" : "password"}
               label='Password'
               fullWidth
               required
@@ -86,6 +90,8 @@ function Login(props ) {
 
               onBlur={formikProps.handleBlur('password')}
             />
+            <i onClick={togglePasswordVisiblity} class="fas fa-eye"></i>
+
             <p>{formikProps.touched.password && formikProps.errors.password}</p>
             <FormControlLabel style={textMargin} control={<Checkbox color='primary'/>} label="Remember me" />
             <Button type='submit' color='primary' style={btnStyle} variant='contained' fullWidth>Sign In</Button>

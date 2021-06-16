@@ -39,6 +39,11 @@
   min-height: 68px;
 }
 
+.fas {
+  position: relative;
+  top: -25px;
+  left: 80px;
+}
 
 
 @keyframes animate {
