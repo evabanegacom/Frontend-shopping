@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import { Link } from 'react-router-dom'
@@ -23,6 +23,16 @@ function Login(props ) {
   const dispatch = useDispatch();
   const addUser = user => dispatch(fetchUser(user));
   const user = useSelector((state) => state.user);
+
+  useEffect(() =>{
+    setTimeout(() => {
+    if(user.error === 'invalid'){
+      NotificationManager.warning('Incorrect password or email ', 'failed', 2000);
+      console.log('true login')
+    }
+    }, 2000);
+  }, [JSON.stringify(user)])
+
   user.loggedIn === true ? props.history.push('/') : console.log('cool')
   const gridStyle = { display: 'flex', alignItems:'center', justifyContent: 'center' }
     const paperStyle = { marginTop: '50px', marginBottom: '50px', background: 'transparent', padding: 20, height: '70vh', width: 280, borderRadius: '20px'}
@@ -39,15 +49,6 @@ function Login(props ) {
         validationSchema={reviewSchema}
         onSubmit={(values, actions) => {
           addUser(values);
-          setTimeout(() => {
-            if(user.loggedIn === false){
-            NotificationManager.warning('Incorrect password or email ', 'failed', 2000);
-          } else {
-          actions.resetForm();
-          props.history.push('/')
-          }
-          }, 2000);
-          
         }}
       >
         {(formikProps) => (
