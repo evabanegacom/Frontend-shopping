@@ -151,7 +151,7 @@ const Header = () => {
  : console.log('null')}
  {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/customers'>Customers</Link>}/>
  : console.log('null')}
- <Tab icon={<FcContacts className={classes.smallerIcon} />} style={{fontWeight: 700}} label='Contact'/>
+ <Tab icon={<FcContacts className={classes.smallerIcon} />} label={<NavLink to="/contact" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Contact Us</NavLink>}/>
  <Tab icon={<FaShoppingBasket className={classes.smallerIcon}/> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />
  <Tab icon={<RiShoppingBag2Fill className={classes.smallerIcon} /> } label={<NavLink to={`/users/${user.user.id}/orders`} style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Orders</NavLink>} />
 
@@ -169,12 +169,14 @@ const Header = () => {
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/'>Home</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/login'>signIn</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/signUp'>SignUp</Link></MenuItem>
+        <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/contact'>Contact Us</Link></MenuItem>
       </Menu>
       : 
         <Menu style={{ marginTop: '50px'}} id='simple-menu' anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
 
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/'>Home</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/products'>Products</Link></MenuItem>
+        <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/contact'>Contact Us</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to={`/users/${user.user.id}/orders`}>Orders</Link></MenuItem>
         <MenuItem><Link onClick={handleClick} style={{textDecoration: 'none', color: 'green'}} to='/'>Logout</Link></MenuItem>
         {user.user.admin === true ? 

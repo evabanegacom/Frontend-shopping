@@ -10,6 +10,7 @@ import Loading from './components/loader';
 const Login = lazy(() => import('./components/login'));
 const SignUp = lazy(() => import('./components/signUp'));
 const Order = lazy(() => import('./components/order'));
+const Contact = lazy(() => import('./components/contact'));
 const Home = lazy(() => import('./containers/Home'));
 const AddProduct = lazy(() => import('./containers/addProduct'));
 const Products = lazy(() => import('./containers/products'));
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/cart" component={Basket} />
         <Route exact path="/users/:id/orders" component={Order} />
         <Route exact path="/customers" component={Customers} />
+        <Route exact path="/contact" component={Contact} />
       </Switch>
       <Footer />
     </Suspense>

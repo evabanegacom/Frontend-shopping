@@ -6,7 +6,8 @@ const allUsersReducer = (state=initState, action) => {
   switch (action.type) {
     case "ALL_USERS":
       return {
-        customers: action.payload.data,
+        ...state,
+        customers: action.payload,
       };
 
     default:
