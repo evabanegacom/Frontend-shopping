@@ -12,6 +12,7 @@ const reviewSchema = yup.object().shape({
   name: yup.string().required().min(4),
   email: yup.string().required().min(5),
   password: yup.string().required().min(6),
+  phone: yup.string().min(11),
   password_confirmation: yup.string().required().when("password", {
     is: val => (val && val.length > 0 ? true : false),
     then: yup.string().oneOf(
@@ -68,7 +69,17 @@ export default function SignUp(props) {
               fullWidth
             />
 
-            <p>{formikProps.touched.email && formikProps.errors.email}</p>
+            <TextField
+              placeholder="Phone Number(Optional)"
+              onChange={formikProps.handleChange("phone")}
+              value={formikProps.values.phone}
+              onBlur={formikProps.handleBlur('phone')}
+              type='text'
+              label='Phone number(Optional)'
+              fullWidth
+            />
+
+            <p>{formikProps.touched.phone && formikProps.errors.phone}</p>
 
             <TextField
               placeholder="password 6 chars min"

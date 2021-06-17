@@ -14,6 +14,7 @@ const Home = lazy(() => import('./containers/Home'));
 const AddProduct = lazy(() => import('./containers/addProduct'));
 const Products = lazy(() => import('./containers/products'));
 const Basket = lazy(() => import('./cart/basket'));
+const Customers = lazy(() => import('./containers/customers'));
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/products" component={Products} />
         <Route exact path="/cart" component={Basket} />
         <Route exact path="/users/:id/orders" component={Order} />
+        <Route exact path="/customers" component={Customers} />
       </Switch>
       <Footer />
     </Suspense>

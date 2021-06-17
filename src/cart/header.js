@@ -149,6 +149,8 @@ const Header = () => {
 
             {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/ejovial'>Add Product</Link>}/>
  : console.log('null')}
+ {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/customers'>Customers</Link>}/>
+ : console.log('null')}
  <Tab icon={<FcContacts className={classes.smallerIcon} />} style={{fontWeight: 700}} label='Contact'/>
  <Tab icon={<FaShoppingBasket className={classes.smallerIcon}/> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />
  <Tab icon={<RiShoppingBag2Fill className={classes.smallerIcon} /> } label={<NavLink to={`/users/${user.user.id}/orders`} style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Orders</NavLink>} />
@@ -177,6 +179,9 @@ const Header = () => {
         <MenuItem><Link onClick={handleClick} style={{textDecoration: 'none', color: 'green'}} to='/'>Logout</Link></MenuItem>
         {user.user.admin === true ? 
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/ejovial'>Add Products</Link></MenuItem>
+        : console.log('null')}
+        {user.user.admin === true ? 
+        <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/customers'>Customers</Link></MenuItem>
         : console.log('null')}
         </Menu>
         }

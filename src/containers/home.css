@@ -1,0 +1,6 @@
+.homepage {
+  background: url('../images/background.webp') no-repeat;
+  background-size: auto;
+  display: flex;
+  flex-direction: column;
+}

@@ -63,6 +63,27 @@ export const autoLogin = () => async dispatch => {
     });
 };
 
+// FETCH ALL USERS
+
+export const allUsers = (data) => ({
+  type: 'ALL_USERS',
+  payload: data,
+})
+
+export const customers = () => async dispatch => {
+  await fetch('https://neptune-spear.herokuapp.com/api/v1/users', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then(res => res.json())
+    .then(data => { console.log(data)
+      dispatch(allUsers(data));
+    });
+};
+
 // CReating A form for the products
 
 export const postProduct = productInfo => async dispatch => {
