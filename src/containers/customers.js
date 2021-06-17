@@ -1,22 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { customers, autoLogin } from '../actions/actions';
+import { customers, autoLogin, getOrders } from '../actions/actions';
 
 const Customers = () => {
     const [search, setSearch ] = useState('')
 
     const dispatch = useDispatch();
     const theCustomers = useSelector((state) => state.customers.customers)
-    console.log('customers', theCustomers)
+    const orders = useSelector((state) => state.userOrders.orders);
 
 useEffect(() =>{
-    dispatch(autoLogin())
+    dispatch(getOrders())
   dispatch(customers())
 }, [])
 
 const handleSearches = (event) => {
     setSearch(event.target.value)
   };
+
+  const userId = (id) => {
+    return orders.length && orders.filter(
+    (order) => order.user_id === id
+  )
+}
+
+console.log(userId(3).length)
+
 
     return (
         <div>
@@ -30,18 +39,21 @@ const handleSearches = (event) => {
           {theCustomers.length && theCustomers.filter((customer) =>{
               if(search === ''){
               return theCustomers.map((customer) => (
-                  <div>
+                  <div key={customer.id}>
                   <p>{customer.name}</p>
                   <p>{customer.email}</p>
                   <p>{customer.phone}</p>
+                  <p>orders: {userId(customer.id).length}</p>
               </div>
               ))
               }else if(customer.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                   return customer
               }
           }). map((customer) => (
-              <div>
+              <div key={customer.id}>
                   <p>{customer.name}</p>
+                  {/* <p>{customer.email}</p> */}
+                  <p>orders: &nbsp;{userId(customer.id).length}</p>
               </div>
           ))
           }
