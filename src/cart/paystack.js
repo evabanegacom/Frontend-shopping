@@ -17,7 +17,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     reference: (new Date()).getTime(),
     email: "user@example.com",
     amount: 20000,
-    publicKey: 'pk_test_2c676d6b01cea0704354f1a486590a28da55a341',
+    publicKey: API_KEY,
 };
 
   // you can call this function anything
@@ -42,7 +42,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     reference:(new Date()).getTime(),
      email: JSON.stringify(user.loggedIn === 'true') ? user.user.email : null, 
      amount: Math.trunc(cart.reduce((a, c) => a + c.price*c.count, 0))*100, 
-     publicKey: API_KEY
+     publicKey: 'pk_test_2c676d6b01cea0704354f1a486590a28da55a341'
    });
 
   const onSuccess = (reference) => {
