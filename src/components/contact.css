@@ -1,0 +1,17 @@
+.contactPage {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.contactDiv {
+  text-align: center;
+}
+
+.formik {
+    width: 40%;
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 20px;
+}

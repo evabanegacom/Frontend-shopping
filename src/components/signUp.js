@@ -31,7 +31,7 @@ export default function SignUp(props) {
   return (
     <div className='signUpDiv'>
       <Formik
-        initialValues={{ name: "", email: "", password: "", password_confirmation: '' }}
+        initialValues={{ name: "", email: "", phone: '', password: "", password_confirmation: '' }}
         validationSchema={reviewSchema}
         onSubmit={(values, actions) => {
           console.log(values)
