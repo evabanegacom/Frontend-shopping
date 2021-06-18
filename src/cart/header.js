@@ -113,11 +113,11 @@ const Header = () => {
 
             ) : (<>
               <Tabs onChange={handleClickTab} indicatorColor='secondary' value={value}>
-              <Tab icon={<RiAccountCircleLine className={classes.smallerIcon}/> } disableRipple label={<Link style={{ textDecoration: 'none', color: 'white', cursor: 'pointer'}} to='/SignUp'>SignUp</Link>} />
+              <Tab icon={<Link to='/SignUp'><RiAccountCircleLine className={classes.smallerIcon}/></Link> } disableRipple label={<Link style={{ textDecoration: 'none', color: 'white', cursor: 'pointer'}} to='/SignUp'>SignUp</Link>} />
 
-              <Tab icon={<FiBookOpen/> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/login'>Login</Link>}/>
+              <Tab icon={<Link to='/login'><FiBookOpen/></Link> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/login'>Login</Link>}/>
 
-              <Tab icon={<FcContacts/>} label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/contact'>Contact Us</Link>}/>
+              <Tab icon={<Link to='/contact'><FcContacts/></Link>} label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/contact'>Contact Us</Link>}/>
             </Tabs>
 
             <Button color='secondary' aria-controls='simple-menu' aria-haspopup={true} onClick={handleMenuOpen} className={classes.accountButton} variant='contained'><p className='nameOfUser'>Menu</p></Button>
@@ -151,9 +151,9 @@ const Header = () => {
  : console.log('null')}
  {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/customers'>Customers</Link>}/>
  : console.log('null')}
- <Tab icon={<FcContacts className={classes.smallerIcon} />} label={<NavLink to="/contact" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Contact Us</NavLink>}/>
- <Tab icon={<FaShoppingBasket className={classes.smallerIcon}/> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />
- <Tab icon={<RiShoppingBag2Fill className={classes.smallerIcon} /> } label={<NavLink to={`/users/${user.user.id}/orders`} style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Orders</NavLink>} />
+ <Tab icon={<Link to='/contact'><FcContacts className={classes.smallerIcon} /></Link>} label={<NavLink to="/contact" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Contact Us</NavLink>}/>
+ <Tab icon={<Link to='/products'><FaShoppingBasket className={classes.smallerIcon}/></Link> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />
+ <Tab icon={<NavLink to={`/users/${user.user.id}/orders`}><RiShoppingBag2Fill className={classes.smallerIcon} /></NavLink> } label={<NavLink to={`/users/${user.user.id}/orders`} style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Orders</NavLink>} />
 
             </Tabs>
             <Button color='secondary' aria-controls='simple-menu' aria-haspopup={true} onClick={handleMenuOpen} className={classes.accountButton} variant='contained'><p className='nameOfUser'>{user.user.name}</p></Button>

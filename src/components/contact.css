@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-.formik {
+.formiks {
     width: 40%;
     padding: 20px;
     border-radius: 20px;
@@ -21,6 +21,11 @@
     line-height: 30px
 }
 
+.contactButton {
+  background: green;
+  color: #ffffff;
+}
+
 .socialHandles a, p {
     cursor:pointer;
     font-size: 18px;
@@ -29,7 +34,7 @@
 }
 
 @media only screen and (max-width: 768px){
-  .formik {
+  .formiks {
       width: 100%;
   }
 }

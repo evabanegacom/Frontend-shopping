@@ -25,7 +25,7 @@ const Contact = () => {
         }}
       >
         {(formikProps) => (
-          <Paper className='formik' elevation={10}>
+          <Paper className='formiks' elevation={10}>
           <div>Send us a message</div>
           <form onSubmit={formikProps.handleSubmit}>
             <TextField
@@ -79,7 +79,7 @@ const Contact = () => {
 
             <p>{formikProps.touched.message && formikProps.errors.message}</p>
             
-            <Button className='signUpButton' type='submit' fullWidth onClick={formikProps.handleSubmit}>Contact Us</Button>
+            <Button className='contactButton' type='submit' fullWidth onClick={formikProps.handleSubmit}>Contact Us</Button>
           </form>
           </Paper>
         )}
