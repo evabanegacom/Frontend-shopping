@@ -14,7 +14,7 @@ const Contact = () => {
       })
     return (
         <div className='contactPage'>
-          <div style={{ textAlign: 'center', marginTop: '20px'}}><p>For inquiries, complaints and orders cancellation contact us through any of the options below</p></div>
+          <div style={{ textAlign: 'center', marginTop: '20px'}}><p>For inquiries, complaints and cancellation of orders, contact us through any of the options below</p></div>
           <div className='contactDiv'>
       <Formik
         initialValues={{ name: "", email: "", message: "" }}
@@ -26,7 +26,6 @@ const Contact = () => {
       >
         {(formikProps) => (
           <Paper className='formik' elevation={10}>
-            <h2>Contact</h2>
           <div>Send us a message</div>
           <form onSubmit={formikProps.handleSubmit}>
             <TextField
@@ -86,7 +85,25 @@ const Contact = () => {
         )}
       </Formik>
     </div>
-    <p>email</p>
+    <div style={{ textAlign: 'center', marginTop: '20px', fontWeight: 700}}><p>Address</p></div>
+    <div style={{ textAlign: 'center', marginTop: '10px', lineHeight: '30px'}}>
+      <p>State: Lagos</p>
+      <p>City: Amuwo-Odofin</p>
+      <p>Zip/Postal - 102262</p>
+      <p>Street: lawal street</p>
+    </div>
+
+    <div style={{ textAlign: 'center', marginTop: '20px', fontWeight: 700}}><p>Email Us</p></div>
+    <div style={{ textAlign: 'center', marginTop: '10px'}}>
+    <a style={{textDecoration: 'none', color: 'black', cursor:'pointer', fontSize: '18px'}} href="mailto:udegbue69@gmail.com">udegbue69@gmail.com</a>
+    </div>
+    <div style={{ textAlign: 'center', marginTop: '20px', fontWeight: 700}}><p>Social Handles</p></div>
+    <div className='socialHandles'>
+        <p>Facebook&nbsp; &nbsp;<a href='https://github.com/evabanegacom'><i class="fab fa-github"></i></a></p>
+        <p>Twitter &nbsp; &nbsp;<a href='https://www.linkedin.com/in/precious-udegbue/'><i class="fab fa-linkedin"></i></a></p>
+        <p>Whatsapp &nbsp; &nbsp;<a href='https://www.loom.com/share/78fd35d5aa26447a9e6818be50bc9c76'><i class="fab fa-youtube"></i></a></p>
+        <p>Youtube &nbsp; &nbsp;<a href='https://twitter.com/precious_bones'><i class="fab fa-twitter"></i></a></p>
+    </div>
         </div>
     )
 }
