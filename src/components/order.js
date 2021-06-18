@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { getOrders, autoLogin, getProducts, deleteOrder } from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromOrder } from '../actions/actions';

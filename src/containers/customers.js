@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { customers, autoLogin, getOrders } from '../actions/actions';
+import { customers, getOrders } from '../actions/actions';
+import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core';
+import './customer.css';
 
 const Customers = () => {
     const [search, setSearch ] = useState('')
@@ -24,39 +26,41 @@ const handleSearches = (event) => {
   )
 }
 
-console.log(userId(3).length)
-
-
     return (
-        <div>
-          <div className='inputDiv'>
+        <div className='mainContent'>
+          <div className='searchDiv'>
                 <input
           type="text"
           placeholder="search..."
           onChange={handleSearches}
           
         /></div>
+         <div className='customerInfo'>
           {theCustomers.length && theCustomers.filter((customer) =>{
               if(search === ''){
               return theCustomers.map((customer) => (
-                  <div key={customer.id}>
-                  <p>{customer.name}</p>
-                  <p>{customer.email}</p>
-                  <p>{customer.phone}</p>
-                  <p>orders: {userId(customer.id).length}</p>
+                  <div className='info' key={customer.id}>
+                  <p>Name: &nbsp;{customer.name}</p>
+                  <p>Email: &nbsp;{customer.email}</p>
+                  <p>Number: &nbsp;{customer.phone}</p>
+                  <p>Orders: &nbsp;{userId(customer.id).length}</p>
               </div>
               ))
               }else if(customer.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                   return customer
               }
           }). map((customer) => (
-              <div key={customer.id}>
-                  <p>{customer.name}</p>
-                  {/* <p>{customer.email}</p> */}
-                  <p>orders: &nbsp;{userId(customer.id).length}</p>
+            <Paper elevation={10} className='info'>
+              <div>
+                  <p>Name: &nbsp;{customer.name}</p>
+                  <p>Email: &nbsp;{customer.email}</p>
+                  <p>Number: &nbsp;{customer.phone}</p>
+                  <p>Orders: &nbsp;{userId(customer.id).length}</p>
               </div>
+              </Paper>
           ))
           }
+          </div>
         </div>
     )
 }

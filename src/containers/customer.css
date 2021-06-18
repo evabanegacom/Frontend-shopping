@@ -1,0 +1,24 @@
+.mainContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.searchDiv {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.customerInfo {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info {
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
