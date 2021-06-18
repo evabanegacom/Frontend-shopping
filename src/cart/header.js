@@ -117,7 +117,7 @@ const Header = () => {
 
               <Tab icon={<FiBookOpen/> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/login'>Login</Link>}/>
 
-              <Tab icon={<FcContacts/>} label='Contact'/>
+              <Tab icon={<FcContacts/>} label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/contact'>Contact Us</Link>}/>
             </Tabs>
 
             <Button color='secondary' aria-controls='simple-menu' aria-haspopup={true} onClick={handleMenuOpen} className={classes.accountButton} variant='contained'><p className='nameOfUser'>Menu</p></Button>

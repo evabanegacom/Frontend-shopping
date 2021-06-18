@@ -1,6 +1,7 @@
 .mainContent{
     display: flex;
     flex-direction: column;
+    background: rgb(15, 61, 61);
 }
 
 .searchDiv {
@@ -8,6 +9,12 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.searchDiv input {
+  width: 40%;
+  height: 35px;
+  border-radius: 10px;
 }
 
 .customerInfo {
@@ -21,4 +28,14 @@
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 600px){
+  .info {
+    width: 95%;
+  }
+
+  .searchDiv input {
+    width: 90%;
+  }
 }

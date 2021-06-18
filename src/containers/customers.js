@@ -40,7 +40,7 @@ const handleSearches = (event) => {
               if(search === ''){
               return theCustomers.map((customer) => (
                   <div className='info' key={customer.id}>
-                  <p>Name: &nbsp;{customer.name}</p>
+                  <p style={{fontWeight: 700}}>Name: &nbsp;{customer.name}</p>
                   <p>Email: &nbsp;{customer.email}</p>
                   <p>Number: &nbsp;{customer.phone}</p>
                   <p>Orders: &nbsp;{userId(customer.id).length}</p>
@@ -52,7 +52,7 @@ const handleSearches = (event) => {
           }). map((customer) => (
             <Paper elevation={10} className='info'>
               <div>
-                  <p>Name: &nbsp;{customer.name}</p>
+                  <p style={{fontWeight: 700}}>Name: &nbsp;{customer.name}</p>
                   <p>Email: &nbsp;{customer.email}</p>
                   <p>Number: &nbsp;{customer.phone}</p>
                   <p>Orders: &nbsp;{userId(customer.id).length}</p>
