@@ -6,8 +6,9 @@ import * as yup from 'yup';
 import { fetchUser } from '../actions/actions';
 import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { makeStyles } from '@material-ui/core';
+
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import 'react-notifications/lib/notifications.css';
 import {
    NotificationContainer,
@@ -19,7 +20,14 @@ const reviewSchema = yup.object().shape({
   password: yup.string().required().min(6),
 })
 
+const useStyles = makeStyles(theme => ({
+  font: {
+    color: 'white'
+  }
+}))
+
 function Login(props ) {
+  const classes = makeStyles()
   const dispatch = useDispatch();
   const addUser = user => dispatch(fetchUser(user));
   const user = useSelector((state) => state.user);
@@ -41,7 +49,7 @@ function Login(props ) {
   const gridStyle = { display: 'flex', alignItems:'center', justifyContent: 'center' }
     const paperStyle = { marginTop: '50px', marginBottom: '50px', background: 'transparent', padding: 20, height: '70vh', width: 280, borderRadius: '20px'}
     const avatarStyle = { backgroundColor: '#264e0cf5' }
-    const textMargin = { marginTop: '20px', color: 'cyan', fontWeight:'bold', borderRadius: '10px'}
+    const textMargin = { marginTop: '20px', fontWeight:'bold', borderRadius: '10px'}
     const inputMargin = { marginTop: '5px', color: 'white', fontWeight:'bold'}
 
     const btnStyle = { margin: '8px 0'}
@@ -60,10 +68,11 @@ function Login(props ) {
           <Paper elevation={10} style={paperStyle}>
           <Grid align='center'>
                 <Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar>
-                <h2>Log In</h2>
+                <h2 style={{color: '#ffffff', marginTop: '10px'}}>Log In</h2>
               </Grid>
           <form onSubmit={formikProps.handleSubmit} style={{ textAlign: 'center'}}>
             <TextField
+              className={classes.font}
               placeholder="enter email"
               onChange={formikProps.handleChange("email")}
               value={formikProps.values.email}
@@ -71,7 +80,16 @@ function Login(props ) {
               label='Email'
               fullWidth
               required
+              className='inputText'
               style={textMargin}
+              InputLabelProps={{
+      style: { color: '#ffffff'} 
+   }}
+
+   InputProps ={{
+     style: {color: '#ffffff'}
+   }}
+             
               
               onBlur={formikProps.handleBlur('email')}
             />
@@ -87,13 +105,18 @@ function Login(props ) {
               fullWidth
               required
               style={textMargin}
+              InputLabelProps={{
+      style: { color: '#ffffff', className: classes.font} 
+   }}
 
+   InputProps ={{
+     style: {color: '#ffffff'}
+   }}
               onBlur={formikProps.handleBlur('password')}
             />
             <i onClick={togglePasswordVisiblity} class="fas fa-eye"></i>
 
             <p>{formikProps.touched.password && formikProps.errors.password}</p>
-            <FormControlLabel style={textMargin} control={<Checkbox color='primary'/>} label="Remember me" />
             <Button type='submit' color='primary' style={btnStyle} variant='contained' fullWidth>Sign In</Button>
             <Typography style={inputMargin}> 
             Don't have an account?

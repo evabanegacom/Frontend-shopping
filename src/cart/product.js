@@ -28,7 +28,7 @@ const Product = (props) => {
     const dispatch = useDispatch();
     const handleAdd = product => {
         dispatch(addToCart(product))
-        NotificationManager.success('Item add to cart', 'success', 3000);
+        NotificationManager.success('Item added to cart', 'success', 3000);
     }
     const [productModal, setProductModal] = useState(null)
     const openModal =  (products) => {
@@ -48,6 +48,11 @@ const Product = (props) => {
       cardButtons: {
         display: 'flex',
         justifyContent: 'space-around',
+      },
+
+      cartColor: {
+        background: '#003049',
+        color: '#ffffff',
       },
 
       colorIcon: {
@@ -91,7 +96,7 @@ const Product = (props) => {
           ${product.price}
         </Button>
         <Button size="small" onClick={() => handleAdd(product)} color="primary">
-          <AddShoppingCart />
+          <AddShoppingCart className={classes.cartColor}/>
         </Button>
       </CardActions>
     </Card>

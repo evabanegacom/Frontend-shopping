@@ -29,7 +29,7 @@ useEffect(() => {
 
   const addingToCart = product => {
    dispatch(addToCart(product))
-   NotificationManager.success('Item add to cart', 'success', 2000);
+   NotificationManager.success('Item added to cart', 'success', 2000);
   }
 
   const userId = orders.length && orders.filter(

@@ -37,21 +37,21 @@ class Basket extends Component {
       let addressError = '';
       let phoneError = '';
       let emailError = '';
-      if(name.length < 5){
+      if(name.length < 8){
         nameError = 'please input full name'
         console.log(nameError)
       }
 
-      if(email.length < 5){
+      if(email.length < 10){
         emailError = 'please input email'
       }
 
-      if(address.length < 5){
-        addressError = 'please input full name'
+      if(address.length < 20){
+        addressError = 'please input full Address'
       }
 
-      if(phone.length < 5){
-        phoneError = 'please input full name'
+      if(phone.length < 11){
+        phoneError = 'please input correct phone number'
       }
 
       if (emailError || nameError || phoneError || addressError) {
@@ -270,19 +270,19 @@ class Basket extends Component {
                     
                          
                           <TextField id='inputemail' name='email' fullWidth type='email' label='Email' required onChange={this.handleInput} />
-                          <p>{emailError}</p>
+                          <p style={{color: 'red'}}>{emailError}</p>
                           
                           <TextField id='inputname' name='name' type='text' fullWidth label='Name' required onChange={this.handleInput} />
                           <p style={{color: 'red'}}>{nameError}</p>
                      
                          
                           <TextField id='inputAddress' multiline fullWidth name='address' type='text' label='Address' required onChange={this.handleInput} />
-                          <p>{addressError}</p>
+                          <p style={{color: 'red'}}>{addressError}</p>
 
                       
                           
                           <TextField id='inputphone' fullWidth name='phone' type='text' label='Phone' required onChange={this.handleInput} />
-                          <p>{phoneError}</p>
+                          <p style={{color: 'red'}}>{phoneError}</p>
 
                       
                       <Button fullWidth color='secondary' onClick={() => {this.setState({showCheckout: false})}}>Cancel</Button>

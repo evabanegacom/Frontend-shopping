@@ -21,13 +21,13 @@
 }
 
 .loginBackground {
-  background: url('./images/bg-2.jpg') no-repeat;
+  background: url('./images/login.jpg') no-repeat;
   background-size: cover;
 }
 
-.textInput {
-  margin-top: 20px;
-  border: 1px solid red;
+.loginBackground p {
+  color: red;
+  font-weight: 700;
 }
 
 .companyLogo {
@@ -43,6 +43,11 @@
   position: relative;
   top: -25px;
   left: 80px;
+  color: #ffffff;
+}
+
+.inputText {
+  color: #ffffff;
 }
 
 
