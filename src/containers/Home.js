@@ -21,7 +21,7 @@ const Home = () => {
           <h1>Ejovial Electronics</h1>
         </div>
         <div>
-          <img src={image} alt='' />
+          {/* <img src={image} alt='' /> */}
         </div>
         </div>
     )

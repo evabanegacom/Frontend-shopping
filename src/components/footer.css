@@ -1,5 +1,5 @@
 .footer {
-    background: rgb(12, 12, 46);
+background: rgb(12, 12, 46);
 min-height: calc(100vh - 500px);
 display: flex;
 justify-content: center;
@@ -15,12 +15,14 @@ flex-direction: column;
   justify-content: space-between;
   width: 50%;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .contactIcons img {
   width: 50px;
   height: 50px;
+  margin-top: 10px;
+
 }
 
 .contactNumber {
@@ -44,14 +46,14 @@ flex-direction: column;
     font-weight: bolder;
 }
 
-@-webkit-keyframes glow {
-    from {
-      color: #fff;
-      text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 90px #00fff2;
-    }
-  
-    to {
-      color: gray;
-      text-shadow: 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 80px #00fff2, 0 1 90px #00fff2;
-    }
+@media only screen and (max-width: 768px){
+  .contactIcons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
   }
+
+  .contactIcons img {
+    margin-top: 10px;
+  }
+}

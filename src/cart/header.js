@@ -7,7 +7,7 @@ Menu, MenuList, MenuItem, makeStyles, Paper } from "@material-ui/core";
 import { NavLink, useHistory } from "react-router-dom";
 import { GiBookAura } from 'react-icons/gi';
 import { FiBookOpen } from 'react-icons/fi';
-import { BiLogOut } from 'react-icons/bi';
+import { BiLogOut, BiLogIn } from 'react-icons/bi';
 import { FcContacts, FcPlus } from 'react-icons/fc';
 import { FaShoppingBasket } from 'react-icons/fa';
 import { RiShoppingBag2Fill, RiAccountCircleLine } from 'react-icons/ri'
@@ -115,7 +115,7 @@ const Header = () => {
               <Tabs onChange={handleClickTab} indicatorColor='secondary' value={value}>
               <Tab icon={<Link to='/SignUp'><RiAccountCircleLine className={classes.smallerIcon}/></Link> } disableRipple label={<Link style={{ textDecoration: 'none', color: 'white', cursor: 'pointer'}} to='/SignUp'>SignUp</Link>} />
 
-              <Tab icon={<Link to='/login'><FiBookOpen/></Link> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/login'>Login</Link>}/>
+              <Tab icon={<Link to='/login'><BiLogIn className={classes.smallerIcon} /></Link> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/login'>Login</Link>}/>
 
               <Tab icon={<Link to='/contact'><FcContacts/></Link>} label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/contact'>Contact Us</Link>}/>
             </Tabs>
