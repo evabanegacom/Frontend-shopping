@@ -1,16 +1,26 @@
 import React from "react";
 import "./footer.css";
+import samsung from '../images/samsung.jpeg';
+import hisense from '../images/hisense.jpeg';
+import syinx from '../images/syinx.jpeg';
+import midea from '../images/midea.jpeg';
+import scanfrost from '../images/scanfrost.jpeg';
+import bruhm from '../images/bruhm.jpeg';
+import binatone from '../images/binatone.jpeg';
 
 const Footer = () => {
   return (
     <footer className='footer'>
       <div className='footerDiv'>
-      <h2>Contact us</h2>
+      <h2>Brands</h2>
        <div className='contactIcons'>
-        <p><a href='https://github.com/evabanegacom'><i class="fab fa-github"></i></a></p>
-        <p><a href='https://www.linkedin.com/in/precious-udegbue/'><i class="fab fa-linkedin"></i></a></p>
-        <p><a href='https://www.loom.com/share/78fd35d5aa26447a9e6818be50bc9c76'><i class="fab fa-youtube"></i></a></p>
-        <p><a href='https://twitter.com/precious_bones'><i class="fab fa-twitter"></i></a></p>
+        <img src={samsung} alt='samsung' />
+        <img src={hisense} alt='hisense' />
+        <img src={syinx} alt='syinx' />
+        <img src={midea} alt='midea' />
+        <img src={scanfrost} alt='scanfrost' />
+        <img src={bruhm} alt='bruhm' />
+        <img src={binatone} alt='binatone' />
         </div>
         <div className='contactNumber'>
         <p>Call us at +2348064129038</p><br />
