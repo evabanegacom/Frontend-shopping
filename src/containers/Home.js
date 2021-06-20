@@ -15,10 +15,10 @@ const Home = () => {
 
   return (
     <div className="homepage">
-        <div style={{ textAlign: "center", marginTop: '10px' }}>
-          <h1>Ejovial Electronics</h1>
+        <div style={{ textAlign: "center", marginTop: '10px', background: 'black' }}>
+          <h1 style={{ color: 'white'}}>Ejovial Electronics</h1>
           <br/>
-          <p>home of the finest electronics appliances buy now</p>
+          <p className='homeText'>home of the finest electronic appliances buy now</p>
         </div>
       <div className='homeContent'>
         <div className="caption">
