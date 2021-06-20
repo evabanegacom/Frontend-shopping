@@ -34,6 +34,10 @@
    
 }
 
+.addButton {
+    margin-top: 10px;
+}
+
 .contentForm {
     width: 40%;
 }

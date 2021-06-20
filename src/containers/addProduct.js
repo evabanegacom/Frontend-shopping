@@ -140,7 +140,7 @@ class AddProduct extends Component {
                 <option value="BestDeals">BestDeals</option>
               </select>
             </label>
-            <Button fullWidth type="submit" className="btn pink lighten-1 z-depth-0">
+            <Button variant="contained" className='addButton' color='primary' fullWidth type="submit" >
               Add Product
             </Button>
                </form>
