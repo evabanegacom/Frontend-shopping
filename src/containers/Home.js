@@ -3,7 +3,7 @@ import { autoLogin } from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import "./home.css";
 import electronic from '../images/electronic.png';
-import ladyImage from '../images/new-bg.png';
+import ladyImage from '../images/slazer.png';
 
 const Home = () => {
   const dispatch = useDispatch();
