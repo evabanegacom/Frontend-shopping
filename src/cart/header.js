@@ -7,6 +7,7 @@ Menu, MenuList, MenuItem, makeStyles, Paper } from "@material-ui/core";
 import { NavLink, useHistory } from "react-router-dom";
 import { GiBookAura } from 'react-icons/gi';
 import { FiBookOpen } from 'react-icons/fi';
+import { BsPeopleFill } from 'react-icons/bs';
 import { BiLogOut, BiLogIn } from 'react-icons/bi';
 import { FcContacts, FcPlus } from 'react-icons/fc';
 import { FaShoppingBasket } from 'react-icons/fa';
@@ -36,19 +37,15 @@ const Header = () => {
       fontSize: '1.4rem',
     },
 
-    iconLogo: {
-      color: 'yellow',
-      fontSize: '3rem',
-    },
-
     visual: {
       width: '100%',
       paddingLeft: 0,
     },
 
     smallerIcon: {
-      color: 'yellow',
+      color: '#ffffff',
       fontSize: '20px',
+      fontWeight: 700,
     },
 
     logout: {
@@ -149,7 +146,7 @@ const Header = () => {
 
             {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/ejovial'>Add Product</Link>}/>
  : console.log('null')}
- {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/customers'>Customers</Link>}/>
+ {user.user.admin === true ? <Tab icon={<BsPeopleFill style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/customers'>Customers</Link>}/>
  : console.log('null')}
  <Tab icon={<Link to='/contact'><FcContacts className={classes.smallerIcon} /></Link>} label={<NavLink to="/contact" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Contact Us</NavLink>}/>
  <Tab icon={<Link to='/products'><FaShoppingBasket className={classes.smallerIcon}/></Link> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />

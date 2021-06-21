@@ -13,7 +13,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-const Products = () => {
+const Products = (props) => {
   const classes = useStyles();
     const dispatch = useDispatch();
     // const storage = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
@@ -28,6 +28,7 @@ const Products = () => {
     const offset = currentPage * PER_PAGE;
     const [ cartItems, setCartItems ] = useState('')
     const pageCount = Math.ceil(data.length / PER_PAGE);
+    const user = useSelector((state) => state.user)
 
     useEffect (function effectFunction() {
       fetch('https://neptune-spear.herokuapp.com/api/v1/products', {
@@ -137,6 +138,8 @@ const Products = () => {
         setCurrentPage(selectedPage)
         setSearch('')
       }
+
+      user.loggedIn === false && props.history.push('/login')
 
     return (
         <Box component='div' display='flex' flexDirection='column'>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import { Formik } from "formik";
 import * as yup from 'yup';
 import { signUserUp } from '../actions/actions';
@@ -25,9 +26,12 @@ const reviewSchema = yup.object().shape({
 export default function SignUp(props) {
   const avatarStyle = { backgroundColor: '#264e0cf5' }
   const dispatch = useDispatch();
+  const inputMargin = { marginTop: '5px', color: 'black', fontWeight:'bold'}
+
   const addUser = user => dispatch(signUserUp(user));
   const user = useSelector((state) => state.user);
-  user.loggedIn === true ? props.history.push('/') : console.log('cool')
+  user.loggedIn === true && props.history.push('/')
+
   return (
     <div className='signUpDiv'>
       <Formik
@@ -106,6 +110,13 @@ export default function SignUp(props) {
             <p>{formikProps.touched.password_confirmation && formikProps.errors.password_confirmation}</p>
 
             <Button className='signUpButton' type='submit' fullWidth onClick={formikProps.handleSubmit}>Create Account</Button>
+            <Typography style={inputMargin}> 
+            Already have an account?
+            </Typography>
+
+            <Typography style={inputMargin}> 
+            <Link style={{ textDecoration: 'none', color: 'blue', fontWeight:'bold'}} to="/login" color="inherit">Login</Link>
+            </Typography>
           </form>
           </Paper>
         )}

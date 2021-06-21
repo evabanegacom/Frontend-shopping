@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { fetchUser } from '../actions/actions';
 import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core';
@@ -45,7 +45,9 @@ function Login(props ) {
     }, 2000);
   }, [JSON.stringify(user)])
 
-  user.loggedIn === true ? props.history.push('/') : console.log('cool')
+  // user.loggedIn === true ? props.history.push('/') : console.log('cool')
+  user.loggedIn === true && props.history.push('/')
+
   const gridStyle = { display: 'flex', alignItems:'center', justifyContent: 'center' }
     const paperStyle = { marginTop: '50px', marginBottom: '50px', background: 'transparent', padding: 20, height: '70vh', width: 280, borderRadius: '20px'}
     const avatarStyle = { backgroundColor: '#264e0cf5' }

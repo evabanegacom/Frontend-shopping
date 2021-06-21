@@ -52,6 +52,8 @@ useEffect(() => {
 //   })
 // })
 
+user.loggedIn === false && props.history.push('/login')
+
   return (
     <div className='theOrderDiv'>
 
