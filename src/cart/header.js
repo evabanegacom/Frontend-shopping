@@ -142,12 +142,10 @@ const Header = () => {
                     </Badge>
                   </IconButton>
           <Tabs onChange={handleClickTab} indicatorColor='secondary' value={value}>
-          <Tab icon={<BiLogOut className={classes.logout}/> } label={<NavLink onClick={handleClick} to="/" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Logout</NavLink>} />
+          <Tab icon={<Link onClick={handleClick} to='/'><BiLogOut className={classes.logout} /></Link> } label={<NavLink onClick={handleClick} to="/" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Logout</NavLink>} />
 
-            {user.user.admin === true ? <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/ejovial'>Add Product</Link>}/>
- : console.log('null')}
- {user.user.admin === true ? <Tab icon={<BsPeopleFill style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/customers'>Customers</Link>}/>
- : console.log('null')}
+            {user.user.admin === true && <Tab icon={<FcPlus style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/ejovial'>Add Product</Link>}/>}
+ {user.user.admin === true && <Tab icon={<BsPeopleFill style={{ fontSize: '25px', fontWeight: 700}}/> } label={<Link style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} to='/customers'>Customers</Link>}/>}
  <Tab icon={<Link to='/contact'><FcContacts className={classes.smallerIcon} /></Link>} label={<NavLink to="/contact" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Contact Us</NavLink>}/>
  <Tab icon={<Link to='/products'><FaShoppingBasket className={classes.smallerIcon}/></Link> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />
  <Tab icon={<NavLink to={`/users/${user.user.id}/orders`}><RiShoppingBag2Fill className={classes.smallerIcon} /></NavLink> } label={<NavLink to={`/users/${user.user.id}/orders`} style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Orders</NavLink>} />
@@ -176,12 +174,12 @@ const Header = () => {
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/contact'>Contact Us</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to={`/users/${user.user.id}/orders`}>Orders</Link></MenuItem>
         <MenuItem><Link onClick={handleClick} style={{textDecoration: 'none', color: 'green'}} to='/'>Logout</Link></MenuItem>
-        {user.user.admin === true ? 
+        {user.user.admin === true && 
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/ejovial'>Add Products</Link></MenuItem>
-        : console.log('null')}
-        {user.user.admin === true ? 
+        }
+        {user.user.admin === true && 
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/customers'>Customers</Link></MenuItem>
-        : console.log('null')}
+        }
         </Menu>
         }
 

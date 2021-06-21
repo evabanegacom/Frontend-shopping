@@ -4,6 +4,11 @@ import emailjs from 'emailjs-com';
 import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core';
 import { Formik } from "formik";
 import * as yup from 'yup';
+import 'react-notifications/lib/notifications.css';
+import {
+   NotificationContainer,
+   NotificationManager,
+ } from 'react-notifications';
 
 const reviewSchema = yup.object().shape({
   name: yup.string().required().min(4),
@@ -35,12 +40,13 @@ const Contact = () => {
         onSubmit={(values, actions) => {
           console.log(values)
           sendEmail(values)
+          NotificationManager.success('We will respond shortly', 'Message sent!', 5000);
           actions.resetForm();
         }}
       >
         {(formikProps) => (
           <Paper className='formiks' elevation={10}>
-          <h4>Send us a message</h4>
+          <h4>Send a message</h4>
           <form onSubmit={formikProps.handleSubmit}>
             <TextField
               placeholder="Name"
@@ -99,6 +105,8 @@ const Contact = () => {
             
             <Button className='contactButton' type='submit' fullWidth onClick={formikProps.handleSubmit}>Contact Us</Button>
           </form>
+          <NotificationContainer /> 
+
           </Paper>
         )}
       </Formik>
@@ -117,10 +125,10 @@ const Contact = () => {
     </div>
     <div style={{ textAlign: 'center', marginTop: '20px', fontWeight: 700}}><p>Social Handles</p></div>
     <div className='socialHandles'>
-        <p>Facebook&nbsp; &nbsp;<a href='https://github.com/evabanegacom'><i class="fab fa-github"></i></a></p>
-        <p>Twitter &nbsp; &nbsp;<a href='https://www.linkedin.com/in/precious-udegbue/'><i class="fab fa-linkedin"></i></a></p>
-        <p>Whatsapp &nbsp; &nbsp;<a href='https://www.loom.com/share/78fd35d5aa26447a9e6818be50bc9c76'><i class="fab fa-youtube"></i></a></p>
-        <p>Youtube &nbsp; &nbsp;<a href='https://twitter.com/precious_bones'><i class="fab fa-twitter"></i></a></p>
+        <p>Facebook&nbsp; &nbsp;<a href='https://facebook.com/ejovi.akpono'><i style={{ color: 'blue'}} class="fab fa-facebook"></i></a></p>
+        <p>LinkedIn &nbsp; &nbsp;<a href='https://www.linkedin.com/in/precious-udegbue/'><i style={{ color: 'blue'}} class="fab fa-linkedin"></i></a></p>
+        <p>Whatsapp &nbsp;+2348064129038</p>
+        {/* <p>Youtube &nbsp; &nbsp;<a href='https://twitter.com/precious_bones'><i class="fab fa-twitter"></i></a></p> */}
     </div>
         </div>
     )
