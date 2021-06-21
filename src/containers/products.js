@@ -5,7 +5,7 @@ import Filter from '../containers/filter';
 import ReactPaginate from "react-paginate";
 import Basket from '../cart/basket';
 import { Link } from 'react-router-dom'
-import { getProducts } from '../actions/actions';
+import { getProducts, autoLogin } from '../actions/actions';
 import { Box, Grid } from '@material-ui/core';
 import useStyles from './styles';
 import '../containers/filterCss.css';
