@@ -45,9 +45,21 @@ text-align: center;
   color: #ffffff;
 }
 
+@media only screen and (max-width: 768px) and (min-width: 610px){
+  .homeContent {
+    display: flex;
+    flex-direction: column;
+  }
+  .caption img {
+    width: 100%;
+  }
 
+  .forImage {
+    padding-left: 20px;
+  }
+}
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 600px){
   .homeContent {
     display: flex;
     flex-direction: column;

@@ -88,7 +88,7 @@ class AddProduct extends Component {
     render() {
       
       const { products, user, deleteProduct } = this.props
-      user.admin === false ? this.props.history.push('/') : console.log('cool')
+      user.admin === false && this.props.history.push('/')
       const userProducts = products.length && products.filter((product) => (product.user_id) === user.id)
       const ImageThumb = ({ avatar }) => {
         return <img style={{ width: '150px', height: '150px'}} src={URL.createObjectURL(avatar)} alt={avatar.name} />;

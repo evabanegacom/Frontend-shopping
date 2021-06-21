@@ -162,8 +162,7 @@ class Basket extends Component {
   render() {
     const { cartItems, orders, user, secondUser } = this.props;
     const { nameError, emailError, addressError, phoneError } = this.state
-    secondUser.loggedIn === false ? (this.props.history.push('/')) : (console.log('null'))
-    console.log(cartItems)
+    secondUser.loggedIn === false && this.props.history.push('/')
 
     return (
       <div className='basket'>

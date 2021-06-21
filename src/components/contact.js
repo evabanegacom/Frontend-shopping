@@ -128,10 +128,10 @@ const Contact = () => {
         <p>Facebook&nbsp; &nbsp;<a href='https://facebook.com/ejovi.akpono'><i style={{ color: 'blue'}} class="fab fa-facebook"></i></a></p>
         <p>LinkedIn &nbsp; &nbsp;<a href='https://www.linkedin.com/in/precious-udegbue/'><i style={{ color: 'blue'}} class="fab fa-linkedin"></i></a></p>
         <p>Whatsapp &nbsp;+2348064129038</p>
-        <p>Instagram &nbsp; &nbsp;<a href='https://instagram.com/ejovial_concepts'><i id='insta' class="fab fa-instagram"></i></a></p>
+        <p>Instagram &nbsp; &nbsp;<a href='https://instagram.com/Ejovial Electronics'><i id='insta' class="fab fa-instagram"></i></a></p>
     </div>
         </div>
     )
 }
 
-export default Contact
+export default Contact;

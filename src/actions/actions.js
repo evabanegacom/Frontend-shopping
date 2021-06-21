@@ -79,7 +79,7 @@ export const customers = () => async dispatch => {
     },
   })
     .then(res => res.json())
-    .then(data => { console.log(data)
+    .then(data => {
       dispatch(allUsers(data));
     });
 };
