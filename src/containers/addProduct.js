@@ -100,10 +100,10 @@ class AddProduct extends Component {
                  <div className='addProductItem' key={x.id}>
                    <img src={x.avatar.url.replace(/http/g, "https")} alt={x.name} />
                    
-                   <p style={{ color: '#ffffff'}}>{x.name}</p>
-                   <p style={{ color: '#ffffff'}}>{x.price}</p>
-                   <p style={{ color: '#ffffff'}} className='productDesc'>{x.description}</p>
-                   <p style={{ color: '#ffffff'}}>{x.category}</p>
+                   <p style={{ color: 'cyan'}}>{x.name}</p>
+                   <p style={{ color: 'cyan'}}>{x.price}</p>
+                   <p style={{ color: 'cyan'}} className='productDesc'>{x.description}</p>
+                   <p style={{ color: 'cyan'}}>{x.category}</p>
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
                  </div>
                ))}
