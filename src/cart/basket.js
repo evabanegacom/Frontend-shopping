@@ -235,8 +235,8 @@ class Basket extends Component {
                     <img src={item.avatar.url.replace(/http/g, "https")} alt={item.name} />
                   <div style={{ background: 'blue', color: 'white'}}>
                     <div style={{ textAlign: 'center', lineHeight: '20px'}}>
-                    <p><strong>{item.name}</strong></p>
-                    <p>{ item.price} x {item.count}</p>
+                    <p style={{ color: '#ffffff'}}><strong>{item.name}</strong></p>
+                    <p style={{ color: '#ffffff'}}>{ item.price} x {item.count}</p>
                     </div>
                     <div className='cartItemsButtons' style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '10px'}}>
     
