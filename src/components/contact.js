@@ -1,32 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './contact.css';
+import emailjs from 'emailjs-com';
 import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core';
 import { Formik } from "formik";
 import * as yup from 'yup';
 
+const reviewSchema = yup.object().shape({
+  name: yup.string().required().min(4),
+  email: yup.string().required().min(5),
+  phone: yup.string().required().min(11),
+  message: yup.string().required().min(6),
+})
+
 const Contact = () => {
 
-    const reviewSchema = yup.object().shape({
-        name: yup.string().required().min(4),
-        email: yup.string().required().min(5),
-        phone: yup.string().required().min(11),
-        message: yup.string().required().min(6),
-      })
+  const sendEmail = (values) => {
+    
+    emailjs.send('service_ey6p9rp', 'template_l5uaqhh', values, 'user_p6RgQH7YhWPsKwWBkmYPP')
+      .then(result => {
+        console.log(result.text);
+      }, error => {
+        console.log(error.text);
+      });
+
+  }
+
     return (
         <div className='contactPage'>
           <div style={{ textAlign: 'center', marginTop: '20px'}}><p>For inquiries, complaints and cancellation of orders, contact us through any of the options below</p></div>
           <div className='contactDiv'>
       <Formik
-        initialValues={{ name: "", email: "", message: "" }}
+        initialValues={{ name: "", email: "", message: "", phone: '' }}
         validationSchema={reviewSchema}
         onSubmit={(values, actions) => {
           console.log(values)
+          sendEmail(values)
           actions.resetForm();
         }}
       >
         {(formikProps) => (
           <Paper className='formiks' elevation={10}>
-          <div>Send us a message</div>
+          <h4>Send us a message</h4>
           <form onSubmit={formikProps.handleSubmit}>
             <TextField
               placeholder="Name"
@@ -50,6 +64,7 @@ const Contact = () => {
               label='Your Email'
               required
               fullWidth
+
             />
 
             <TextField
@@ -61,6 +76,7 @@ const Contact = () => {
               label='Phone number'
               fullWidth
               required
+              
             />
 
             <p>{formikProps.touched.phone && formikProps.errors.phone}</p>
@@ -75,6 +91,8 @@ const Contact = () => {
               required
               fullWidth
               multiline
+          
+
             />
 
             <p>{formikProps.touched.message && formikProps.errors.message}</p>
