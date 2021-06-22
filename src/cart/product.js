@@ -58,11 +58,14 @@ const Product = (props) => {
       colorIcon: {
         color: '#003049'
       },
+
+      media: {
+        height: "10em",
+        paddingTop: '56.25%', // 16:9,
+      },
     });
 
     const classes = useStyles();
-
-
     return (
         <div>
 
@@ -72,9 +75,10 @@ const Product = (props) => {
       <CardActionArea>
       <Link to={'#' + product.id} onClick={() => openModal(product)}> 
       <CardMedia
-          component="img"
           alt={product.name}
-          height="150"
+          component='img'
+          height='150'
+          // className={classes.media}          
           image={product.avatar.url.replace(/http/g, "https")}
           title={product.name}
         />    </Link>

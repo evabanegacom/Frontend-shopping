@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import "./home.css";
 import electronic from '../images/electronic.png';
-import ladyImage from '../images/slazer.png';
+import ladyImage from '../images/slazzer-edit.png';
 
 const Home = () => {
   const dispatch = useDispatch();
