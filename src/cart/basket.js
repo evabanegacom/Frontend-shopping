@@ -111,7 +111,7 @@ class Basket extends Component {
        business: this.state.email,
        total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
      }
-      emailjs.send('service_ey6p9rp', 'template_l4w8jep', order, 'user_p6RgQH7YhWPsKwWBkmYPP')
+      emailjs.send('service_2m156jc', 'template_7z4u4kw', order, 'user_iS6sElygfR9MxTpzqkM6A')
       .then(result => {
       console.log(result.text);
       }, error => {
@@ -139,7 +139,7 @@ class Basket extends Component {
          business: this.state.email,
          total: Number(this.props.cartItems.reduce((a, c) => (a + c.price*c.count), 0),)
        }
-        emailjs.send('service_ey6p9rp', 'template_l4w8jep', order, 'user_p6RgQH7YhWPsKwWBkmYPP')
+        emailjs.send('service_2m156jc', 'template_7z4u4kw', order, 'user_iS6sElygfR9MxTpzqkM6A')
         .then(result => {
         console.log(result.text);
         }, error => {

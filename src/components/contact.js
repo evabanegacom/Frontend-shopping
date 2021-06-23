@@ -21,7 +21,7 @@ const Contact = () => {
 
   const sendEmail = (values) => {
     
-    emailjs.send('service_ey6p9rp', 'template_l5uaqhh', values, 'user_p6RgQH7YhWPsKwWBkmYPP')
+    emailjs.send('service_2m156jc', 'template_6ed8n4j', values, 'user_iS6sElygfR9MxTpzqkM6A')
       .then(result => {
         console.log(result.text);
       }, error => {
