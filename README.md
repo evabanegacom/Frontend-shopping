@@ -21,7 +21,7 @@ Built with some of the modern technologies including Material UI and Cloudinary
 <br />
 <p align="center">
   <a href="https://github.com/evabanegacom/Frontend-shopping/feature">
-    <img src="images/ejovial-logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/ejovial-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Frontend-shopping</h3>
@@ -66,7 +66,7 @@ To have this app on your pc, you need to:
 # Live Demo
 - (https://stupefied-meitner-9e56b5.netlify.app/)
 
-![Screenshot](images/screenshot-stupefied-meitner-9e56b5.netlify.app-2021.06.24-21_01_19.png)
+![Screenshot](assets/screenshot-stupefied-meitner-9e56b5.netlify.app-2021.06.24-21_01_19.png)
 
 ### Built With
 This project was built using these technologies.
