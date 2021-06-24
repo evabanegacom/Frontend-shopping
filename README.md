@@ -27,7 +27,7 @@ Built with some of the modern technologies including Material UI and Cloudinary
   <h3 align="center">Frontend-shopping</h3>
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+# Table of Contents
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
@@ -36,11 +36,11 @@ Built with some of the modern technologies including Material UI and Cloudinary
 * [License](#license)
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+# About The Project
 
 This is Frontend-shopping created with REACT & REDUX, Redux DevTools 
 <!-- INSTALLATION -->
-## Installation
+# Installation
 
 To have this app on your pc, you need to:
 * have to enable javascript on your browser and a code editor
@@ -68,7 +68,7 @@ To have this app on your pc, you need to:
 
 ![Screenshot](assets/screenshot-stupefied-meitner-9e56b5.netlify.app-2021.06.24-21_01_19.png)
 
-### Built With
+# Built With
 This project was built using these technologies.
 * Html & css
 * Javascript
@@ -81,14 +81,14 @@ This project was built using these technologies.
 * VsCode
 * React & Redux
 <!-- CONTACT -->
-## Contributors
+# Contributors
 
 👤 **Precious**
 
 - GitHub: [@Precious](https://github.com/evabanegacom)
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+# Acknowledgements
 * [Microverse](https://www.microverse.org/)
 * [The Odin Project](https://www.theodinproject.com/)
 * [Gregoire Vella] (https://www.behance.net/gregoirevella) for the design concept..
