@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+<!--
+*** Thanks for checking out this README Template. If you have a suggestion that would
+*** make this better, please fork the repo and create a pull request or simply open
+*** an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+Frontend-shopping -- [React-app]
 
-## Available Scripts
+This is an ecommerce site built for a small start up which has CMS and CRM features as well
+Built with some of the modern technologies including Material UI and Cloudinary
 
-In the project directory, you can run:
+<br />
+<p align="center">
+  <a href="https://github.com/evabanegacom/Frontend-shopping/feature">
+    <img src="images/ejovial-logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-### `yarn start`
+  <h3 align="center">Frontend-shopping</h3>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+* [License](#license)
 
-### `yarn test`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is Frontend-shopping created with REACT & REDUX, Redux DevTools 
+<!-- INSTALLATION -->
+## Installation
 
-### `yarn build`
+To have this app on your pc, you need to:
+* have to enable javascript on your browser and a code editor
+* [download](git@github.com:evabanegacom/Frontend-booking.git) or clone this repo:
+  - Clone with SSH:
+  ```
+    git@github.com:evabanegacom/Frontend-booking.git
+  ```
+  - Clone with HTTPS
+  ```
+    https://github.com/evabanegacom/Frontend-shopping.git
+  ```
+* Open the terminal inside the cloned directory:-
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Start the app with :
+  ```
+  npm start OR yarn start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - Run test with:
+  ```
+  npm test
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Live Demo
+- (https://stupefied-meitner-9e56b5.netlify.app/)
 
-### `yarn eject`
+![Screenshot](images/screenshot-stupefied-meitner-9e56b5.netlify.app-2021.06.24-21_01_19.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Built With
+This project was built using these technologies.
+* Html & css
+* Javascript
+* react
+* Paystack Payment Gateway Integration API
+* EmailJS
+* Bootstrap framework
+* Ruby on Rails RESTful API 
+* eslint
+* VsCode
+* React & Redux
+<!-- CONTACT -->
+## Contributors
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+👤 **Precious**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- GitHub: [@Precious](https://github.com/evabanegacom)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+* [Microverse](https://www.microverse.org/)
+* [The Odin Project](https://www.theodinproject.com/)
+* [Gregoire Vella] (https://www.behance.net/gregoirevella) for the design concept..
