@@ -20,7 +20,7 @@ Built with some of the modern technologies including Material UI and Cloudinary
 
 <br />
 <p align="center">
-  <a href="https://github.com/evabanegacom/Frontend-shopping/feature">
+  <a href="https://github.com/evabanegacom/Frontend-shopping/">
     <img src="assets/ejovial-logo.png" alt="Logo" width="80" height="80">
   </a>
 
