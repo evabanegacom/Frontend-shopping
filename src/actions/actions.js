@@ -10,7 +10,7 @@ const setUser = data => ({
   export const logout = () => ({ type: "LOG_OUT" });
   
   export const signUserUp = (userInfo) => async (dispatch) => {
-    await fetch("http://localhost:3001/api/v1/users", {
+    await fetch("https://neptune-spear.herokuapp.com/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const setUser = data => ({
   // User Authentication
 
 export const fetchUser = (userInfo) => async (dispatch) => {
-    await fetch("http://localhost:3001/api/v1/login", {
+    await fetch("https://neptune-spear.herokuapp.com/api/v1/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const fetchUser = (userInfo) => async (dispatch) => {
 
 // Fetch logged in user
 export const autoLogin = () => async dispatch => {
-  await fetch('http://localhost:3001/api/v1/auto_login', {
+  await fetch('https://neptune-spear.herokuapp.com/api/v1/auto_login', {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -71,7 +71,7 @@ export const allUsers = (data) => ({
 })
 
 export const customers = () => async dispatch => {
-  await fetch('http://localhost:3001/api/v1/users', {
+  await fetch('https://neptune-spear.herokuapp.com/api/v1/users', {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -87,7 +87,7 @@ export const customers = () => async dispatch => {
 // CReating A form for the products
 
 export const postProduct = productInfo => async dispatch => {
-  await axios.post('http://localhost:3001/api/v1/products', productInfo, {
+  await axios.post('https://neptune-spear.herokuapp.com/api/v1/products', productInfo, {
     headers: {
       'content-type': 'multipart/form-data',
       Accept: 'application/json',
@@ -108,7 +108,7 @@ const setProducts = data => ({
 });
 
 export const getProducts = () => async dispatch => {
-  await fetch('http://localhost:3001/api/v1/products', {
+  await fetch('https://neptune-spear.herokuapp.com/api/v1/products', {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -124,7 +124,7 @@ export const getProducts = () => async dispatch => {
 // DELETE PRODUCT
 
 export const deleteProduct = id => async dispatch => {
-  await axios.delete(`http://localhost:3001/api/v1/products/${id}`, {
+  await axios.delete(`https://neptune-spear.herokuapp.com/api/v1/products/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -215,7 +215,7 @@ export const clearOrder = () => dispatch => {
 }
 
 export const postOrder = productInfo => async dispatch => {
-  await axios.post('http://localhost:3001/api/v1/orders', productInfo, {
+  await axios.post('https://neptune-spear.herokuapp.com/api/v1/orders', productInfo, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -237,7 +237,7 @@ const setOrders = data => ({
 })
 
 export const getOrders = () => async dispatch => {
-  await fetch('http://localhost:3001/api/v1/orders', {
+  await fetch('https://neptune-spear.herokuapp.com/api/v1/orders', {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -258,7 +258,7 @@ const removeOrder = (data) => ({
 });
 
 export const deleteOrder = id => async dispatch => {
-  await axios.delete(`http://localhost:3001/api/v1/orders/${id}`, {
+  await axios.delete(`https://neptune-spear.herokuapp.com/api/v1/orders/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
