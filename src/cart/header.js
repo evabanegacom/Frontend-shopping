@@ -105,16 +105,30 @@ const Header = () => {
         <Toolbar>
         {user.loggedIn === false ? (<>
          <Link className='companyLogo' to='/'><img style={{ width: '50px', height: '64x'}} src={ejovialLogo} alt='company logo' /></Link>
-            { isMatch ? (
+            { isMatch ? (<>
+              <IconButton className={classes.cartMargin} component={Link} to='/cart' aria-label='show cart items' color='inherit'>
+                    <Badge badgeContent={cart.length} color='secondary'>
+                      <ShoppingCart />
+                    </Badge>
+                  </IconButton>
               <Button color='secondary' aria-controls='simple-menu' aria-haspopup={true} onClick={handleMenuOpen} className={classes.accountButton} variant='contained'><p className='nameOfUser'>Menu</p></Button>
+              </>
 
             ) : (<>
+              <IconButton className={classes.cartMargin} component={Link} to='/cart' aria-label='show cart items' color='inherit'>
+                    <Badge badgeContent={cart.length} color='secondary'>
+                      <ShoppingCart />
+                    </Badge>
+                  </IconButton>
               <Tabs onChange={handleClickTab} indicatorColor='secondary' value={value}>
               <Tab icon={<Link to='/SignUp'><RiAccountCircleLine className={classes.smallerIcon}/></Link> } disableRipple label={<Link style={{ textDecoration: 'none', color: 'white', cursor: 'pointer'}} to='/SignUp'>SignUp</Link>} />
 
               <Tab icon={<Link to='/login'><BiLogIn className={classes.smallerIcon} /></Link> } label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/login'>Login</Link>}/>
 
               <Tab icon={<Link to='/contact'><FcContacts/></Link>} label={<Link style={{ textDecoration: 'none', color: 'white'}} to='/contact'>Contact Us</Link>}/>
+
+              <Tab icon={<Link to='/products'><FaShoppingBasket className={classes.smallerIcon}/></Link> } label={<NavLink to="/products" style={{ textDecoration: 'none', color: 'white', fontWeight: 700}} >Products</NavLink>} />
+
             </Tabs>
 
             <Button color='secondary' aria-controls='simple-menu' aria-haspopup={true} onClick={handleMenuOpen} className={classes.accountButton} variant='contained'><p className='nameOfUser'>Menu</p></Button>
@@ -163,6 +177,7 @@ const Header = () => {
       <Menu style={{ marginTop: '50px'}} id='simple-menu' anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/'>Home</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/login'>signIn</Link></MenuItem>
+        <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/products'>Products</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/signUp'>SignUp</Link></MenuItem>
         <MenuItem><Link style={{textDecoration: 'none', color: 'green'}} to='/contact'>Contact Us</Link></MenuItem>
       </Menu>

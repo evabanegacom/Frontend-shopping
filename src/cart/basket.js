@@ -162,7 +162,15 @@ class Basket extends Component {
   render() {
     const { cartItems, orders, user, secondUser } = this.props;
     const { nameError, emailError, addressError, phoneError } = this.state
-    secondUser.loggedIn === false && this.props.history.push('/')
+
+    const checkingOut = () => {
+      if(secondUser.loggedIn === false){
+         this.props.history.push('/login')
+      }else{
+        this.setState({showCheckout: true})
+      }
+    }
+    // secondUser.loggedIn === false && this.props.history.push('/')
 
     return (
       <div className='basket'>
@@ -257,7 +265,8 @@ class Basket extends Component {
                   Total: {" "}
                     {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
                 </Button>
-                <Button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</Button>
+                {/* <Button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</Button> */}
+                <Button onClick={checkingOut}>Proceed to checkout</Button>
             </div>
         
         )}

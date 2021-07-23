@@ -139,7 +139,7 @@ const Products = (props) => {
         setSearch('')
       }
 
-      user.loggedIn === false && props.history.push('/login')
+      // user.loggedIn === false && props.history.push('/login')
 
     return (
         <Box component='div' display='flex' flexDirection='column'>
