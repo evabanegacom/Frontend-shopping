@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import { ThemeProvider } from '@material-ui/core'
 import theme from './utils/theme';
 import Loading from './components/loader';
+import HomeTheatre from './categories/homeTheatre';
 
 const Login = lazy(() => import('./components/login'));
 const SignUp = lazy(() => import('./components/signUp'));
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/users/:id/orders" component={Order} />
         <Route exact path="/customers" component={Customers} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/home-theatre" component={HomeTheatre} />
       </Switch>
       <Footer />
     </Suspense>

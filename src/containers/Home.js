@@ -77,6 +77,25 @@ const Home = () => {
                 <div key={product.id}>
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
+                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">See More</Button></p>
+                </div>
+                </Paper>
+              )
+            )
+          )}
+      </div>
+
+      <div className='labels'>
+        Televisions
+      </div>
+      <div className='homeTheatre'>
+      {sliced && sliced.length && (
+            sliced.slice(0, Number(4)).map((product) => 
+               (
+               <Paper elevation={10} className='homeTheatreItem'>
+                <div key={product.id}>
+                <p>{product.name}</p>
+                <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 <p className='categoryText'><Button component={Link} to='/products' variant='contained' color="primary">See More</Button></p>
                 </div>
                 </Paper>
