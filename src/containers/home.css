@@ -61,6 +61,52 @@ text-align: center;
   height: 400px;
 }
 
+.labels {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #ffffff;
+  background: green;
+  font-weight: bolder;
+}
+
+.homeTheatre {
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.homeTheatreItem {
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.homeTheatreItem div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.homeTheatreItem div p{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.homeTheatre img{
+  height: 150px;
+  width: 200px;
+}
+
+.categoryText {
+  margin-top: 10px;
+  background: #003049;
+}
+
 @media only screen and (max-width: 768px) and (min-width: 610px){
   .homeContent {
     display: flex;
@@ -77,6 +123,14 @@ text-align: center;
   .carouselItem img {
     height: 300px;
   }
+
+  .homeTheatreItem {
+    width: 45%;
+  }
+
+  .homeTheatre img{
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 600px){
@@ -89,7 +143,6 @@ text-align: center;
     margin: 0;
     width: 100%;
   }
-
   
   .forImage {
     width: 100%;
@@ -102,6 +155,10 @@ text-align: center;
 
   .carouselItem img {
     height: 150px;
+  }
+
+  .homeTheatre img {
+    width: 100%;
   }
   
 }
