@@ -35,7 +35,7 @@ const Products = (props) => {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          // Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
           .then(response => response.json())
@@ -164,14 +164,14 @@ const Products = (props) => {
         <Slider className='slider' {...settings}>
           {data && data.length && (
             data.map((product) => {
-              return product.category === 'BestDeals' ? (
+              return product.category === 'BestDeals' && (
                
                 <div className='carouselItem'>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 
                 </div>
                 
-              ) : (console.log('no item'))
+              )
             })
           )}
           </Slider>
