@@ -49,7 +49,7 @@ function Login(props ) {
   user.loggedIn === true && props.history.push('/')
 
   const gridStyle = { display: 'flex', alignItems:'center', justifyContent: 'center' }
-    const paperStyle = { marginTop: '50px', marginBottom: '50px', background: 'transparent', padding: 20, height: '70vh', width: 280, borderRadius: '20px'}
+    const paperStyle = { marginTop: '50px', marginBottom: '50px', background: 'transparent', padding: 20,  width: 280, borderRadius: '20px'}
     const avatarStyle = { backgroundColor: '#264e0cf5' }
     const textMargin = { marginTop: '20px', fontWeight:'bold', borderRadius: '10px'}
     const inputMargin = { marginTop: '5px', color: 'white', fontWeight:'bold'}

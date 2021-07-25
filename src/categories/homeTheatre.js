@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const HomeTheatre = () => {
     return (
         <div>
-            for hometheartre
+            for homethearter
         </div>
     )
 }

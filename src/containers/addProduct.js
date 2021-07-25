@@ -131,12 +131,12 @@ class AddProduct extends Component {
               <select className="favCity" value={this.state.category} onChange={this.handleChange}>
                 {' '}
                 <option value="CATEGORY">Select</option>
-                <option value="Sports">Sports</option>
-                <option value="Electronics">Electronics</option>
-                <option value='Mobile'>Mobile</option>
-                <option value="Fashiony">Fashion</option>
-                <option value="Automobile">Automobile</option>
-                <option value="Accessories">Accessories</option>
+                <option value="Home Theatres">Home Theatres</option>
+                <option value="Freezers">Freezers</option>
+                <option value='Refrigerators'>Refrigerators</option>
+                <option value="Television-sets">Television-sets</option>
+                <option value="Power Solutions/Generators">Power Solutions/Generators</option>
+                <option value="Home Appliances">Home Appliances</option>
                 <option value="BestDeals">BestDeals</option>
               </select>
             </label>
