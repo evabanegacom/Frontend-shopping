@@ -37,13 +37,13 @@ useEffect(() => {
   );
   
 // New mapping methods
-  //   let totals = userId.map(function(x){
-  //       return (
-  //           <p>{x.total}</p>
-  //       )
-  //   })
+    // let totals = userId.map(function(x){
+    //     return (
+    //         <p>{x.total}</p>
+    //     )
+    // })
 
-  //   console.log(totals)
+    // console.log(totals)
 
 //   var scores = [[2, 7], [13, 47], [55, 77]];
 // scores.map(function(subarray) {
@@ -51,6 +51,7 @@ useEffect(() => {
 //     return number * 3;
 //   })
 // })
+
 
 user.loggedIn === false && props.history.push('/login')
 
@@ -62,13 +63,16 @@ user.loggedIn === false && props.history.push('/login')
           const replacement = y.replace(/[&\\\=]/g, "");
           const remove = replacement.replace(/[&\\\>]/g, ":");
           const parsing = JSON.parse(remove);
+          
           {/* const images = products.filter(
             (product) => product.id === parsing.id
           );
           let totals = images.map(function (x) {
             return <img src={x.avatar.url.replace(/http/g, "https")} alt="" />;
           }); */}
-          
+          {/* function countInArray(what) {
+    return x.cartitems.filter((item) => item.id === what.id).length;
+    } */}
           return (
             <div className='orderContent' key={parsing.id}>
               {/* {totals} */}
@@ -79,7 +83,7 @@ user.loggedIn === false && props.history.push('/login')
              
               <p style={{ color:'cyan'}}>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
               
-      <Button color='secondary' type='submit' onClick={() => addingToCart(parsing)}>addtocart</Button>
+      <Button color='secondary' type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
             </div>
           );
