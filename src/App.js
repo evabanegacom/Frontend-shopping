@@ -6,7 +6,6 @@ import Footer from './components/footer';
 import { ThemeProvider } from '@material-ui/core'
 import theme from './utils/theme';
 import Loading from './components/loader';
-import HomeTheatre from './categories/homeTheatre';
 
 const Login = lazy(() => import('./components/login'));
 const SignUp = lazy(() => import('./components/signUp'));
@@ -17,6 +16,8 @@ const AddProduct = lazy(() => import('./containers/addProduct'));
 const Products = lazy(() => import('./containers/products'));
 const Basket = lazy(() => import('./cart/basket'));
 const Customers = lazy(() => import('./containers/customers'));
+const HomeTheatre = lazy(() => import('./categories/homeTheatre'));
+const HomeAppliance = lazy(() => import('./categories/homeAppliance'));
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/customers" component={Customers} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/home-theatre" component={HomeTheatre} />
+        <Route exact path="/home-appliance" component={HomeAppliance} />
       </Switch>
       <Footer />
     </Suspense>

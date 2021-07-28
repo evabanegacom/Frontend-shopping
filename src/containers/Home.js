@@ -16,6 +16,7 @@ const Home = () => {
   const products = useSelector((state) => state.products.products);
   
   const sliced = products.length && products.filter((product) => product.category === 'BestDeals')
+  const homeAppliances = products.length && products.filter((product) => product.category === 'BestDeals')
 
   useEffect(() => {
     dispatch(autoLogin());
@@ -96,7 +97,7 @@ const Home = () => {
                 <div key={product.id}>
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/products' variant='contained' color="primary">See More</Button></p>
+                <p className='categoryText'><Button component={Link} to='/home-appliance' variant='contained' color="primary">See More</Button></p>
                 </div>
                 </Paper>
               )
