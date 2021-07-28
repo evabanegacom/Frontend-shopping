@@ -70,7 +70,7 @@ const Home = () => {
         Home Theatres
       </div>
       <div className='homeTheatre'>
-      {sliced && sliced.length && (
+      {sliced && sliced.length ? (
             sliced.slice(0, Number(4)).map((product) => 
                (
                <Paper elevation={10} className='homeTheatreItem'>
@@ -82,14 +82,14 @@ const Home = () => {
                 </Paper>
               )
             )
-          )}
+          ) : (<p>wait for it</p>)}
       </div>
 
       <div className='labels'>
         Televisions
       </div>
       <div className='homeTheatre'>
-      {sliced && sliced.length && (
+      {sliced && sliced.length ? (
             sliced.slice(0, Number(4)).map((product) => 
                (
                <Paper elevation={10} className='homeTheatreItem'>
@@ -101,7 +101,7 @@ const Home = () => {
                 </Paper>
               )
             )
-          )}
+          ) : (<p>wait for it</p>)}
       </div>
     </div>
   );
