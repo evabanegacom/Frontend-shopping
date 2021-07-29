@@ -1,0 +1,55 @@
+.sliderMain {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.small {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.smallSlider, 
+.mediumSlider,
+.smallerSlider {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 960px){
+
+    .mediumSlider {
+        display: block;
+      }
+
+  .bigSlider {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 650px){
+
+    .smallerSlider {
+        display: block;
+      }
+
+  .bigSlider {
+    display: none;
+  }
+
+  
+}
+
+@media only screen and (max-width: 600px){
+  .smallSlider {
+  display: block
+  }
+
+  .bigSlider {
+    display: none;
+  }
+}
