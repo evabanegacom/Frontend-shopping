@@ -6,7 +6,10 @@ import Product from '../cart/product';
 import useStyles from '../containers/styles';
 import ReactPaginate from "react-paginate";
 import Filter from './filterCategories';
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import sliderCss from './sliderCategory.css';
 import 'react-notifications/lib/notifications.css';
 import {
    NotificationContainer,
@@ -24,6 +27,41 @@ const HomeAppliance = () => {
 
     const products = useSelector((state) => state.products.products);
 
+    var settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      autoplay: true,
+      slidesToShow: 4,
+      slidesToScroll: 1
+    };
+
+    var smallSettings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      autoplay: true,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+
+    var mediumSettings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      autoplay: true,
+      slidesToShow: 3,
+      slidesToScroll: 1
+    };
+
+    var smallerSettings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      autoplay: true,
+      slidesToShow: 2,
+      slidesToScroll: 1
+    };
     
     const [ data, setData] = useState([]);
 
@@ -89,6 +127,62 @@ const HomeAppliance = () => {
           
         /></div>
         </div>
+         <section className='bigSlider'>
+        <Slider className='sliderMain' {...settings}>
+          {products && products.length && (
+            products.map((product) => (
+              <Grid container justify="center" spacing={2}>
+                
+                <Grid item key={Product.id} xs={12} sm={12} md={12} lg={12}><Product product={product} key={product.id} /></Grid>
+                
+          </Grid>
+          ))
+          )}
+          </Slider>
+        </section>
+
+        <section className='mediumSlider'>
+        <Slider className='small' {...mediumSettings}>
+          {products && products.length && (
+            products.map((product) => (
+              <Grid container justify="center" spacing={2}>
+                
+                <Grid item key={Product.id} xs={12} sm={12} md={12} lg={12}><Product product={product} key={product.id} /></Grid>
+                
+          </Grid>
+          ))
+          )}
+          </Slider>
+        </section>
+
+        <section className='smallerSlider'>
+        <Slider className='small' {...smallerSettings}>
+          {products && products.length && (
+            products.map((product) => (
+              <Grid container justify="center" spacing={2}>
+                
+                <Grid item key={Product.id} xs={12} sm={12} md={12} lg={12}><Product product={product} key={product.id} /></Grid>
+                
+          </Grid>
+          ))
+          )}
+          </Slider>
+        </section>
+
+        <section className='smallSlider'>
+        <Slider className='small' {...smallSettings}>
+          {products && products.length && (
+            products.map((product) => (
+              <Grid container justify="center">
+                
+                <Grid item key={Product.id} xs={12} sm={9} md={12} lg={12}><Product product={product} key={product.id} /></Grid>
+                
+          </Grid>
+          ))
+          )}
+          </Slider>
+        </section>
+
             <main className={classes.content}>
       <Grid container justify="center" spacing={4}>
                 {sliced && sliced.length ? (
