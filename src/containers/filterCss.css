@@ -69,6 +69,16 @@
   background: #003049;
 }
 
+.dropdownButton {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.categoryLinks {
+  text-decoration: none;
+  color: green;
+}
+
 .carousel {
     width: 100%;
     margin-top: 10px;

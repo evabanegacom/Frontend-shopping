@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, addToCart } from '../actions/actions';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Button, Menu, MenuItem } from '@material-ui/core';
 import Product from '../cart/product';
 import useStyles from '../containers/styles';
 import ReactPaginate from "react-paginate";
@@ -9,7 +9,7 @@ import Filter from './filterCategories';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import sliderCss from './sliderCategory.css';
+import './sliderCategory.css';
 import 'react-notifications/lib/notifications.css';
 import {
    NotificationContainer,

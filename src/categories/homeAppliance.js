@@ -9,7 +9,7 @@ import Filter from './filterCategories';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import sliderCss from './sliderCategory.css';
+import './sliderCategory.css';
 import 'react-notifications/lib/notifications.css';
 import {
    NotificationContainer,
