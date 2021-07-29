@@ -19,6 +19,7 @@ const Customers = lazy(() => import('./containers/customers'));
 const HomeTheatre = lazy(() => import('./categories/homeTheatre'));
 const HomeAppliance = lazy(() => import('./categories/homeAppliance'));
 const Television = lazy(() => import('./categories/television'));
+const Refrigerators = lazy(() => import('./categories/refrigerators'));
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route exact path="/home-theatre" component={HomeTheatre} />
         <Route exact path="/home-appliance" component={HomeAppliance} />
         <Route exact path="/television-sets" component={Television} />
+        <Route exact path="/refrigerators" component={Refrigerators} />
       </Switch>
       <Footer />
     </Suspense>
