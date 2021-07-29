@@ -15,8 +15,9 @@ const Home = () => {
   const user = useSelector((state) => state.user);
   const products = useSelector((state) => state.products.products);
   
-  const sliced = products.length && products.filter((product) => product.category === 'BestDeals')
+  const homeTheatres = products.length && products.filter((product) => product.category === 'BestDeals')
   const homeAppliances = products.length && products.filter((product) => product.category === 'BestDeals')
+  const TelevisionSets = products.length && products.filter((product) => product.category === 'BestDeals')
 
   useEffect(() => {
     dispatch(autoLogin());
@@ -71,8 +72,8 @@ const Home = () => {
         Home Theatres
       </div>
       <div className='homeTheatre'>
-      {sliced && sliced.length ? (
-            sliced.slice(0, Number(4)).map((product) => 
+      {homeTheatres && homeTheatres.length ? (
+            homeTheatres.slice(0, Number(4)).map((product) => 
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
@@ -87,17 +88,36 @@ const Home = () => {
       </div>
 
       <div className='labels'>
-        Televisions
+        Home Appliances
       </div>
       <div className='homeTheatre'>
-      {sliced && sliced.length ? (
-            sliced.slice(0, Number(4)).map((product) => 
+      {homeAppliances && homeAppliances.length ? (
+            homeAppliances.slice(0, Number(4)).map((product) => 
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/home-appliance' variant='contained' color="primary">See More</Button></p>
+                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">See More</Button></p>
+                </div>
+                </Paper>
+              )
+            )
+          ) : (<p>wait for it</p>)}
+      </div>
+
+      <div className='labels'>
+        Television sets
+      </div>
+      <div className='homeTheatre'>
+      {TelevisionSets && TelevisionSets.length ? (
+            TelevisionSets.slice(0, Number(4)).map((product) => 
+               (
+               <Paper elevation={10} className='homeTheatreItem'>
+                <div key={product.id}>
+                <p>{product.name}</p>
+                <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
+                <p className='categoryText'><Button component={Link} to='/television-sets' variant='contained' color="primary">See More</Button></p>
                 </div>
                 </Paper>
               )
