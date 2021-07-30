@@ -19,6 +19,7 @@ const Home = () => {
   const homeAppliances = products.length && products.filter((product) => product.category === 'BestDeals')
   const TelevisionSets = products.length && products.filter((product) => product.category === 'BestDeals')
   const fridge = products.length && products.filter((product) => product.category === 'BestDeals')
+  const generators = products.length && products.filter((product) => product.category === 'BestDeals')
 
   useEffect(() => {
     dispatch(autoLogin());
@@ -70,7 +71,7 @@ const Home = () => {
         </div>
       </div>
       <div className='labels'>
-        Home Theatres
+        <marquee>Home Theatres</marquee>
       </div>
       <div className='homeTheatre'>
       {homeTheatres && homeTheatres.length ? (
@@ -80,7 +81,7 @@ const Home = () => {
                 <div key={product.id}>
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">See More</Button></p>
+                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
@@ -89,7 +90,7 @@ const Home = () => {
       </div>
 
       <div className='labels'>
-        Home Appliances
+        <marquee>Home Appliances</marquee>
       </div>
       <div className='homeTheatre'>
       {homeAppliances && homeAppliances.length ? (
@@ -99,7 +100,7 @@ const Home = () => {
                 <div key={product.id}>
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">See More</Button></p>
+                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
@@ -108,7 +109,7 @@ const Home = () => {
       </div>
 
       <div className='labels'>
-        Television sets
+        <marquee>Television sets</marquee>
       </div>
       <div className='homeTheatre'>
       {TelevisionSets && TelevisionSets.length ? (
@@ -118,7 +119,7 @@ const Home = () => {
                 <div key={product.id}>
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/television-sets' variant='contained' color="primary">See More</Button></p>
+                <p className='categoryText'><Button component={Link} to='/television-sets' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
@@ -127,7 +128,7 @@ const Home = () => {
       </div>
 
       <div className='labels'>
-        Refrigerators/Freezers
+        <marquee>Refrigerators/Freezers</marquee>
       </div>
       <div className='homeTheatre'>
       {fridge && fridge.length ? (
@@ -137,7 +138,26 @@ const Home = () => {
                 <div key={product.id}>
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/refrigerators' variant='contained' color="primary">See More</Button></p>
+                <p className='categoryText'><Button component={Link} to='/refrigerators' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>
+              )
+            )
+          ) : (<p>wait for it</p>)}
+      </div>
+
+      <div className='labels'>
+        <marquee>Generators/Power solutions</marquee>
+      </div>
+      <div className='homeTheatre'>
+      {generators && generators.length ? (
+            generators.slice(0, Number(4)).map((product) => 
+               (
+               <Paper elevation={10} className='homeTheatreItem'>
+                <div key={product.id}>
+                <p>{product.name}</p>
+                <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
+                <p className='categoryText'><Button component={Link} to='/generators' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
