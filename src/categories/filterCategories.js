@@ -39,6 +39,7 @@ const FilterCategories = ({sorting, sortProducts}) =>  {
         <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/home-theatre'>Television sets</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/refrigerators'>Refrigerators/Freezers</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/generators'>Power Solutions/Generators</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/coolers'>Coolers/Airconditioners</Link></MenuItem>
       </Menu>
     </div>
             </div>

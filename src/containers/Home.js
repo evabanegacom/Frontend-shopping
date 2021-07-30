@@ -20,6 +20,7 @@ const Home = () => {
   const TelevisionSets = products.length && products.filter((product) => product.category === 'BestDeals')
   const fridge = products.length && products.filter((product) => product.category === 'BestDeals')
   const generators = products.length && products.filter((product) => product.category === 'BestDeals')
+  const coolers = products.length && products.filter((product) => product.category === 'BestDeals')
 
   useEffect(() => {
     dispatch(autoLogin());
@@ -158,6 +159,25 @@ const Home = () => {
                 <p>{product.name}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 <p className='categoryText'><Button component={Link} to='/generators' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>
+              )
+            )
+          ) : (<p>wait for it</p>)}
+      </div>
+
+      <div className='labels'>
+        <marquee>Airconditioners/Coolers</marquee>
+      </div>
+      <div className='homeTheatre'>
+      {coolers && coolers.length ? (
+            coolers.slice(0, Number(4)).map((product) => 
+               (
+               <Paper elevation={10} className='homeTheatreItem'>
+                <div key={product.id}>
+                <p>{product.name}</p>
+                <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
+                <p className='categoryText'><Button component={Link} to='/coolers' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
