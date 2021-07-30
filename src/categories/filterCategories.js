@@ -25,7 +25,7 @@ const FilterCategories = ({sorting, sortProducts}) =>  {
                </div>
                <div className='filterInput'>
       <Button aria-controls="simple-menu" aria-haspopup="true" className='dropdownButton' onClick={handleClick}>
-        More options
+        All categories
       </Button>
       <Menu
         id="simple-menu"
