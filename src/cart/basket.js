@@ -39,7 +39,7 @@ class Basket extends Component {
       let emailError = '';
       if(name.length < 8){
         nameError = 'please input full name'
-        console.log(nameError)
+       
       }
 
       if(email.length < 10){
@@ -215,7 +215,7 @@ class Basket extends Component {
                        const replacement = x.replace(/[&\/\\=]/g, '');
                        const remove = replacement.replace(/[&\/\\>]/g, ':')
                        const parsing = JSON.parse(remove)
-                       {/* console.log(JSON.stringify(parsing)) */}
+                       
                        return(
                          <div>
                            
