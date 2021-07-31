@@ -154,7 +154,7 @@ const Products = (props) => {
                 <div className='inputDiv'>
                 <input
           type="text"
-          placeholder="search..."
+          placeholder="search by name or category or use filter"
           onChange={handleSearches}
           
         /></div>
@@ -184,7 +184,11 @@ const Products = (props) => {
               if(search ===''){
                 return data.slice(offset, offset + PER_PAGE).map((product) => (
                   <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>))
-              } else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+              } else if(product.category.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                return product
+              }
+
+              else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                 return product
               }
             }).slice(offset, offset + PER_PAGE).map((product) => (
