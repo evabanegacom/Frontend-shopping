@@ -15,12 +15,12 @@ const Home = () => {
   const user = useSelector((state) => state.user);
   const products = useSelector((state) => state.products.products);
   
-  const homeTheatres = products.length && products.filter((product) => product.category === 'BestDeals')
-  const homeAppliances = products.length && products.filter((product) => product.category === 'BestDeals')
-  const TelevisionSets = products.length && products.filter((product) => product.category === 'BestDeals')
-  const fridge = products.length && products.filter((product) => product.category === 'BestDeals')
-  const generators = products.length && products.filter((product) => product.category === 'BestDeals')
-  const coolers = products.length && products.filter((product) => product.category === 'BestDeals')
+  // const homeTheatres = products.length && products.filter((product) => product.category === 'BestDeals')
+  // //const homeAppliances = products.length && products.filter((product) => product.category === 'BestDeals')
+  // const TelevisionSets = products.length && products.filter((product) => product.category === 'BestDeals')
+  // const fridge = products.length && products.filter((product) => product.category === 'BestDeals')
+  // const generators = products.length && products.filter((product) => product.category === 'BestDeals')
+  // const coolers = products.length && products.filter((product) => product.category === 'BestDeals')
 
   useEffect(() => {
     dispatch(autoLogin());
@@ -75,8 +75,8 @@ const Home = () => {
         <marquee>Home Theatres</marquee>
       </div>
       <div className='homeTheatre'>
-      {homeTheatres && homeTheatres.length ? (
-            homeTheatres.slice(0, Number(4)).map((product) => 
+      {products && products.length ? (
+        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
@@ -94,8 +94,8 @@ const Home = () => {
         <marquee>Home Appliances</marquee>
       </div>
       <div className='homeTheatre'>
-      {homeAppliances && homeAppliances.length ? (
-            homeAppliances.slice(0, Number(4)).map((product) => 
+      {products && products.length ? (
+            products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
@@ -113,8 +113,8 @@ const Home = () => {
         <marquee>Television sets</marquee>
       </div>
       <div className='homeTheatre'>
-      {TelevisionSets && TelevisionSets.length ? (
-            TelevisionSets.slice(0, Number(4)).map((product) => 
+      {products && products.length ? (
+        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
@@ -132,8 +132,8 @@ const Home = () => {
         <marquee>Refrigerators/Freezers</marquee>
       </div>
       <div className='homeTheatre'>
-      {fridge && fridge.length ? (
-            fridge.slice(0, Number(4)).map((product) => 
+      {products && products.length ? (
+        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
@@ -151,8 +151,9 @@ const Home = () => {
         <marquee>Generators/Power solutions</marquee>
       </div>
       <div className='homeTheatre'>
-      {generators && generators.length ? (
-            generators.slice(0, Number(4)).map((product) => 
+      {products && products.length ? (
+        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
@@ -170,8 +171,9 @@ const Home = () => {
         <marquee>Airconditioners/Coolers</marquee>
       </div>
       <div className='homeTheatre'>
-      {coolers && coolers.length ? (
-            coolers.slice(0, Number(4)).map((product) => 
+      {products && products.length ? (
+        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+
                (
                <Paper elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
