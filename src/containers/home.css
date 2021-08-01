@@ -9,6 +9,12 @@
   overflow: hidden;
 }
 
+.categoryItems {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
 .homeContent {
   display: flex;
   margin-top: 20px;
@@ -77,6 +83,9 @@ text-align: center;
   display: flex;
   margin-top: 20px;
   flex-wrap: wrap;
+  margin: auto;
+  margin-top: 10px;
+
 }
 
 .homeTheatreItem {
@@ -90,6 +99,7 @@ text-align: center;
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
 }
 
 .homeTheatreItem div p{
@@ -99,7 +109,7 @@ text-align: center;
 
 .homeTheatre img{
   height: 150px;
-  width: 300px;
+  width: 150px;
 }
 
 .categoryText {
@@ -124,13 +134,7 @@ text-align: center;
     height: 300px;
   }
 
-  .homeTheatreItem {
-    width: 45%;
-  }
-
-  .homeTheatre img{
-    width: 100%;
-  }
+  
 }
 
 @media only screen and (max-width: 600px){
@@ -157,9 +161,7 @@ text-align: center;
     height: 150px;
   }
 
-  .homeTheatre img {
-    width: 100%;
-  }
+  
   
 }
 

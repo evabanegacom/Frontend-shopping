@@ -30,6 +30,7 @@ const Home = () => {
     dispatch(getProducts())
   }, [])
 
+
   var settings = {
     dots: false,
     infinite: true,
@@ -71,16 +72,15 @@ const Home = () => {
           <img src={electronic} alt='pc' />
         </div>
       </div>
-      <div className='labels'>
-        <marquee>Home Theatres</marquee>
-      </div>
+      <div className='labels'><marquee>Browse our categories</marquee></div>
+      <div className='categoryItems'>
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+        products.filter((product) => product.category === 'Home Theatres').slice(0, Number(1)).map((product) =>
                (
-               <Paper elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} style={{ textDecoration: 'none'}} to='/home-theatre' elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
-                <p>{product.name}</p>
+                <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
@@ -90,18 +90,15 @@ const Home = () => {
           ) : (<p>wait for it</p>)}
       </div>
 
-      <div className='labels'>
-        <marquee>Home Appliances</marquee>
-      </div>
       <div className='homeTheatre'>
       {products && products.length ? (
-            products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+            products.filter((product) => product.category === 'Home Appliances').slice(0, Number(1)).map((product) =>
                (
-               <Paper elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} style={{ textDecoration: 'none'}} elevation={10} to='/home-appliance' className='homeTheatreItem'>
                 <div key={product.id}>
-                <p>{product.name}</p>
+                <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to='/home-appliance' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
@@ -109,16 +106,13 @@ const Home = () => {
           ) : (<p>wait for it</p>)}
       </div>
 
-      <div className='labels'>
-        <marquee>Television sets</marquee>
-      </div>
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+        products.filter((product) => product.category === 'Television-sets').slice(0, Number(1)).map((product) =>
                (
-               <Paper elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to='/television-sets' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
-                <p>{product.name}</p>
+                <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 <p className='categoryText'><Button component={Link} to='/television-sets' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
@@ -128,16 +122,13 @@ const Home = () => {
           ) : (<p>wait for it</p>)}
       </div>
 
-      <div className='labels'>
-        <marquee>Refrigerators/Freezers</marquee>
-      </div>
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+        products.filter((product) => product.category === 'Refrigerators/Freezers').slice(0, Number(1)).map((product) =>
                (
-               <Paper elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to='/refrigerators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
-                <p>{product.name}</p>
+                <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 <p className='categoryText'><Button component={Link} to='/refrigerators' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
@@ -147,17 +138,14 @@ const Home = () => {
           ) : (<p>wait for it</p>)}
       </div>
 
-      <div className='labels'>
-        <marquee>Generators/Power solutions</marquee>
-      </div>
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+        products.filter((product) => product.category === 'Power Solutions/Generators').slice(0, Number(1)).map((product) =>
 
                (
-               <Paper elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to='/generators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
-                <p>{product.name}</p>
+                <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 <p className='categoryText'><Button component={Link} to='/generators' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
@@ -167,17 +155,14 @@ const Home = () => {
           ) : (<p>wait for it</p>)}
       </div>
 
-      <div className='labels'>
-        <marquee>Airconditioners/Coolers</marquee>
-      </div>
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'BestDeals').slice(0, Number(4)).map((product) =>
+        products.filter((product) => product.category === 'Airconditioners/Coolers').slice(0, Number(1)).map((product) =>
 
                (
-               <Paper elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to='/coolers' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
-                <p>{product.name}</p>
+                <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
                 <p className='categoryText'><Button component={Link} to='/coolers' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
@@ -185,6 +170,7 @@ const Home = () => {
               )
             )
           ) : (<p>wait for it</p>)}
+      </div>
       </div>
     </div>
   );
