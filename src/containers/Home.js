@@ -8,6 +8,7 @@ import ladyImage from '../images/slazzer-edit.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import homeTheatre from '../images/1.jpg';
 import { Button, TextField, Typography, Paper, Box } from '@material-ui/core';
 
 const Home = () => {
@@ -87,7 +88,13 @@ const Home = () => {
                 </Paper>
               )
             )
-          ) : (<p>wait for it</p>)}
+          ) : (<Paper component={Link} style={{ textDecoration: 'none'}} to='/home-theatre' elevation={10} className='homeTheatreItem'>
+                <div key={Math.random()}>
+                <p>Home Theatres</p>
+                <img src={homeTheatre} alt='' />
+                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>)}
       </div>
 
       <div className='homeTheatre'>
