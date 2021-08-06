@@ -48,11 +48,19 @@ const Home = () => {
 
   return (
     <div className="homepage">
+    
         <div style={{ textAlign: "center", marginTop: '10px', background: 'blue' }}>
           <h1 style={{ color: 'white'}}>Ejovial Electronics</h1>
           <br/>
           <p className='homeText'>home of the finest electronic appliances <Button component={Link} to='/products' variant='contained' color="primary">buy now</Button></p>
         </div>
+        <div className='searchContainer'>
+        <input
+          type="text"
+          placeholder="search..."
+          
+        />
+       </div>
         <section className='carousel'>
         <Slider className='slider' {...settings}>
           {products && products.length && (
