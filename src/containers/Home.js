@@ -9,6 +9,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import homeTheatre from '../images/1.jpg';
+import television from '../images/96406_1596312485.jpg';
+import fridge from '../images/118566_1540206261.jpg';
+import generators from '../images/126611_1612469848.jpg';
+import airconditioners from '../images/162181_1572281033.jpg';
+import appliance from '../images/appliance.jpg';
 import { Button, TextField, Typography, Paper, Box } from '@material-ui/core';
 
 const Home = () => {
@@ -91,7 +96,7 @@ const Home = () => {
           ) : (<Paper component={Link} style={{ textDecoration: 'none'}} to='/home-theatre' elevation={10} className='homeTheatreItem'>
                 <div key={Math.random()}>
                 <p>Home Theatres</p>
-                <img src={homeTheatre} alt='' />
+                <img src={homeTheatre} alt='home-theatres' />
                 <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>)}
@@ -110,7 +115,13 @@ const Home = () => {
                 </Paper>
               )
             )
-          ) : (<p>wait for it</p>)}
+          ) : (<Paper component={Link} style={{ textDecoration: 'none'}} elevation={10} to='/home-appliance' className='homeTheatreItem'>
+                <div key={Math.random()}>
+                <p>Home Appliances</p>
+                <img src={appliance} alt='home appliance' />
+                <p className='categoryText'><Button component={Link} to='/home-appliance' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>)}
       </div>
 
       <div className='homeTheatre'>
@@ -126,7 +137,14 @@ const Home = () => {
                 </Paper>
               )
             )
-          ) : (<p>wait for it</p>)}
+          ) : (<Paper component={Link} to='/television-sets' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+                <div key={Math.random()}>
+                <p>Television-sets</p>
+                <img src={television} alt='television-sets' />
+                <p className='categoryText'><Button component={Link} to='/television-sets' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>
+                )}
       </div>
 
       <div className='homeTheatre'>
@@ -142,7 +160,14 @@ const Home = () => {
                 </Paper>
               )
             )
-          ) : (<p>wait for it</p>)}
+          ) : (<Paper component={Link} to='/refrigerators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+                <div key={Math.random()}>
+                <p>Refrigerators/Freezers</p>
+                <img src={fridge} alt='fridge' />
+                <p className='categoryText'><Button component={Link} to='/refrigerators' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>
+                )}
       </div>
 
       <div className='homeTheatre'>
@@ -159,7 +184,15 @@ const Home = () => {
                 </Paper>
               )
             )
-          ) : (<p>wait for it</p>)}
+          ) : (
+            <Paper component={Link} to='/generators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+                <div key={Math.random()}>
+                <p>Power Solutions/Generators</p>
+                <img src={generators} alt='generators' />
+                <p className='categoryText'><Button component={Link} to='/generators' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>
+          )}
       </div>
 
       <div className='homeTheatre'>
@@ -170,13 +203,19 @@ const Home = () => {
                <Paper component={Link} to='/coolers' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
-                <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
+                <img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} />
                 <p className='categoryText'><Button component={Link} to='/coolers' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
             )
-          ) : (<p>wait for it</p>)}
+          ) : (<Paper component={Link} to='/coolers' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+                <div key={Math.random()}>
+                <p>Airconditioners/Coolers</p>
+                <img src={airconditioners} alt='airconditioners' />
+                <p className='categoryText'><Button component={Link} to='/coolers' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>)}
       </div>
       </div>
     </div>
