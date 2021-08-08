@@ -14,11 +14,16 @@ import fridge from '../images/118566_1540206261.jpg';
 import generators from '../images/126611_1612469848.jpg';
 import airconditioners from '../images/162181_1572281033.jpg';
 import appliance from '../images/appliance.jpg';
-import { Button, TextField, Typography, Paper, Box } from '@material-ui/core';
+import Product from '../cart/product';
+import useStyles from '../containers/styles';
+
+import { Button, TextField, Grid, Paper, Box } from '@material-ui/core';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const classes = useStyles();
   const user = useSelector((state) => state.user);
+  const [search, setSearch ] = useState('')
   const products = useSelector((state) => state.products.products);
   
   // const homeTheatres = products.length && products.filter((product) => product.category === 'BestDeals')
@@ -35,6 +40,10 @@ const Home = () => {
   useEffect(() => {
     dispatch(getProducts())
   }, [])
+
+  const handleSearches = (event) => {
+    setSearch(event.target.value)
+  };
 
 
   var settings = {
@@ -58,9 +67,39 @@ const Home = () => {
         <input
           type="text"
           placeholder="search..."
-          
+          onChange={handleSearches}
         />
        </div>
+       <main>
+      <Grid container justify="center" spacing={4}>
+                {products && products.length && (
+            products.filter((product) =>{
+              const div = document.querySelector('.secondName') ? document.querySelector('.secondName').classList.add('hide') : null
+              if(search ===''){
+                return div
+                
+              } else if(product.category.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                return document.querySelector('.secondName') ? document.querySelector('.secondName').classList.remove('hide') : null, product
+                
+              }
+
+              else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                return product
+              }
+            }).slice(0, Number(1)).map((product) => (
+              
+              <Paper  className='searchCategory secondName' component={Link} style={{ textDecoration: 'none'}} to='/home-theatre' elevation={10} className='homeTheatreItem'>
+                <div key={product.id}>
+                <p>{product.category}</p>
+                <img className='linkImages' src={product.avatar.url.replace(/http/g, "https")} alt='' />
+                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
+                </div>
+                </Paper>
+                
+              ))
+          )}
+          </Grid>
+          </main>
         <section className='carousel'>
         <Slider className='slider' {...settings}>
           {products && products.length && (
@@ -76,8 +115,8 @@ const Home = () => {
             })
           )}
           </Slider>
-          
         </section>
+
       <div className='homeContent'>
         <div className="caption">
           <img src={ladyImage} alt='lady' />
@@ -86,6 +125,7 @@ const Home = () => {
           <img src={electronic} alt='pc' />
         </div>
       </div>
+      
       <div className='labels'><marquee>Browse our categories</marquee></div>
       <div className='categoryItems'>
       <div className='homeTheatre'>

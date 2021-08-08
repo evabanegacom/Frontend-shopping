@@ -167,7 +167,7 @@ const Products = (props) => {
               return product.category === 'BestDeals' && (
                
                 <div className='carouselItem'>
-                <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
+                <img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} />
                 
                 </div>
                 

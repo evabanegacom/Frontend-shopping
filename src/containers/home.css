@@ -138,6 +138,19 @@ text-align: center;
   background: #003049;
 }
 
+.linkImages{
+  width: 100px;
+  height: 100px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 @media only screen and (max-width: 768px) and (min-width: 610px){
   .homeContent {
     display: flex;
