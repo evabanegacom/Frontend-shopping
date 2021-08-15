@@ -16,6 +16,7 @@ import airconditioners from '../images/162181_1572281033.jpg';
 import appliance from '../images/appliance.jpg';
 import Product from '../cart/product';
 import useStyles from '../containers/styles';
+import styled from "styled-components";
 
 import { Button, TextField, Grid, Paper, Box } from '@material-ui/core';
 
@@ -54,6 +55,17 @@ const Home = () => {
     slidesToShow: 1,
     slidesToScroll: 1
   };
+
+  const Ejovial = styled.div`
+  text-align: center;
+  margin-top: 10px;
+`;
+
+const EjovialHeader = styled.div`
+  margin-bottom: 10px;
+  font-size: 1.5em;
+`;
+
 
   return (
     <div className="homepage">
@@ -266,6 +278,13 @@ const Home = () => {
                 </Paper>)}
       </div>
       </div>
+      <Ejovial>
+        <EjovialHeader>
+        Ejovial - Your preferred Online Store
+       </EjovialHeader>
+<p>Ejovial is your preferred online shopping destination in Nigeria. We are an online retail and wholesale store where you can purchase all your electronics, home appliances and Power Solutions. We are known for our integrity and reliability when it comes to sales and supply of quality Electronics and gadgets with the cheapest price you can get anywhere in Nigeria. Our shipping rates are one of the lowest and we offer free shipping for some selected products and same day delivery for orders within Lagos and two days for orders outside Lagos. We provide you with a wide range of products from trusted brands with discounted prices you cannot resist.</p>
+        
+      </Ejovial>
     </div>
   );
 };
