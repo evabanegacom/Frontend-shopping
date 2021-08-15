@@ -59,6 +59,7 @@ const Home = () => {
   const Ejovial = styled.div`
   text-align: center;
   margin-top: 10px;
+  line-height: 30px;
 `;
 
 const EjovialHeader = styled.div`
