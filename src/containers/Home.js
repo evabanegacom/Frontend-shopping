@@ -67,7 +67,6 @@ const EjovialHeader = styled.div`
   font-size: 1.5em;
 `;
 
-
   return (
     <div className="homepage">
     

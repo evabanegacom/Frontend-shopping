@@ -262,7 +262,7 @@ class Basket extends Component {
            
             <div className='checkoutDiv'>
                 <Button color='primary' className='totalPrice'>
-                  Total: {" "}
+                  Total: {" "} &#8358; 
                     {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
                 </Button>
                 {/* <Button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</Button> */}

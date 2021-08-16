@@ -104,7 +104,7 @@ const Product = (props) => {
         <Link style={{ textDecoration: 'none', color: 'green'}} to={'#' + product.id} onClick={() => openModal(product)}>see details</Link>
         </Button>
         <Button size="small" color="primary">
-          ${product.price}
+        &#8358; {product.price}
         </Button>
         <Button size="small" onClick={() => handleAdd(product)} color="primary">
           <AddShoppingCart className={classes.cartColor}/>
