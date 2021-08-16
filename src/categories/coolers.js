@@ -79,7 +79,7 @@ const Coolers = () => {
       }))
     }, []);
     
-  const sliced = data.length && data.filter((product) => product.category === 'Airconditioners/Coolers')
+  const sliced = data.length && data.filter((product) => product.category === 'Airconditioners-Coolers')
 
   const [currentPage, setCurrentPage ] = useState(0)
   const [search, setSearch ] = useState('')

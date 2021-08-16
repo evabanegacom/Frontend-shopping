@@ -79,7 +79,7 @@ const HomeAppliance = () => {
       }))
     }, []);
     
-  const sliced = data.length && data.filter((product) => product.category === 'Home Appliances')
+  const sliced = data.length && data.filter((product) => product.category === 'Home-Appliances')
 
   const [currentPage, setCurrentPage ] = useState(0)
   const [search, setSearch ] = useState('')

@@ -40,12 +40,12 @@ function App() {
         <Route exact path="/users/:id/orders" component={Order} />
         <Route exact path="/customers" component={Customers} />
         <Route exact path="/contact" component={Contact} />
-        <Route exact path="/home-theatre" component={HomeTheatre} />
-        <Route exact path="/home-appliance" component={HomeAppliance} />
-        <Route exact path="/television-sets" component={Television} />
-        <Route exact path="/refrigerators" component={Refrigerators} />
-        <Route exact path="/generators" component={Generators} />
-        <Route exact path="/coolers" component={Coolers} />
+        <Route exact path="/categories/Home-Theatres" component={HomeTheatre} />
+        <Route exact path="/categories/Home-Appliances" component={HomeAppliance} />
+        <Route exact path="/categories/Television-sets" component={Television} />
+        <Route exact path="/categories/Refrigerators-Freezers" component={Refrigerators} />
+        <Route exact path="/categories/Power-Solutions-Generators" component={Generators} />
+        <Route exact path="/categories/Airconditioners-Coolers" component={Coolers} />
       </Switch>
       <Footer />
     </Suspense>

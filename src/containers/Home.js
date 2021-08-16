@@ -100,11 +100,11 @@ const EjovialHeader = styled.div`
               }
             }).slice(0, Number(1)).map((product) => (
               
-              <Paper  className='searchCategory secondName' component={Link} style={{ textDecoration: 'none'}} to='/home-theatre' elevation={10} className='homeTheatreItem'>
+              <Paper  className='searchCategory secondName' component={Link} style={{ textDecoration: 'none'}} to={`/categories/${product.category}`} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
                 <img className='linkImages' src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to={`/categories/${product.category}`} variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
                 
@@ -142,44 +142,44 @@ const EjovialHeader = styled.div`
       <div className='categoryItems'>
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'Home Theatres').slice(0, Number(1)).map((product) =>
+        products.filter((product) => product.category === 'Home-Theatres').slice(0, Number(1)).map((product) =>
                (
-               <Paper component={Link} style={{ textDecoration: 'none'}} to='/home-theatre' elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} style={{ textDecoration: 'none'}} to={`/categories/${product.category}`} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to={`/categories/${product.category}`} variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
             )
-          ) : (<Paper component={Link} style={{ textDecoration: 'none'}} to='/home-theatre' elevation={10} className='homeTheatreItem'>
+          ) : (<Paper component={Link} style={{ textDecoration: 'none'}} to='/category/Home-Theatres' elevation={10} className='homeTheatreItem'>
                 <div key={Math.random()}>
                 <p>Home Theatres</p>
                 <img src={homeTheatre} alt='home-theatres' />
-                <p className='categoryText'><Button component={Link} to='/home-theatre' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to='/category/Home-Theatres' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>)}
       </div>
 
       <div className='homeTheatre'>
       {products && products.length ? (
-            products.filter((product) => product.category === 'Home Appliances').slice(0, Number(1)).map((product) =>
+            products.filter((product) => product.category === 'Home-Appliances').slice(0, Number(1)).map((product) =>
                (
-               <Paper component={Link} style={{ textDecoration: 'none'}} elevation={10} to='/home-appliance' className='homeTheatreItem'>
+               <Paper component={Link} style={{ textDecoration: 'none'}} elevation={10} to={`/categories/${product.category}`} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/home-appliance' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to={`/categories/${product.category}`} variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
             )
-          ) : (<Paper component={Link} style={{ textDecoration: 'none'}} elevation={10} to='/home-appliance' className='homeTheatreItem'>
+          ) : (<Paper component={Link} style={{ textDecoration: 'none'}} elevation={10} to='/categories/Home-Appliances' className='homeTheatreItem'>
                 <div key={Math.random()}>
                 <p>Home Appliances</p>
                 <img src={appliance} alt='home appliance' />
-                <p className='categoryText'><Button component={Link} to='/home-appliance' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to='/categories/Home-Appliances' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>)}
       </div>
@@ -188,20 +188,20 @@ const EjovialHeader = styled.div`
       {products && products.length ? (
         products.filter((product) => product.category === 'Television-sets').slice(0, Number(1)).map((product) =>
                (
-               <Paper component={Link} to='/television-sets' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to={`/categories/${product.category}`} style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/television-sets' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to={`/categories/${product.category}`} variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
             )
-          ) : (<Paper component={Link} to='/television-sets' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+          ) : (<Paper component={Link} to='/categories/Television-sets' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={Math.random()}>
                 <p>Television-sets</p>
                 <img src={television} alt='television-sets' />
-                <p className='categoryText'><Button component={Link} to='/television-sets' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to='/categories/Television-sets' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
                 )}
@@ -209,22 +209,22 @@ const EjovialHeader = styled.div`
 
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'Refrigerators/Freezers').slice(0, Number(1)).map((product) =>
+        products.filter((product) => product.category === 'Refrigerators-Freezers').slice(0, Number(1)).map((product) =>
                (
-               <Paper component={Link} to='/refrigerators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to={`/categories/${product.category}`} style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/refrigerators' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to={`/categories/${product.category}`} variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
             )
-          ) : (<Paper component={Link} to='/refrigerators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+          ) : (<Paper component={Link} to='/categories/Refrigerators-Freezers' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={Math.random()}>
                 <p>Refrigerators/Freezers</p>
                 <img src={fridge} alt='fridge' />
-                <p className='categoryText'><Button component={Link} to='/refrigerators' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to='/categories/Refrigerators-Freezers' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
                 )}
@@ -232,24 +232,24 @@ const EjovialHeader = styled.div`
 
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'Power Solutions/Generators').slice(0, Number(1)).map((product) =>
+        products.filter((product) => product.category === 'Power-Solutions-Generators').slice(0, Number(1)).map((product) =>
 
                (
-               <Paper component={Link} to='/generators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to={`/categories/${product.category}`} style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt='' />
-                <p className='categoryText'><Button component={Link} to='/generators' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to={`/categories/${product.category}`} variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
             )
           ) : (
-            <Paper component={Link} to='/generators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+            <Paper component={Link} to='/categories/Power-Solutions-Generators' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={Math.random()}>
                 <p>Power Solutions/Generators</p>
                 <img src={generators} alt='generators' />
-                <p className='categoryText'><Button component={Link} to='/generators' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to='/categories/Power-Solutions-Generators' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
           )}
@@ -257,23 +257,23 @@ const EjovialHeader = styled.div`
 
       <div className='homeTheatre'>
       {products && products.length ? (
-        products.filter((product) => product.category === 'Airconditioners/Coolers').slice(0, Number(1)).map((product) =>
+        products.filter((product) => product.category === 'Airconditioners-Coolers').slice(0, Number(1)).map((product) =>
 
                (
-               <Paper component={Link} to='/coolers' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+               <Paper component={Link} to={`/categories/${product.category}`} style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={product.id}>
                 <p>{product.category}</p>
                 <img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} />
-                <p className='categoryText'><Button component={Link} to='/coolers' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to={`/categories/${product.category}`} variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>
               )
             )
-          ) : (<Paper component={Link} to='/coolers' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
+          ) : (<Paper component={Link} to='/categories/Airconditioners-Coolers' style={{ textDecoration: 'none'}} elevation={10} className='homeTheatreItem'>
                 <div key={Math.random()}>
                 <p>Airconditioners/Coolers</p>
                 <img src={airconditioners} alt='airconditioners' />
-                <p className='categoryText'><Button component={Link} to='/coolers' variant='contained' color="primary">Shop Now</Button></p>
+                <p className='categoryText'><Button component={Link} to='/categories/Airconditioners-Coolers' variant='contained' color="primary">Shop Now</Button></p>
                 </div>
                 </Paper>)}
       </div>

@@ -79,7 +79,7 @@ const Generators = () => {
       }))
     }, []);
     
-  const sliced = data.length && data.filter((product) => product.category === 'Power Solutions/Generators')
+  const sliced = data.length && data.filter((product) => product.category === 'Power-Solutions-Generators')
 
   const [currentPage, setCurrentPage ] = useState(0)
   const [search, setSearch ] = useState('')

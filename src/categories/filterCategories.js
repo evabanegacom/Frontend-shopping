@@ -34,12 +34,12 @@ const FilterCategories = ({sorting, sortProducts}) =>  {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/home-theatre'>Home Theatres</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/home-appliance'>Home Appliances</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/television-sets'>Television sets</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/refrigerators'>Refrigerators/Freezers</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/generators'>Power Solutions/Generators</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/coolers'>Coolers/Airconditioners</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/categories/Home-Theatres'>Home Theatres</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/categories/Home-Appliances'>Home Appliances</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/categories/Television-sets'>Television sets</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/categories/Refrigerators-Freezers'>Refrigerators/Freezers</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/categories/Power-Solutions-Generators'>Power Solutions/Generators</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link className='categoryLinks' to='/categories/Airconditioners-Coolers'>Coolers/Airconditioners</Link></MenuItem>
       </Menu>
     </div>
             </div>

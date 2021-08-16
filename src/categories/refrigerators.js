@@ -79,7 +79,7 @@ const Refrigerators = () => {
       }))
     }, []);
     
-  const sliced = data.length && data.filter((product) => product.category === 'Refrigerators/Freezers')
+  const sliced = data.length && data.filter((product) => product.category === 'Refrigerators-Freezers')
 
   const [currentPage, setCurrentPage ] = useState(0)
   const [search, setSearch ] = useState('')

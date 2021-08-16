@@ -79,7 +79,7 @@ const HomeTheatre = () => {
       }))
     }, []);
     
-  const sliced = data.length && data.filter((product) => product.category === 'Home Theatres')
+  const sliced = data.length && data.filter((product) => product.category === 'Home-Theatres')
 
   const [currentPage, setCurrentPage ] = useState(0)
   const [search, setSearch ] = useState('')

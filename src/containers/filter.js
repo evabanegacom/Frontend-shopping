@@ -14,13 +14,13 @@ class Filter extends Component {
                </div> 
                <div className='filterInput'><select value={this.props.size} onChange={this.props.filterProducts}>
                    <option value="">All Categories</option>
-                   <option value="Home Theatres">Home Theatres</option>
+                   <option value="Home-Theatres">Home Theatres</option>
                    <option value="Electronics">Electronics</option>
-                   <option value="Airconditioners/Coolers">Airconditioners/Coolers</option>
-                   <option value="Home Appliances">Home Appliances</option>
-                   <option value="Power Solutions/Generators">Power Solutions/Generators</option>
+                   <option value="Airconditioners-Coolers">Airconditioners/Coolers</option>
+                   <option value="Home-Appliances">Home Appliances</option>
+                   <option value="Power-Solutions-Generators">Power Solutions/Generators</option>
                    <option value="Television-sets">Television-sets</option>
-                   <option value="Refrigerators/Freezers">Refrigerators</option>
+                   <option value="Refrigerators-Freezers">Refrigerators</option>
                </select></div> 
             </div>
         )
