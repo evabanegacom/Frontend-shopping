@@ -77,14 +77,15 @@ user.loggedIn === false && props.history.push('/login')
             <div className='orderContent' key={parsing.id}>
               {/* {totals} */}
               <img src={parsing.avatar.url.replace(/http:/g, "https:")} alt='' />
-              <p style={{ color:'cyan'}}>Name: &nbsp;{parsing.name}</p>
-              <p style={{ color:'cyan'}}>Price: &nbsp;&#8358; {parsing.price}</p>
-              <p style={{ color:'cyan'}}>Quantity: &nbsp;{parsing.count}</p>
+              <div style={{ background: '#003049'}}>
+              <p style={{ color:'white'}}>Name: &nbsp;{parsing.name}</p>
+              <p style={{ color:'white'}}>Price: &nbsp;&#8358; {parsing.price}</p>
+              <p style={{ color:'white'}}>Quantity: &nbsp;{parsing.count}</p>
              
-              <p style={{ color:'cyan'}}>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
-              
-      <Button color='secondary' type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
+              <p style={{ color:'white'}}>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
+      <Button style={{color: 'yellow'}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
+              </div>
             </div>
           );
         });

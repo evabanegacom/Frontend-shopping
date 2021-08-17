@@ -13,7 +13,7 @@ import { FcContacts, FcPlus } from 'react-icons/fc';
 import { FaShoppingBasket } from 'react-icons/fa';
 import { RiShoppingBag2Fill, RiAccountCircleLine } from 'react-icons/ri'
 import { ShoppingCart } from '@material-ui/icons';
-import ejovialLogo from '../images/ejovial-logo.png';
+import ejovialLogo from '../images/ejovial.png';
 
 const Header = () => {
   const cart = useSelector((state) => state.cart.cartItems);
@@ -104,7 +104,7 @@ const Header = () => {
       <AppBar className={classes.visual} position='sticky'>
         <Toolbar>
         {user.loggedIn === false ? (<>
-         <Link className='companyLogo' to='/'><img style={{ width: '50px', height: '64x'}} src={ejovialLogo} alt='company logo' /></Link>
+         <div component={Link} to='/' className='companyLogo'><img src={ejovialLogo} alt='company logo' /></div>
             { isMatch ? (<>
               <IconButton className={classes.cartMargin} component={Link} to='/cart' aria-label='show cart items' color='inherit'>
                     <Badge badgeContent={cart.length} color='secondary'>

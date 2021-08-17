@@ -275,7 +275,8 @@ class Basket extends Component {
             <div className='orderForm'>
             <Paper className='orderField' style={{ borderRadius: '20px'}} elevation={10}>
                 <form>
-                    
+                <Typography color='primary'>Pay On Delivery</Typography>
+
                          
                           <TextField id='inputemail' name='email' fullWidth type='email' label='Email' required onChange={this.handleInput} />
                           <p style={{color: 'red'}}>{emailError}</p>
@@ -294,7 +295,7 @@ class Basket extends Component {
 
                       
                       <Button fullWidth color='secondary' onClick={() => {this.setState({showCheckout: false})}}>Cancel</Button>
-                          <Button color='primary' fullWidth onClick={this.createOrder} type='submit'>Pay On Delivery</Button>
+                          <Button style={{background: 'green', color: '#ffffff'}}  fullWidth onClick={this.createOrder} type='submit'>Place Order</Button>
                           <Paystack createOrderPaystack={this.createOrderPaystack} paidWithCard={this.sendEmailPaystack} isValid={this.isValid}/>
                      
                 </form>

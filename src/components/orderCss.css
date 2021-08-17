@@ -7,23 +7,19 @@
 .orderContent {
   margin: auto;
   text-align: center;
-  background: black;
+  
   color: cyan;
   margin-top: 20px;
 }
 
 .orderContent img {
-    width: 300px;
-    height: 200px;
+    width: 200px;
+    height: 180px;
 }
 
 @media only screen and (max-width: 960px) and (min-width: 610px){
     .orderContent {
       width: 48%;
-    }
-
-    .orderContent img {
-        width: 100%;
     }
 }
 
@@ -32,9 +28,5 @@
       width: 100%;
       margin: 0;
       margin-top: 20px;
-    }
-
-    .orderContent img {
-        width: 100%;
     }
 }

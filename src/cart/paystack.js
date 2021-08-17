@@ -66,7 +66,7 @@ const API_KEY =`${process.env.REACT_APP_API_KEY}`
     // const initializePayment = usePaystackPayment(config);
     return (
       <div>
-          <Button style={{color: 'green'}} fullWidth onClick={handlePay}>Pay With Credit Card</Button>
+          {/* <Button style={{color: 'green'}} fullWidth onClick={handlePay}>Pay With Credit Card</Button> */}
       </div>
     );
 };
