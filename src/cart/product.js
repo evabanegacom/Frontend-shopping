@@ -122,7 +122,7 @@ const Product = (props) => {
                                         <p>Name: &nbsp;&nbsp; <strong>{product.name}</strong></p>
                                         <p className='productDesc'><span style={{ fontWeight: 700}}>Description</span>: &nbsp;&nbsp;{product.description}</p>
                                         <p>Category: &nbsp;&nbsp; {product.category}</p>
-                                        <p>Price: &nbsp;&nbsp; {product.price}</p>
+                                        <p>Price: &nbsp;&nbsp; &#8358;{product.price}</p>
                                       </div>
                                         <button className='cartButton' onClick={() => {handleAdd(product); closeModal();}}><AddShoppingCart /></button>
                                   </div>
