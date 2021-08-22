@@ -27,12 +27,11 @@ const Product = (props) => {
     const dispatch = useDispatch();
     const handleAdd = product => {
         dispatch(addToCart(product))
-        NotificationManager.success('Item added to cart', 'success', 3000);
+        NotificationManager.success('Item added to cart', 'success', 2000);
     }
     const [productModal, setProductModal] = useState(null)
     const openModal =  (products) => {
       setProductModal(products)
-      console.log(productModal)
     }
 
     const closeModal = () => {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { autoLogin, logout } from "../actions/actions";
 import { AppBar, Typography, Toolbar, Tabs, Tab, Button, IconButton, Badge, useMediaQuery, useTheme,
-Menu, MenuList, MenuItem, makeStyles, Paper } from "@material-ui/core";
+Menu, MenuList, MenuItem, makeStyles, Box } from "@material-ui/core";
 import { NavLink, useHistory } from "react-router-dom";
 import { GiBookAura } from 'react-icons/gi';
 import { FiBookOpen } from 'react-icons/fi';
@@ -104,7 +104,7 @@ const Header = () => {
       <AppBar className={classes.visual} position='sticky'>
         <Toolbar>
         {user.loggedIn === false ? (<>
-         <div component={Link} to='/' className='companyLogo'><img src={ejovialLogo} alt='company logo' /></div>
+         <Box component={Link} to='/' className='companyLogo'><img src={ejovialLogo} alt='company logo' /></Box>
             { isMatch ? (<>
               <IconButton className={classes.cartMargin} component={Link} to='/cart' aria-label='show cart items' color='inherit'>
                     <Badge badgeContent={cart.length} color='secondary'>
