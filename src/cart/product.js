@@ -58,8 +58,7 @@ const Product = (props) => {
       },
 
       secondMedia: {
-        height: 150,
-        margin: 'auto',
+        display: 'none'
       },
 
       media: {
@@ -71,15 +70,30 @@ const Product = (props) => {
 
     const classes = useStyles();
 
+    const forClasses = () =>{
+      if(product.category === 'BestDeals'){
+        return classes.secondMedia
+      }
+
+      // else if(product.category === 'Electronics'){
+      //   return classes.secondMedia
+      // }
+
+      else {
+        return classes.root
+      }
+    }
+
     return (
         <div>
 
         
                 <Fade bottom cascade>
-        <Card className={classes.root}>
+        <Card className={forClasses()}>
       <CardActionArea>
-      <Link to={'#' + product.id} onClick={() => openModal(product)}> 
-      <CardMedia className={product.category==='BestDeals' ? classes.secondMedia : classes.media}
+      <Link to={'#' + product.id} onClick={() => openModal(product)}>
+      
+      <CardMedia className={classes.media}
           alt={product.name}
 
           component='img'
