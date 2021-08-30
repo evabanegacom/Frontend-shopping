@@ -21,7 +21,7 @@
 }
 
 .loginBackground {
-  background: url('./images/login.jpg') no-repeat;
+  background: url("./images/login.jpg") no-repeat;
   background-size: cover;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -59,7 +59,7 @@
   color: #ffffff;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   .companyLogo {
     max-width: 130px;
   }

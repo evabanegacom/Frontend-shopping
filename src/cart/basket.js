@@ -9,6 +9,7 @@ import emailjs from 'emailjs-com';
 import { Button, TextField, Typography, Paper, Box } from '@material-ui/core';
 import { addOne, removeFromCart, removeOne, postOrder, clearOrder } from '../actions/actions';
 import './cartCss.css';
+import Whatsapp from '../components/whatsapp';
 
 class Basket extends Component {
     constructor(props){
@@ -265,8 +266,12 @@ class Basket extends Component {
                   Total: {" "} &#8358; 
                     {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
                 </Button>
+                <p>If you do not have an account please</p>
+                <Whatsapp />
+                <p style={{marginBottom: '10px'}}>else</p>
                 {/* <Button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</Button> */}
-                <Button onClick={checkingOut}>Proceed to checkout</Button>
+                <Button style={{ background: 'green', color: '#ffffff'}} onClick={checkingOut}>Proceed to checkout</Button>
+                
             </div>
         
         )}

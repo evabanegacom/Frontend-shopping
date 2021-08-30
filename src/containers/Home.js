@@ -14,6 +14,7 @@ import fridge from '../images/118566_1540206261.jpg';
 import generators from '../images/126611_1612469848.jpg';
 import airconditioners from '../images/162181_1572281033.jpg';
 import appliance from '../images/appliance.jpg';
+import Whatsapp from '../components/whatsapp';
 
 import useStyles from '../containers/styles';
 import styled from "styled-components";
@@ -69,11 +70,10 @@ const EjovialHeader = styled.div`
 
   return (
     <div className="homepage">
-    
-        <div style={{ textAlign: "center", marginTop: '10px', background: 'blue' }}>
-          <h1 style={{ color: 'white'}}>Ejovial</h1>
-          <br/>
+        <div style={{ textAlign: "center", marginTop: '10px'}}>
+          <Whatsapp />
           <p className='homeText'>home of the finest electronic appliances <Button component={Link} to='/products' variant='contained' color="primary">buy now</Button></p>
+          
         </div>
         <div className='searchContainer'>
         <input
