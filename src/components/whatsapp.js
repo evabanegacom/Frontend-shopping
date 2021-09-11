@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, TextField, Grid, Paper, Box } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 const Whatsapp = () => {
   const Whatsap = styled.div`
@@ -14,12 +14,13 @@ const Whatsapp = () => {
 
     p {
         margin-bottom: 10px;
+        line-height: 1.9;
     }
   `;
   return (
     <Whatsap>
       <p>
-        Speak with us on whatsapp to make a purchase{" "}
+        Speak with us on whatsapp to place an order{" "}
         <Button
           style={{ background: "#25d366", height: "30px" }}
           variant="contained"

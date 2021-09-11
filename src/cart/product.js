@@ -5,8 +5,7 @@ import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom'
 import { addToCart } from '../actions/actions';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
+import { Button } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -22,8 +21,7 @@ import {
    NotificationManager,
  } from 'react-notifications';
 
-const Product = (props) => {
-    const { product } = props
+const Product = ({product}) => {
     const dispatch = useDispatch();
     const handleAdd = product => {
         dispatch(addToCart(product))
@@ -85,9 +83,7 @@ const Product = (props) => {
     }
 
     return (
-        <div>
-
-        
+        <div>      
                 <Fade bottom cascade>
         <Card className={forClasses()}>
       <CardActionArea>
@@ -114,7 +110,7 @@ const Product = (props) => {
       </CardActionArea>
       <CardActions className={classes.cardButtons}>
         <Button size="small" color={classes.colorIcon}>
-        <Link style={{ textDecoration: 'none', color: 'green'}} to={'#' + product.id} onClick={() => openModal(product)}>see details</Link>
+        <Link style={{ textDecoration: 'none', color: 'green'}} to={`/product/${product.id}`}>see details</Link>
         </Button>
         <Button size="small" color="primary">
         &#8358; {product.price}
@@ -143,7 +139,7 @@ const Product = (props) => {
                           </Modal>
                       )
                   }
-                  <NotificationContainer /> 
+                  <NotificationContainer />
         </div>
     )
 }

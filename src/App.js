@@ -12,6 +12,7 @@ const SignUp = lazy(() => import('./components/signUp'));
 const Order = lazy(() => import('./components/order'));
 const Contact = lazy(() => import('./components/contact'));
 const Home = lazy(() => import('./containers/Home'));
+const NewProductPage = lazy(() => import('./containers/newProductPage'));
 const AddProduct = lazy(() => import('./containers/addProduct'));
 const Products = lazy(() => import('./containers/products'));
 const Basket = lazy(() => import('./cart/basket'));
@@ -22,6 +23,7 @@ const Television = lazy(() => import('./categories/television'));
 const Refrigerators = lazy(() => import('./categories/refrigerators'));
 const Generators = lazy(() => import('./categories/generators'));
 const Coolers = lazy(() => import('./categories/coolers'));
+const PageNotFound = lazy(() => import('./components/notFound'));
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
         <Route exact path="/categories/Refrigerators-Freezers" component={Refrigerators} />
         <Route exact path="/categories/Power-Solutions-Generators" component={Generators} />
         <Route exact path="/categories/Airconditioners-Coolers" component={Coolers} />
+        <Route exact path="/product/:id" component={NewProductPage} />
+        <Route component={PageNotFound} />
       </Switch>
       <Footer />
     </Suspense>

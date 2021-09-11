@@ -266,7 +266,7 @@ class Basket extends Component {
                   Total: {" "} &#8358; 
                     {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
                 </Button>
-                <p>If you do not have an account please</p>
+                <p>If you do not have a user account on this website please</p>
                 <Whatsapp />
                 <p style={{marginBottom: '10px'}}>else</p>
                 {/* <Button onClick={() => {this.setState({showCheckout: true})}}>Proceed to checkout</Button> */}
