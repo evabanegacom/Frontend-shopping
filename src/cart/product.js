@@ -113,7 +113,7 @@ const Product = ({product}) => {
         <Link style={{ textDecoration: 'none', color: 'green'}} to={`/product/${product.id}`}>see details</Link>
         </Button>
         <Button size="small" color="primary">
-        &#8358; {product.price}
+        &#8358; {product.price.toLocaleString()}
         </Button>
         <Button size="small" onClick={() => handleAdd(product)} color="primary">
           <AddShoppingCart className={classes.cartColor}/>

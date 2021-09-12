@@ -29,18 +29,29 @@ const NewProductPage = (props) => {
 
       const ProductDiv = styled.div`
         display: flex;
+        flex-direction: column;
         align-items: center;
+        img {
+          width: 320px;
+          height: 300px;
+        }
+        @media only screen and (max-width: 767px){
+          img {
+          width: 320px;
+          height: 300px;
+          }
+        }
       `;
 
     return (
         <>
         { filterProduct.length && filterProduct.map((product) =>
           <ProductDiv>
-              <div><p>{product.name}</p></div>
-              <div><p>{product.price}</p></div>
+              <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
+              <div><p style={{ marginTop: '20px'}}>{product.price}</p></div>
               <div><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></div>
-              <div><p>{product.description}</p></div>
-              <Button onClick={() => handleAdd(product)} >Buy Now</Button>
+              <div><p style={{ marginBottom: '20px'}}>{product.description}</p></div>
+              <Button style={{ fontWeight: 700, color: '#fff', background: 'green', marginBottom: '20px'}} fullWidth onClick={() => handleAdd(product)} >Buy Now</Button>
               <NotificationContainer />
           </ProductDiv>
         )}
