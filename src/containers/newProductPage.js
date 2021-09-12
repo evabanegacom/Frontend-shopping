@@ -31,6 +31,7 @@ const NewProductPage = (props) => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         img {
           width: 320px;
           height: 300px;
