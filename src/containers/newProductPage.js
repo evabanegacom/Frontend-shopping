@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import { addToCart } from '../actions/actions';
 import styled from "styled-components";
 import 'react-notifications/lib/notifications.css';
+import Zoom from 'react-reveal/Zoom';
 import {
    NotificationContainer,
    NotificationManager,
@@ -48,11 +49,13 @@ const NewProductPage = (props) => {
         <>
         { filterProduct.length && filterProduct.map((product) =>
           <ProductDiv>
+            <Zoom>
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
               <div><p style={{ marginTop: '20px'}}>{product.price}</p></div>
               <div><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></div>
               <div><p style={{ marginBottom: '20px'}}>{product.description}</p></div>
               <Button style={{ fontWeight: 700, color: '#fff', background: 'green', marginBottom: '20px'}} fullWidth onClick={() => handleAdd(product)} >Buy Now</Button>
+              </Zoom>
               <NotificationContainer />
           </ProductDiv>
         )}
