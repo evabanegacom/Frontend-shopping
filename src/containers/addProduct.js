@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
 import './addProduct.css';
-import { Button, TextField, Input } from '@material-ui/core'
+import { Button, TextField, Input, Paper } from '@material-ui/core'
 import Modal from 'react-modal';
 
 class AddProduct extends Component {
@@ -108,9 +108,8 @@ class AddProduct extends Component {
                  </div>
                ))}
                </div>
-               <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button fullWidth className='addProductButton' onClick={this.openTheModal}>+</Button></div>
-               <Modal className='addProductModal' isOpen={this.state.showform} onRequestClose={this.closeModal}>
-               <Button variant='contained' color='secondary' onClick={this.closeModal}>X</Button>
+               <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button fullWidth className='addProductButton' onClick={this.openTheModal}>Add New Product</Button></div>
+               <Paper className='addProductModal' elevation={10}>
                <form className='contentForm' onSubmit={this.handleSubmit} name='form'>
                <div id="upload-box">
                <label class="custom-file-upload">
@@ -144,7 +143,7 @@ class AddProduct extends Component {
               Add Product
             </Button>
                </form>
-               </Modal>
+               </Paper>
             </div>
         )
     }

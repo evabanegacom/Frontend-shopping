@@ -5,11 +5,19 @@ import { addToCart, removeFromOrder } from '../actions/actions';
 import { Button } from '@material-ui/core';
 import './orderCss.css';
 import dateFormat from 'dateformat';
+import { Formik } from "formik";
+import * as yup from 'yup';
 import 'react-notifications/lib/notifications.css';
 import {
    NotificationContainer,
    NotificationManager,
  } from 'react-notifications';
+
+ const reviewSchema = yup.object().shape({
+  name: yup.string().required().min(4),
+  comment: yup.string().required().min(5),
+  product_id: yup.string().required().min(1),
+})
 
 const Orders = (props) => {
   const dispatch = useDispatch();

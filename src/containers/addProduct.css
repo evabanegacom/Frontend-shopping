@@ -27,10 +27,21 @@
 .addProductModal {
     display: flex;
     justify-content: center;
-    background: grey;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.addProductModal form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .addButton {
@@ -73,6 +84,14 @@ input[type="file"] {
         width: 100%;
     }
 
+    .addProductModal {
+        width: 100%;
+    }
+
+    .addProductModal form {
+        width: 100%;
+    }
+
     .addProductItem .productDesc {
         width:100%;
     }
@@ -89,7 +108,14 @@ input[type="file"] {
 
     .addProductItem .productDesc {
         width:100%;
-        
+    }
+
+    .addProductModal {
+        width: 100%;
+    }
+
+    .addProductModal form {
+        width: 100%;
     }
     
 }
