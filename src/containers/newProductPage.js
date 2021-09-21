@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getProducts } from '../actions/actions';
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from '@material-ui/core';
@@ -21,6 +21,12 @@ const NewProductPage = (props) => {
         dispatch(addToCart(product))
         NotificationManager.success('Item added to cart', 'success', 2000);
     }
+
+    const [readMore, setReadMore] = useState(true);
+
+    const toggleReadMore = () => {
+      setReadMore(!readMore)
+    };
     
     const products = useSelector((state) => state.products.products);
 
@@ -45,6 +51,13 @@ const NewProductPage = (props) => {
         }
       `;
 
+      const Thespan = styled.span`
+        color: #003049;
+   font-weight: 700;
+   cursor: pointer;
+   font-size: 20px;
+      `;
+
     return (
         <>
         { filterProduct.length && filterProduct.map((product) =>
@@ -53,7 +66,13 @@ const NewProductPage = (props) => {
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
               <div><p style={{ marginTop: '20px'}}>{product.price}</p></div>
               <div><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></div>
-              <div><p style={{ marginBottom: '20px'}}>{product.description}</p></div>
+              <div><p style={{ marginBottom: '20px'}}>
+              {readMore ? product.description.slice(0, 150) : product.description}
+              <Thespan onClick={toggleReadMore}>{readMore ? "...read more" : " show less"}
+              </Thespan>
+              </p>
+              </div>
+              
               <Button style={{ fontWeight: 700, color: '#fff', background: 'green', marginBottom: '20px'}} fullWidth onClick={() => handleAdd(product)} >Buy Now</Button>
               </Zoom>
               <NotificationContainer />

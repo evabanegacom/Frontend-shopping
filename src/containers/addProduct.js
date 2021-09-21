@@ -14,8 +14,8 @@ class AddProduct extends Component {
             description: '',
             price: '',
             name: '',
-            category: '',
-            showform: false
+            selected: null,
+            readMore: true,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,24 +45,32 @@ class AddProduct extends Component {
           });
     }
 
-    closeModal = () => {
-      const form = document.querySelector('.contentForm')
-      form && form.reset()
-      this.setState({
-        showform: false
-      })
-    }
-
     handleFile = e => {
         this.setState({
             avatar: e.target.files[0]
         })
     }
 
-    openTheModal = () => {
+    toggleReadMore = () => {
       this.setState({
-        showform: true
+        readMore: !this.state.readMore,
+      });
+    };
+
+    setActive = id => {
+      this.setState({
+        selected: id
       })
+    }
+
+    checking = (id) => {
+      this.setState({
+        selected: id
+      })
+      const status = id === this.state.selected ? true : false
+      if(status === true){
+        return this.toggleReadMore()
+      }
     }
 
     handleSubmit = e => {
@@ -86,7 +94,6 @@ class AddProduct extends Component {
       };
 
     render() {
-      
       const { products, user, deleteProduct } = this.props
       user.admin === false && this.props.history.push('/')
       const userProducts = products.length && products.filter((product) => (product.user_id) === user.id)
@@ -102,7 +109,13 @@ class AddProduct extends Component {
                    
                    <p style={{ color: 'cyan'}}>{x.name}</p>
                    <p style={{ color: 'cyan'}}>{x.price}</p>
-                   <p style={{ color: 'cyan'}} className='productDesc'>{x.description}</p>
+                   <p style={{ color: 'cyan'}}>{x.id}</p>
+                   <p style={{ color: 'cyan'}} className='productDesc'>
+                   {this.state.readMore ? x.description.slice(0, 20) : x.description}
+                   <span onClick={this.toggleReadMore} 
+                   className="read-or-hide">{this.state.readMore ? "...read more" : " show less"}
+                   </span>
+                   </p>
                    <p style={{ color: 'cyan'}}>{x.category}</p>
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
                  </div>
