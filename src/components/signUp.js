@@ -73,6 +73,9 @@ export default function SignUp(props) {
               fullWidth
             />
 
+          <p>{formikProps.touched.email && formikProps.errors.email}</p>
+
+
             <TextField
               placeholder="Phone Number(Optional)"
               onChange={formikProps.handleChange("phone")}

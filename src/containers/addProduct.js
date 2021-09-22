@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
 import './addProduct.css';
 import { Button, TextField, Input, Paper } from '@material-ui/core'
-import Modal from 'react-modal';
+import ShowMoreText from "react-show-more-text";
 
 class AddProduct extends Component {
     constructor(props){
@@ -52,26 +52,11 @@ class AddProduct extends Component {
     }
 
     toggleReadMore = () => {
-      this.setState({
-        readMore: !this.state.readMore,
-      });
+        this.setState({
+          readMore: !this.state.readMore
+        })
+        
     };
-
-    setActive = id => {
-      this.setState({
-        selected: id
-      })
-    }
-
-    checking = (id) => {
-      this.setState({
-        selected: id
-      })
-      const status = id === this.state.selected ? true : false
-      if(status === true){
-        return this.toggleReadMore()
-      }
-    }
 
     handleSubmit = e => {
         e.preventDefault();
@@ -104,18 +89,29 @@ class AddProduct extends Component {
             <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '30px'}}>
             <div className='addProduct'>
             {userProducts && userProducts.map((x) => (
-                 <div className='addProductItem' key={x.id}>
+                 <div  className='addProductItem' key={x.id}>
                    <img src={x.avatar.url.replace(/http/g, "https")} alt={x.name} />
                    
                    <p style={{ color: 'cyan'}}>{x.name}</p>
                    <p style={{ color: 'cyan'}}>{x.price}</p>
-                   <p style={{ color: 'cyan'}}>{x.id}</p>
-                   <p style={{ color: 'cyan'}} className='productDesc'>
+                   {/* <p style={{ color: 'cyan'}} className='productDesc'>
                    {this.state.readMore ? x.description.slice(0, 20) : x.description}
-                   <span onClick={this.toggleReadMore} 
+                   <span id={x.id.toString()} onClick={this.toggleReadMore} 
                    className="read-or-hide">{this.state.readMore ? "...read more" : " show less"}
                    </span>
-                   </p>
+                   </p> */}
+                   <ShowMoreText
+                   lines={3}
+                more="Show more"
+                less="Show less"
+                className="content-css"
+                anchorClass="my-anchor-css-class"
+                onClick={this.executeOnClick}
+                expanded={false}
+                width={200}
+                truncatedEndingComponent={"... "}
+                   >{x.description}
+                   </ShowMoreText>
                    <p style={{ color: 'cyan'}}>{x.category}</p>
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
                  </div>

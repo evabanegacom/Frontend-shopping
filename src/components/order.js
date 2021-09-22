@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getOrders, autoLogin, getProducts, deleteOrder } from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromOrder } from '../actions/actions';
-import { Button } from '@material-ui/core';
+import { Button , Paper, TextField} from '@material-ui/core';
 import './orderCss.css';
 import dateFormat from 'dateformat';
 import { Formik } from "formik";
@@ -93,6 +93,51 @@ user.loggedIn === false && props.history.push('/login')
               <p style={{ color:'white'}}>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
       <Button style={{color: 'yellow'}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
+      {/* <Button color='secondary' type='button' >make a review</Button> */}
+       {/* <Formik
+       initialValues={{ name: "", comment: "", product_id: parsing.id }}
+        validationSchema={reviewSchema}
+        onSubmit={(values, actions) => {
+          console.log(values)
+          addUser(values);
+          actions.resetForm();
+        }}
+        >
+        {(formikProps) => (
+          <Paper className='formik' elevation={10}>
+            <h2>SignUp</h2>
+          <div className='avatarLogo'><Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar></div>
+          <form onSubmit={formikProps.handleSubmit}>
+            <TextField
+              placeholder="Name"
+              onChange={formikProps.handleChange("name")}
+              value={formikProps.values.name}
+              onBlur={formikProps.handleBlur('name')}
+              type='text'
+              label='Name'
+              required
+              fullWidth
+            />
+
+            <p>{formikProps.touched.name && formikProps.errors.name}</p>
+
+            <TextField
+              placeholder="comment"
+              onChange={formikProps.handleChange("comment")}
+              value={formikProps.values.comment}
+              onBlur={formikProps.handleBlur('comment')}
+              type='text'
+              label='comment'
+              required
+              fullWidth
+            />
+
+            <p>{formikProps.touched.comment && formikProps.errors.comment}</p>
+            <Button className='signUpButton' type='submit' fullWidth onClick={formikProps.handleSubmit}>Create Account</Button>
+            </form>
+            </Paper>
+        )}
+       </Formik> */}
               </div>
             </div>
           );

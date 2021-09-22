@@ -71,6 +71,17 @@ input[type="file"] {
     cursor: pointer;
 }
 
+.my-anchor-css-class {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.content-css {
+  width: 300px;
+}
+
 .addProductItem .productDesc {
     width: 300px;
 }
@@ -102,6 +113,12 @@ input[type="file"] {
     .addProductItem .productDesc {
         width:100%;
     }
+
+    .content-css {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
 }
 
 @media only screen and (max-width: 640px) {
@@ -124,5 +141,9 @@ input[type="file"] {
     .addProductModal form {
         width: 100%;
     }
+
+    .content-css {
+        width: 100%;
+      }
     
 }
