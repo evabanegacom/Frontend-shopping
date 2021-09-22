@@ -14,8 +14,7 @@ class AddProduct extends Component {
             description: '',
             price: '',
             name: '',
-            selected: null,
-            readMore: true,
+            show: false,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,12 +54,26 @@ class AddProduct extends Component {
         this.setState({
           readMore: !this.state.readMore
         })
-        
     };
+
+    showForm = () => {
+       this.setState({
+         show: true,
+       })
+       this.state.show && document.querySelector('.addProductModal').classList.remove('closeForm')
+    }
+
+    closeForm = () => {
+      this.setState({
+        show: false,
+      })
+    if(this.state.show === false)
+      document.querySelector('.addProductModal').classList.add('closeForm')
+     else console.log('null')
+    }
 
     handleSubmit = e => {
         e.preventDefault();
-        // console.log(this.state)
         const form_data = new FormData();
     form_data.append('avatar', this.state.avatar);
     form_data.append('name', this.state.name);
@@ -94,12 +107,6 @@ class AddProduct extends Component {
                    
                    <p style={{ color: 'cyan'}}>{x.name}</p>
                    <p style={{ color: 'cyan'}}>{x.price}</p>
-                   {/* <p style={{ color: 'cyan'}} className='productDesc'>
-                   {this.state.readMore ? x.description.slice(0, 20) : x.description}
-                   <span id={x.id.toString()} onClick={this.toggleReadMore} 
-                   className="read-or-hide">{this.state.readMore ? "...read more" : " show less"}
-                   </span>
-                   </p> */}
                    <ShowMoreText
                    lines={3}
                 more="Show more"
@@ -117,8 +124,8 @@ class AddProduct extends Component {
                  </div>
                ))}
                </div>
-               <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button fullWidth className='addProductButton' onClick={this.openTheModal}>Add New Product</Button></div>
-               <Paper className='addProductModal' elevation={10}>
+               <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'green', marginTop: '20px', fontSize: '20px'}}><Button fullWidth className='addProductButton' onClick={this.showForm}>Add New Product</Button></div>
+               <Paper className='addProductModal closeForm' elevation={10}>
                <form className='contentForm' onSubmit={this.handleSubmit} name='form'>
                <div id="upload-box">
                <label class="custom-file-upload">
@@ -152,6 +159,9 @@ class AddProduct extends Component {
               Add Product
             </Button>
                </form>
+            <Button variant="contained" onClick={this.closeForm} className='addButton' color='secondary' fullWidth type="submit" >
+              X
+            </Button>
                </Paper>
             </div>
         )
