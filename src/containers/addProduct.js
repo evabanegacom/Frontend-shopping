@@ -63,8 +63,7 @@ class AddProduct extends Component {
       document.querySelector('#description').value = description
       document.querySelector('#price').value = price
       document.querySelector('#select').value = select
-      // document.querySelector('#actionButton button').disabled
-      // !document.getElementById('editingProduct').disabled
+      
    }
 
     showForm = () => {
@@ -72,8 +71,7 @@ class AddProduct extends Component {
          show: true,
        })
        this.state.show && document.querySelector('.addProductModal').classList.remove('closeForm')
-      //  document.querySelector('#addingProduct').disabled = false
-      //  document.querySelector('#editingProduct').disabled = true
+       document.querySelector('.contentForm').reset()
       this.setState({disable: 'disable-edit'})
 
     }
@@ -124,8 +122,7 @@ class AddProduct extends Component {
       };
 
     render() {
-      console.log(this.state.editInfo.id)
-      console.log(this.state.disable)
+     
       const { products, user, deleteProduct } = this.props
       user.admin === false && this.props.history.push('/')
       const userProducts = products.length && products.filter((product) => (product.user_id) === user.id)
@@ -153,7 +150,7 @@ class AddProduct extends Component {
                 truncatedEndingComponent={"... "}
                    >{x.description}
                    </ShowMoreText>
-                   <p style={{ color: 'cyan'}}>{x.category}</p>
+                   <p style={{ color: '#fff'}}>Category: {x.category}</p>
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
                    <Button fullWidth className='addProductButton' onClick={() => this.editForm(x.name, x.description, x.price, x.category, x)}>Edit</Button>
                    
