@@ -10,4 +10,8 @@ export default makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+
+  secondMedia: {
+    display: 'none'
+  },
 }));

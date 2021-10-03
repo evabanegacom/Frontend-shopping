@@ -100,6 +100,22 @@ export const postProduct = productInfo => async dispatch => {
     );
 };
 
+// Editing Products form
+
+export const editProduct = (id, productInfo) => async dispatch => {
+  await axios.put(`https://neptune-spear.herokuapp.com/api/v1/products/${id}`, productInfo, {
+    headers: {
+      'content-type': 'multipart/form-data',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    }
+  })
+    .then((data) =>{ console.log('action edit', data)
+      dispatch(setProducts(data))
+    }
+    );
+};
+
 // GET ALL PRODUCTS
 
 const setProducts = data => ({

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { postProduct, autoLogin, getProducts, deleteProduct } from '../actions/actions';
+import { postProduct, autoLogin, getProducts, deleteProduct, editProduct } from '../actions/actions';
 import './addProduct.css';
 import { Button, TextField, Input, Paper } from '@material-ui/core'
 import ShowMoreText from "react-show-more-text";
@@ -15,6 +15,8 @@ class AddProduct extends Component {
             price: '',
             name: '',
             show: false,
+            editInfo: '',
+            disable: '',
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,17 +52,30 @@ class AddProduct extends Component {
         })
     }
 
-    toggleReadMore = () => {
-        this.setState({
-          readMore: !this.state.readMore
-        })
-    };
+    editForm = (name, description, price, select, x) => {
+      this.setState({
+        show: true,
+      })
+      this.setState({editInfo: x})
+      this.state.show && document.querySelector('.addProductModal').classList.remove('closeForm')
+      this.setState({disable: 'disable-add'})
+      document.querySelector('#name').value = name
+      document.querySelector('#description').value = description
+      document.querySelector('#price').value = price
+      document.querySelector('#select').value = select
+      // document.querySelector('#actionButton button').disabled
+      // !document.getElementById('editingProduct').disabled
+   }
 
     showForm = () => {
        this.setState({
          show: true,
        })
        this.state.show && document.querySelector('.addProductModal').classList.remove('closeForm')
+      //  document.querySelector('#addingProduct').disabled = false
+      //  document.querySelector('#editingProduct').disabled = true
+      this.setState({disable: 'disable-edit'})
+
     }
 
     closeForm = () => {
@@ -91,7 +106,26 @@ class AddProduct extends Component {
     }
       };
 
+      handleEdit = (e, id) => {
+        e.preventDefault();
+        const form_data = new FormData();
+        (this.state.avatar === '') ? console.log('null') : form_data.append('avatar', this.state.avatar);
+    form_data.append('name', document.querySelector('#name').value);
+    form_data.append('price', document.querySelector('#price').value);
+    form_data.append('description', document.querySelector('#description').value);
+    form_data.append('category', document.querySelector('#select').value);
+    for (var key of form_data.entries()) {
+        console.log(key[0] + ', ' + key[1]);
+    }
+          
+    this.props.editProduct(id, form_data)
+    document.querySelector('.contentForm').reset()
+    
+      };
+
     render() {
+      console.log(this.state.editInfo.id)
+      console.log(this.state.disable)
       const { products, user, deleteProduct } = this.props
       user.admin === false && this.props.history.push('/')
       const userProducts = products.length && products.filter((product) => (product.user_id) === user.id)
@@ -121,6 +155,8 @@ class AddProduct extends Component {
                    </ShowMoreText>
                    <p style={{ color: 'cyan'}}>{x.category}</p>
                    <Button color='secondary' type='submit' onClick={() => deleteProduct(x.id) }>Remove</Button>
+                   <Button fullWidth className='addProductButton' onClick={() => this.editForm(x.name, x.description, x.price, x.category, x)}>Edit</Button>
+                   
                  </div>
                ))}
                </div>
@@ -129,7 +165,7 @@ class AddProduct extends Component {
                <form className='contentForm' onSubmit={this.handleSubmit} name='form'>
                <div id="upload-box">
                <label class="custom-file-upload">
-      <input  className='fileUpload' required type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
+      <input className='fileUpload' required type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
       custom upload
       </label>
       <div style={{marginTop: '20px'}}>
@@ -143,7 +179,7 @@ class AddProduct extends Component {
                    <TextField fullWidth required onChange={this.handleChange} type='text' id='price' placeholder='product price' />
                    <label htmlFor="category">
               Pick choose a product Category:&nbsp;&nbsp;&nbsp;
-              <select className="favCity" value={this.state.category} onChange={this.handleChange}>
+              <select id='select' className="favCity" value={this.state.category} onChange={this.handleChange}>
                 {' '}
                 <option value="CATEGORY">Select</option>
                 <option value="Home-Theatres">Home-Theatres</option>
@@ -155,10 +191,15 @@ class AddProduct extends Component {
                 <option value="BestDeals">BestDeals</option>
               </select>
             </label>
-            <Button variant="contained" className='addButton' color='primary' fullWidth type="submit" >
+            <div id='actionButton' style={{ width: '100%'}}><Button disabled={this.state.disable === 'disable-add' ? true : false} id='addingProduct' variant="contained" className='addButton' color='primary' fullWidth type="submit" >
               Add Product
             </Button>
+            
+            </div>
                </form>
+               <Button disabled={this.state.disable === 'disable-edit' ? true : false} id='editingProduct' variant="contained" onClick={(e) => this.handleEdit(e, this.state.editInfo.id)} color='primary' className='addButton' color='primary' fullWidth type="submit">
+        Edit Product
+      </Button>
             <Button variant="contained" onClick={this.closeForm} className='addButton' color='secondary' fullWidth type="submit" >
               X
             </Button>
@@ -175,6 +216,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     addProduct: productInfo => dispatch(postProduct(productInfo)),
+    editProduct: (id,productInfo) => dispatch(editProduct(id, productInfo)),
     autoLogin: () => dispatch(autoLogin()),
     getProducts: () => dispatch(getProducts()),
     deleteProduct: (id) => dispatch(deleteProduct(id))

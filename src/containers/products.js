@@ -141,6 +141,20 @@ const Products = (props) => {
 
       // user.loggedIn === false && props.history.push('/login')
 
+      const forClasses = (product) =>{
+        if(product.category === 'BestDeals'){
+          return classes.secondMedia
+        }
+  
+        // else if(product.category === 'Electronics'){
+        //   return classes.secondMedia
+        // }
+  
+        else {
+          return null
+        }
+      }
+
     return (
         <Box component='div' display='flex' flexDirection='column'>
                 <div className='filterContainer'>
@@ -154,6 +168,7 @@ const Products = (props) => {
                 <div className='inputDiv'>
                 <input
           type="text"
+          
           placeholder="search by name or category or use filter"
           onChange={handleSearches}
           
@@ -190,9 +205,12 @@ const Products = (props) => {
 
               else if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                 return product
-              }
+              } 
+              {/* else if(!product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
+                document.querySelector('.inputDiv input').placeholder = 'no query found for your search try again doesn exist'
+              } */}
             }).slice(offset, offset + PER_PAGE).map((product) => (
-              <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>
+              <Grid className={forClasses(product)} item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>
             ))
           ) : (<p>WAIT FOR IT...</p>)}
           </Grid>

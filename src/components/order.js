@@ -90,7 +90,7 @@ user.loggedIn === false && props.history.push('/login')
               <p style={{ color:'white'}}>Price: &nbsp;&#8358; {parsing.price}</p>
               <p style={{ color:'white'}}>Quantity: &nbsp;{parsing.count}</p>
              
-              <p style={{ color:'white'}}>Date: &nbsp;{dateFormat(parsing.created_at, "mmmm dS, yyyy")}</p>
+              <p style={{ color:'white'}}>Date: &nbsp;{dateFormat(x.created_at, "mmmm dS, yyyy")}</p>
       <Button style={{color: 'yellow'}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
       {/* <Button color='secondary' type='button' >make a review</Button> */}

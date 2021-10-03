@@ -85,9 +85,9 @@ const Product = ({product}) => {
     return (
         <div>      
                 <Fade bottom cascade>
-        <Card className={forClasses()}>
+        <Card>
       <CardActionArea>
-      <Link to={`/product/${product.id}`} onClick={() => openModal(product)}>
+      <Link to={`/product/${product.id}`}>
       
       <CardMedia className={classes.media}
           alt={product.name}
