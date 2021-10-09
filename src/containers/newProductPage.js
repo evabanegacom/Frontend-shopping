@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getProducts } from '../actions/actions';
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { addToCart } from '../actions/actions';
 import styled from "styled-components";
 import 'react-notifications/lib/notifications.css';
@@ -37,18 +37,12 @@ const NewProductPage = (props) => {
       const ProductDiv = styled.div`
         display: flex;
         flex-direction: column;
-        align-items: center;
         text-align: center;
         img {
           width: 320px;
           height: 300px;
         }
-        @media only screen and (max-width: 767px){
-          img {
-          width: 320px;
-          height: 300px;
-          }
-        }
+        
       `;
 
       const Thespan = styled.span`
@@ -64,9 +58,11 @@ const NewProductPage = (props) => {
           <ProductDiv>
             <Zoom>
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
-              <div><p style={{ marginTop: '20px'}}>{product.price}</p></div>
-              <div><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></div>
-              <div>{product.avatartwo.url && <img src={product.avatartwo.url.replace(/http/g, "https")} alt={product.name} /> }</div>
+              <div><p style={{ marginBottom: '20px'}}>{product.price}</p></div>
+              <Grid container justify="center" spacing={4}>
+              <Grid xs={12} sm={6} md={4} lg={3}><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></Grid>
+              {product.avatartwo.url && <Grid xs={12} sm={6} md={4} lg={3}><img src={product.avatartwo.url.replace(/http/g, "https")} alt={product.name} /></Grid>}
+              </Grid>
               <div><p style={{ marginBottom: '20px'}}>
               {readMore ? product.description.slice(0, 150) : product.description}
               <Thespan onClick={toggleReadMore}>{readMore ? "...read more" : " show less"}
