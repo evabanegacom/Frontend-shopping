@@ -66,6 +66,7 @@ const NewProductPage = (props) => {
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
               <div><p style={{ marginTop: '20px'}}>{product.price}</p></div>
               <div><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></div>
+              <div>{product.avatartwo.url && <img src={product.avatartwo.url.replace(/http/g, "https")} alt={product.name} /> }</div>
               <div><p style={{ marginBottom: '20px'}}>
               {readMore ? product.description.slice(0, 150) : product.description}
               <Thespan onClick={toggleReadMore}>{readMore ? "...read more" : " show less"}

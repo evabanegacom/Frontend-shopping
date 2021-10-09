@@ -11,6 +11,7 @@ class AddProduct extends Component {
        
         this.state = {
             avatar: '',
+            avatartwo: '',
             description: '',
             price: '',
             name: '',
@@ -52,6 +53,12 @@ class AddProduct extends Component {
         })
     }
 
+    handleSecondFile = e => {
+      this.setState({
+          avatartwo: e.target.files[0]
+      })
+  }
+
     editForm = (name, description, price, select, x) => {
       this.setState({
         show: true,
@@ -89,6 +96,7 @@ class AddProduct extends Component {
         e.preventDefault();
         const form_data = new FormData();
     form_data.append('avatar', this.state.avatar);
+    form_data.append('avatartwo', this.state.avatartwo);
     form_data.append('name', this.state.name);
     form_data.append('price', this.state.price);
     form_data.append('description', this.state.description);
@@ -108,6 +116,7 @@ class AddProduct extends Component {
         e.preventDefault();
         const form_data = new FormData();
         (this.state.avatar === '') ? console.log('null') : form_data.append('avatar', this.state.avatar);
+        (this.state.avatartwo === '') ? console.log('null') : form_data.append('avatartwo', this.state.avatartwo);
     form_data.append('name', document.querySelector('#name').value);
     form_data.append('price', document.querySelector('#price').value);
     form_data.append('description', document.querySelector('#description').value);
@@ -171,7 +180,20 @@ class AddProduct extends Component {
       <p>File size: {this.state.avatar.size} bytes</p>
       </div>
       {this.state.avatar && <ImageThumb avatar={this.state.avatar} />}
-    </div>                   <TextField fullWidth  required onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
+    </div>
+    <div id="upload-box">
+               <label class="custom-file-upload">
+      <input className='fileUpload' type="file" onChange={this.handleSecondFile} accept="image/png, image/jpeg, image/jpg"/>
+      second image
+      </label>
+      <div style={{marginTop: '20px'}}>
+      <p>Filename: {this.state.avatartwo.name}</p>
+      <p>File type: {this.state.avatartwo.type}</p>
+      <p>File size: {this.state.avatartwo.size} bytes</p>
+      </div>
+      {this.state.avatartwo && <ImageThumb avatar={this.state.avatartwo} />}
+    </div>           
+    <TextField fullWidth  required onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
                    <TextField fullWidth required onChange={this.handleChange} multiline type='text' id='description' placeholder='description' />
                    <TextField fullWidth required onChange={this.handleChange} type='text' id='price' placeholder='product price' />
                    <label htmlFor="category">
