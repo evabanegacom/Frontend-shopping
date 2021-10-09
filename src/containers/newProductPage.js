@@ -38,6 +38,7 @@ const NewProductPage = (props) => {
         display: flex;
         flex-direction: column;
         text-align: center;
+        overflow: hidden;
         img {
           width: 320px;
           height: 300px;
@@ -59,11 +60,12 @@ const NewProductPage = (props) => {
             <Zoom>
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
               <div><p style={{ marginBottom: '20px'}}>{product.price}</p></div>
-              <Grid container justify="center" spacing={4}>
-              <Grid xs={12} sm={6} md={4} lg={3}><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></Grid>
-              {product.avatartwo.url && <Grid xs={12} sm={6} md={4} lg={3}><img src={product.avatartwo.url.replace(/http/g, "https")} alt={product.name} /></Grid>}
+              <Grid container justify="center" spacing={3}>
+              <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></Grid>
+              {product.avatartwo.url && <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatartwo.url.replace(/http/g, "https")} alt={product.name} />
+              </Grid>}
               </Grid>
-              <div><p style={{ marginBottom: '20px'}}>
+              <div><p style={{ marginBottom: '20px', marginTop: '30px'}}>
               {readMore ? product.description.slice(0, 150) : product.description}
               <Thespan onClick={toggleReadMore}>{readMore ? "...read more" : " show less"}
               </Thespan>

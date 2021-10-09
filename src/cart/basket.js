@@ -264,7 +264,7 @@ class Basket extends Component {
             <div className='checkoutDiv'>
                 <Button color='primary' className='totalPrice'>
                   Total: {" "} &#8358; 
-                    {cartItems.reduce((a, c) => a + c.price*c.count, 0)}
+                    {cartItems.reduce((a, c) => Number(a + c.price*c.count).toLocaleString('en'), 0)}
                 </Button>
                 <p>If you do not have a user account on this website please</p>
                 <Whatsapp />

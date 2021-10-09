@@ -87,7 +87,8 @@ user.loggedIn === false && props.history.push('/login')
               <img src={parsing.avatar.url.replace(/http:/g, "https:")} alt='' />
               <div style={{ background: '#003049'}}>
               <p style={{ color:'white'}}>Name: &nbsp;{parsing.name}</p>
-              <p style={{ color:'white'}}>Price: &nbsp;&#8358; {parsing.price}</p>
+              <p style={{ color:'white'}}>Price: &nbsp;&#8358; &#8358;{Number(parsing.price).toLocaleString("en")}
+</p>
               <p style={{ color:'white'}}>Quantity: &nbsp;{parsing.count}</p>
              
               <p style={{ color:'white'}}>Date: &nbsp;{dateFormat(x.created_at, "mmmm dS, yyyy")}</p>

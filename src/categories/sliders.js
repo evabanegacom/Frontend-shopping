@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProducts, addToCart } from '../actions/actions';
 import { Box, Grid } from '@material-ui/core';
 import Product from '../cart/product';
-import useStyles from '../containers/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import ReactPaginate from "react-paginate";
 import Filter from './filterCategories';
 import "slick-carousel/slick/slick.css";
@@ -19,7 +19,28 @@ import {
 const Sliders = () => {
   const dispatch = useDispatch()
 
+  
+  const useStyles = makeStyles({
+    secondMedia: {
+      display: "none",
+    },
+  })
+
   const classes = useStyles();
+
+    const forClasses = (product) =>{
+    if(product.category === 'BestDeals'){
+      return classes.secondMedia
+    }
+
+    // else if(product.category === 'Electronics'){
+    //   return classes.secondMedia
+    // }
+
+    else {
+      return null
+    }
+  }
 
   useEffect(() => {
       dispatch(getProducts())
@@ -144,7 +165,5 @@ const Sliders = () => {
         </>
     )
 }
-
-//const sliced = data.length && data.filter((product) => product.category === 'Television-sets')
 
 export default Sliders
