@@ -33,11 +33,12 @@ const Product = ({ product }) => {
     setProductModal(products);
   };
 
-  const reviews = useSelector((state) => state.reviews.review.data);
+  const reviews = useSelector((state) => state.reviews.review);
   useEffect(() => {
     dispatch(getReviews())
 }, [JSON.stringify([reviews])]);
 
+// console.log(reviews?.data?.rating)
 
   const closeModal = () => {
     setProductModal(null);
@@ -76,7 +77,7 @@ const Product = ({ product }) => {
   console.log(reviews)
 
   const productReviews = (id) => {
-    const productReview = reviews && reviews.length && reviews.filter(
+    const productReview = reviews && reviews?.data?.filter(
     (review) => review.product_id === (id)
   );
   const sum = productReview && productReview.reduce(function(a=0, b){
@@ -96,7 +97,7 @@ const Product = ({ product }) => {
               />
               <FaStar 
                 className='star'
-                color={ratingValue <= Number(sum/productReview.length) ? '#ffc107': '#e4e5e9'}
+                color={ratingValue <= Number(sum/productReview?.length) ? '#ffc107': '#e4e5e9'}
                 size={20}
                 
               />
@@ -104,7 +105,7 @@ const Product = ({ product }) => {
           )
         })}
       </div>
-            <p>{productReview.length}&nbsp; reviews</p>
+            <p>{productReview?.length}&nbsp; reviews</p>
       </div>
   )
   }
