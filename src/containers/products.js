@@ -49,10 +49,6 @@ const Products = (props) => {
     dispatch(getProducts())
   }, [])
 
-  useEffect(() => {
-    dispatch(getReviews())
-}, [JSON.stringify([reviews])]);
-
       const sortProducts = (event) => {
         const sorted = event.target.value
         setSort(sorted)

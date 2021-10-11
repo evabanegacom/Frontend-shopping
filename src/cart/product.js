@@ -73,8 +73,10 @@ const Product = ({ product }) => {
     },
   });
 
+  console.log(reviews)
+
   const productReviews = (id) => {
-    const productReview = reviews.length && reviews.filter(
+    const productReview = reviews && reviews.length && reviews.filter(
     (review) => review.product_id === (id)
   );
   const sum = productReview && productReview.reduce(function(a=0, b){
