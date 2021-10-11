@@ -77,6 +77,7 @@ const Product = ({ product, reviews }) => {
     return a + Number(b.rating)
   }, 0)
   return (
+    <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center'}}>
     <div style={{ display: 'flex', justifyContent: 'center'}}>
         {[...Array(5)].map((star, i) =>{
           const ratingValue = i + 1;
@@ -96,6 +97,8 @@ const Product = ({ product, reviews }) => {
             </label>
           )
         })}
+      </div>
+            <p>{productReview.length}&nbsp; reviews</p>
       </div>
   )
   }
