@@ -38,6 +38,8 @@ useEffect(() => {
   const [therating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
   const [itemId, setItemId] = useState(null)
+  const [showRating, setShowRating] = useState(false)
+  const [showForm, setShowForm] = useState(false)
   const [formValues, setFormValues] = useState({
     name: '',
     comment: '',
@@ -77,7 +79,7 @@ useEffect(() => {
       ...formValues,
       product_id: id
     }))
-    document.querySelector('.starDiv').classList.remove('hide-rating')
+    setShowRating(true)
   }
 
   const onChangeRating = (rating) => {
@@ -85,6 +87,7 @@ useEffect(() => {
       ...formValues,
       rating: rating
     }))
+    setShowForm(true)
   }
   
 // New mapping methods
@@ -138,7 +141,7 @@ user.loggedIn === false && props.history.push('/login')
       <Button style={{color: 'yellow'}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
       <Button onClick= {() => onChangeId(parsing.id)} color='secondary' type='button' >make a review</Button>
-      <div className='starDiv hide-rating'>
+      {showRating && <div className='starDiv'>
         {[...Array(5)].map((star, i) =>{
           const ratingValue = i + 1;
           return (
@@ -161,6 +164,7 @@ user.loggedIn === false && props.history.push('/login')
           )
         })}
       </div>
+      }
        
               </div>
             </div>
@@ -169,7 +173,7 @@ user.loggedIn === false && props.history.push('/login')
       })}
     </div>
     
-    <Paper elevation={10}>
+    {showForm && <Paper elevation={10}>
             <h4>Make a review</h4>
           {/* <div className='avatarLogo'><Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar></div> */}
           <form onSubmit={handleSubmit}>
@@ -193,6 +197,7 @@ user.loggedIn === false && props.history.push('/login')
             <Button className='signUpButton' type='submit' fullWidth >Submit Review</Button>
             </form>
             </Paper>
+    }
        <NotificationContainer />
     </div>
   );
