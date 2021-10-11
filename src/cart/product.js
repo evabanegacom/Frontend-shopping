@@ -3,7 +3,7 @@ import Fade from "react-reveal/Fade";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom";
-import { addToCart } from "../actions/actions";
+import { addToCart, getReviews } from "../actions/actions";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
@@ -22,7 +22,7 @@ import {
   NotificationManager,
 } from "react-notifications";
 
-const Product = ({ product, reviews }) => {
+const Product = ({ product }) => {
   const dispatch = useDispatch();
   const handleAdd = (product) => {
     dispatch(addToCart(product));
@@ -33,11 +33,10 @@ const Product = ({ product, reviews }) => {
     setProductModal(products);
   };
 
-  // useEffect(() => {
-  //   dispatch(getReviews())
-  // }, [])
-
-  // const reviews = useSelector((state) => state.reviews.review.data);
+  const reviews = useSelector((state) => state.reviews.review.data);
+  useEffect(() => {
+    dispatch(getReviews())
+}, [JSON.stringify([reviews])]);
 
 
   const closeModal = () => {
@@ -78,7 +77,7 @@ const Product = ({ product, reviews }) => {
     const productReview = reviews.length && reviews.filter(
     (review) => review.product_id === (id)
   );
-  const sum = productReview.reduce(function(a=0, b){
+  const sum = productReview && productReview.reduce(function(a=0, b){
     return a + Number(b.rating)
   }, 0)
   return (

@@ -203,7 +203,7 @@ const Products = (props) => {
             data.filter((product) =>{
               if(search ===''){
                 return data.slice(offset, offset + PER_PAGE).map((product) => (
-                  <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product reviews={reviews} product={product} key={product.id} /></Grid>))
+                  <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>))
               } else if(product.category.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                 return product
               }
@@ -215,7 +215,7 @@ const Products = (props) => {
                 document.querySelector('.inputDiv input').placeholder = 'no query found for your search try again doesn exist'
               } */}
             }).slice(offset, offset + PER_PAGE).map((product) => (
-              <Grid className={forClasses(product)} item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} reviews={reviews}/></Grid>
+              <Grid className={forClasses(product)} item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>
             ))
           ) : (<p>WAIT FOR IT...</p>)}
           </Grid>
