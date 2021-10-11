@@ -103,11 +103,6 @@ const Product = ({ product, reviews }) => {
   )
   }
 
-  
-    const productReview = reviews.length && reviews.filter(
-    (review) => review.product_id === 3);
-        console.log(productReview)
-
   const classes = useStyles();
 
   const forClasses = () => {
