@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getOrders, autoLogin, getProducts, deleteOrder } from "../actions/actions";
+import { getOrders, autoLogin, getProducts, deleteOrder, postReview } from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromOrder } from '../actions/actions';
 import { Button , Paper, TextField} from '@material-ui/core';
@@ -7,17 +7,12 @@ import './orderCss.css';
 import dateFormat from 'dateformat';
 import { Formik } from "formik";
 import * as yup from 'yup';
+import { FaStar } from 'react-icons/fa'
 import 'react-notifications/lib/notifications.css';
 import {
    NotificationContainer,
    NotificationManager,
  } from 'react-notifications';
-
- const reviewSchema = yup.object().shape({
-  name: yup.string().required().min(4),
-  comment: yup.string().required().min(5),
-  product_id: yup.string().required().min(1),
-})
 
 const Orders = (props) => {
   const dispatch = useDispatch();
@@ -40,9 +35,57 @@ useEffect(() => {
    NotificationManager.success('Item added to cart', 'success', 2000);
   }
 
+  const [therating, setRating] = useState(null)
+  const [hover, setHover] = useState(null)
+  const [itemId, setItemId] = useState(null)
+  const [formValues, setFormValues] = useState({
+    name: '',
+    comment: '',
+    product_id: '',
+    rating: '',
+  })
+
   const userId = orders.length && orders.filter(
     (order) => order.user_id === parseInt(props.match.params.id, 10)
   );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues)
+    dispatch(postReview(formValues))
+    NotificationManager.success('Review submitted', 'success', 2000);
+  }
+
+  const onNameChange = (event) => {
+    event.preventDefault()
+    setFormValues((formValues) =>({
+      ...formValues,
+      name: event.target.value
+    }))
+  }
+
+  const onCommentChange = (event) => {
+    event.preventDefault()
+    setFormValues((formValues) =>({
+      ...formValues,
+      comment: event.target.value
+    }))
+  }
+
+  const onChangeId = (id) => {
+    setFormValues((formValues) =>({
+      ...formValues,
+      product_id: id
+    }))
+    document.querySelector('.starDiv').classList.remove('hide-rating')
+  }
+
+  const onChangeRating = (rating) => {
+    setFormValues((formValues) =>({
+      ...formValues,
+      rating: rating
+    }))
+  }
   
 // New mapping methods
     // let totals = userId.map(function(x){
@@ -62,8 +105,8 @@ useEffect(() => {
 
 
 user.loggedIn === false && props.history.push('/login')
-
   return (
+    <div style={{ display: 'flex', flexDirection: 'column'}}>
     <div className='theOrderDiv'>
 
       {userId && userId.map((x) => {
@@ -87,64 +130,70 @@ user.loggedIn === false && props.history.push('/login')
               <img src={parsing.avatar.url.replace(/http:/g, "https:")} alt='' />
               <div style={{ background: '#003049'}}>
               <p style={{ color:'white'}}>Name: &nbsp;{parsing.name}</p>
-              <p style={{ color:'white'}}>Price: &nbsp;&#8358; &#8358;{Number(parsing.price).toLocaleString("en")}
+              <p style={{ color:'white'}}>Price: &nbsp; &#8358;{Number(parsing.price).toLocaleString("en")}
 </p>
               <p style={{ color:'white'}}>Quantity: &nbsp;{parsing.count}</p>
              
               <p style={{ color:'white'}}>Date: &nbsp;{dateFormat(x.created_at, "mmmm dS, yyyy")}</p>
       <Button style={{color: 'yellow'}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
-      {/* <Button color='secondary' type='button' >make a review</Button> */}
-       {/* <Formik
-       initialValues={{ name: "", comment: "", product_id: parsing.id }}
-        validationSchema={reviewSchema}
-        onSubmit={(values, actions) => {
-          console.log(values)
-          addUser(values);
-          actions.resetForm();
-        }}
-        >
-        {(formikProps) => (
-          <Paper className='formik' elevation={10}>
-            <h2>SignUp</h2>
-          <div className='avatarLogo'><Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar></div>
-          <form onSubmit={formikProps.handleSubmit}>
-            <TextField
-              placeholder="Name"
-              onChange={formikProps.handleChange("name")}
-              value={formikProps.values.name}
-              onBlur={formikProps.handleBlur('name')}
-              type='text'
-              label='Name'
-              required
-              fullWidth
-            />
-
-            <p>{formikProps.touched.name && formikProps.errors.name}</p>
-
-            <TextField
-              placeholder="comment"
-              onChange={formikProps.handleChange("comment")}
-              value={formikProps.values.comment}
-              onBlur={formikProps.handleBlur('comment')}
-              type='text'
-              label='comment'
-              required
-              fullWidth
-            />
-
-            <p>{formikProps.touched.comment && formikProps.errors.comment}</p>
-            <Button className='signUpButton' type='submit' fullWidth onClick={formikProps.handleSubmit}>Create Account</Button>
-            </form>
-            </Paper>
-        )}
-       </Formik> */}
+      <Button onClick= {() => onChangeId(parsing.id)} color='secondary' type='button' >make a review</Button>
+      <div className='starDiv hide-rating'>
+        {[...Array(5)].map((star, i) =>{
+          const ratingValue = i + 1;
+          return (
+            <label>
+              <input className='hide-rating'
+                type='radio'
+                name='rating'
+                value={ratingValue}
+                
+                onClick={() => onChangeRating(ratingValue)}
+              />
+              <FaStar 
+                className='star'
+                color={ratingValue <= (hover || formValues.rating) ? '#ffc107': '#e4e5e9'}
+                size={20}
+                onMouseEnter={() => setHover(ratingValue)}
+                onMouseLeave={() => setHover(null)}
+              />
+            </label>
+          )
+        })}
+      </div>
+       
               </div>
             </div>
           );
         });
       })}
-      <NotificationContainer />
+    </div>
+    
+    <Paper elevation={10}>
+            <h4>Make a review</h4>
+          {/* <div className='avatarLogo'><Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar></div> */}
+          <form onSubmit={handleSubmit}>
+            <TextField
+              placeholder="name"
+              onChange={onNameChange}
+              type='text'
+              label='name'
+              required
+              fullWidth
+            />
+
+            <TextField
+              placeholder="comment"
+              onChange={onCommentChange}
+              type='text'
+              label='comment'
+              required
+              fullWidth
+            />
+            <Button className='signUpButton' type='submit' fullWidth >Submit Review</Button>
+            </form>
+            </Paper>
+       <NotificationContainer />
     </div>
   );
 };

@@ -14,6 +14,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { AddShoppingCart } from "@material-ui/icons";
+import { FaStar } from 'react-icons/fa'
 import "./modalCss.css";
 import "react-notifications/lib/notifications.css";
 import {
@@ -21,7 +22,7 @@ import {
   NotificationManager,
 } from "react-notifications";
 
-const Product = ({ product }) => {
+const Product = ({ product, reviews }) => {
   const dispatch = useDispatch();
   const handleAdd = (product) => {
     dispatch(addToCart(product));
@@ -31,6 +32,8 @@ const Product = ({ product }) => {
   const openModal = (products) => {
     setProductModal(products);
   };
+
+  
 
   const closeModal = () => {
     setProductModal(null);
@@ -66,6 +69,42 @@ const Product = ({ product }) => {
     },
   });
 
+  const productReviews = (id) => {
+    const productReview = reviews.length && reviews.filter(
+    (review) => review.product_id === (id)
+  );
+  const sum = productReview.reduce(function(a=0, b){
+    return a + Number(b.rating)
+  }, 0)
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center'}}>
+        {[...Array(5)].map((star, i) =>{
+          const ratingValue = i + 1;
+          return (
+            <label>
+              <input className={classes.secondMedia}
+                type='radio'
+                name='rating'
+                value={ratingValue}
+              />
+              <FaStar 
+                className='star'
+                color={ratingValue <= Number(sum/productReview.length) ? '#ffc107': '#e4e5e9'}
+                size={20}
+                
+              />
+            </label>
+          )
+        })}
+      </div>
+  )
+  }
+
+  
+    const productReview = reviews.length && reviews.filter(
+    (review) => review.product_id === 3);
+        console.log(productReview)
+
   const classes = useStyles();
 
   const forClasses = () => {
@@ -82,7 +121,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div>
+    <div key={product.id}>
       <Fade bottom cascade>
         <Card>
           <CardActionArea>
@@ -125,6 +164,7 @@ const Product = ({ product }) => {
               <AddShoppingCart className={classes.cartColor} />
             </Button>
           </CardActions>
+          {productReviews(product.id)}
         </Card>
       </Fade>{" "}
       {productModal && (

@@ -5,7 +5,7 @@ import Filter from '../containers/filter';
 import ReactPaginate from "react-paginate";
 import Basket from '../cart/basket';
 import { Link } from 'react-router-dom'
-import { getProducts, autoLogin } from '../actions/actions';
+import { getProducts, autoLogin, getReviews } from '../actions/actions';
 import { Box, Grid } from '@material-ui/core';
 import useStyles from './styles';
 import '../containers/filterCss.css';
@@ -20,6 +20,7 @@ const Products = (props) => {
     const [ sort, setSort] = useState('')
     const [ size, setSize] = useState('')
     const products = useSelector((state) => state.products.products);
+    const reviews = useSelector((state) => state.reviews.review.data);
     const cart = useSelector((state) => state.cart.cartItems);
     const [currentPage, setCurrentPage ] = useState(0)
     const [search, setSearch ] = useState('')
@@ -46,6 +47,7 @@ const Products = (props) => {
 
   useEffect(() => {
     dispatch(getProducts())
+    dispatch(getReviews())
   }, [])
 
       const sortProducts = (event) => {
@@ -198,7 +200,7 @@ const Products = (props) => {
             data.filter((product) =>{
               if(search ===''){
                 return data.slice(offset, offset + PER_PAGE).map((product) => (
-                  <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>))
+                  <Grid item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product reviews={reviews} product={product} key={product.id} /></Grid>))
               } else if(product.category.toLocaleLowerCase().includes(search.toLocaleLowerCase())){
                 return product
               }
@@ -210,7 +212,7 @@ const Products = (props) => {
                 document.querySelector('.inputDiv input').placeholder = 'no query found for your search try again doesn exist'
               } */}
             }).slice(offset, offset + PER_PAGE).map((product) => (
-              <Grid className={forClasses(product)} item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} /></Grid>
+              <Grid className={forClasses(product)} item key={Product.id} xs={12} sm={6} md={4} lg={3}><Product product={product} key={product.id} reviews={reviews}/></Grid>
             ))
           ) : (<p>WAIT FOR IT...</p>)}
           </Grid>

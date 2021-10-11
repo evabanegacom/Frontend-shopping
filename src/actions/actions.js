@@ -286,3 +286,37 @@ export const deleteOrder = id => async dispatch => {
     }
     );
 };
+
+// Make review
+
+const createReview = (data) => ({
+  type: 'MAKE_REVIEW',
+  payload: data
+});
+
+export const postReview = productReview => async dispatch => {
+  await axios.post('https://neptune-spear.herokuapp.com/api/v1/reviews', productReview, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      //Authorization: `Bearer ${localStorage.getItem('token')}`,
+    }
+  })
+    .then(data => {console.log(data)
+      dispatch(createReview(data));
+    });
+};
+
+export const getReviews = () => async dispatch => {
+  await axios.get('https://neptune-spear.herokuapp.com/api/v1/reviews', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      //Authorization: `Bearer ${localStorage.getItem('token')}`,
+    }
+  })
+    .then(data => {
+      dispatch(createReview(data));
+    });
+};
+
