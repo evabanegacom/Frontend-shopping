@@ -35,9 +35,9 @@ useEffect(() => {
    NotificationManager.success('Item added to cart', 'success', 2000);
   }
 
-  const [therating, setRating] = useState(null)
+  
   const [hover, setHover] = useState(null)
-  const [itemId, setItemId] = useState(null)
+  
   const [showRating, setShowRating] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const [formValues, setFormValues] = useState({
@@ -50,13 +50,6 @@ useEffect(() => {
   const userId = orders.length && orders.filter(
     (order) => order.user_id === parseInt(props.match.params.id, 10)
   );
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formValues)
-    dispatch(postReview(formValues))
-    NotificationManager.success('Review submitted', 'success', 2000);
-  }
 
   const onNameChange = (event) => {
     event.preventDefault()
@@ -74,7 +67,7 @@ useEffect(() => {
     }))
   }
 
-  const onChangeId = (id) => {
+  const onChangeId = (id, index) => {
     setFormValues((formValues) =>({
       ...formValues,
       product_id: id
@@ -89,6 +82,22 @@ useEffect(() => {
     }))
     setShowForm(true)
   }
+
+  const closeRatingForm = () => {
+    setShowRating(false)
+    setShowForm(false)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues)
+    dispatch(postReview(formValues))
+    NotificationManager.success('Review submitted', 'success', 2000);
+    setTimeout(() => {
+      closeRatingForm()
+    }, 2000);
+  }
+
   
 // New mapping methods
     // let totals = userId.map(function(x){
@@ -112,7 +121,7 @@ user.loggedIn === false && props.history.push('/login')
     <div style={{ display: 'flex', flexDirection: 'column'}}>
     <div className='theOrderDiv'>
 
-      {userId && userId.map((x) => {
+      {userId && userId.map((x, index) => {
         return x.cartitems.map((y) => {
           const replacement = y.replace(/[&\\\=]/g, "");
           const remove = replacement.replace(/[&\\\>]/g, ":");
@@ -141,7 +150,7 @@ user.loggedIn === false && props.history.push('/login')
       <Button style={{color: 'yellow'}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
       <Button onClick= {() => onChangeId(parsing.id)} color='secondary' type='button' >make a review</Button>
-      {showRating && <div className='starDiv'>
+      {showRating && (parsing.id===formValues.product_id) && <div className='starDiv'>
         {[...Array(5)].map((star, i) =>{
           const ratingValue = i + 1;
           return (
@@ -196,6 +205,7 @@ user.loggedIn === false && props.history.push('/login')
             />
             <Button className='signUpButton' type='submit' fullWidth >Submit Review</Button>
             </form>
+            <Button className='signUpButton' onClick={closeRatingForm}type='button' fullWidth >Cancel</Button>
             </Paper>
     }
        <NotificationContainer />

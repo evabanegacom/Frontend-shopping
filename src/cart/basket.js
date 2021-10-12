@@ -177,7 +177,7 @@ class Basket extends Component {
       <div className='basket'>
        {/* <Link to={`/users/${user.id}/orders`}>Orders</Link> */}
         {cartItems.length === 0 ? (
-          <div style={{ textAlign: 'center', marginTop: '20px'}}> cart is empty</div>
+          <div style={{ textAlign: 'center', marginTop: '20px'}}> cart is empty <Link style={{textDecoration: 'none', cursor: 'pointer'}} to='/products'>Add items to cart</Link></div>
         ) : (
           <div style={{ textAlign: 'center', marginTop: '20px'}}>you have {cartItems.length} items in the cart</div>
         )}
