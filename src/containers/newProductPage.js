@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts } from '../actions/actions';
+import { getProducts, getReviews } from '../actions/actions';
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Grid } from '@material-ui/core';
 import { addToCart } from '../actions/actions';
@@ -15,6 +15,7 @@ const NewProductPage = (props) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getProducts())
+        dispatch(getReviews())
       }, [])
 
       const handleAdd = product => {
@@ -23,6 +24,12 @@ const NewProductPage = (props) => {
     }
 
     const [readMore, setReadMore] = useState(true);
+
+    const reviews = useSelector((state) => state.reviews.review);
+
+      const productReview = reviews && reviews?.data?.filter(
+      (review) => review.product_id === parseInt(props.match.params.id)
+    );
 
     const toggleReadMore = () => {
       setReadMore(!readMore)
@@ -39,6 +46,7 @@ const NewProductPage = (props) => {
         flex-direction: column;
         text-align: center;
         overflow: hidden;
+        padding: 0 0 20px 0;
         img {
           width: 320px;
           height: 300px;
@@ -59,7 +67,7 @@ const NewProductPage = (props) => {
           <ProductDiv>
             <Zoom>
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
-              <div><p style={{ marginBottom: '20px'}}>{product.price}</p></div>
+              <div><p style={{ marginBottom: '20px'}}>&#8358; {Number(product.price).toLocaleString("en")}</p></div>
               <Grid container justify="center" spacing={3}>
               <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></Grid>
               {product.avatartwo.url && <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatartwo.url.replace(/http/g, "https")} alt={product.name} />
@@ -74,6 +82,12 @@ const NewProductPage = (props) => {
               
               <Button style={{ fontWeight: 700, color: '#fff', background: 'green', marginBottom: '20px'}} fullWidth onClick={() => handleAdd(product)} >Buy Now</Button>
               </Zoom>
+               <h3>Reviews and comments</h3>
+              {productReview && productReview.map((reviews) =>(
+               <div>
+                 <p style={{lineHeight: '40px'}}>{reviews.name} wrote:&nbsp;&nbsp;&nbsp;{reviews.comment}</p>
+               </div>
+              ))}
               <NotificationContainer />
           </ProductDiv>
         )}

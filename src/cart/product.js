@@ -74,8 +74,6 @@ const Product = ({ product }) => {
     },
   });
 
-  console.log(reviews)
-
   const productReviews = (id) => {
     const productReview = reviews && reviews?.data?.filter(
     (review) => review.product_id === (id)
