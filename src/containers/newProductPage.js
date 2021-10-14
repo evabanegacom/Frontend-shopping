@@ -48,8 +48,8 @@ const NewProductPage = (props) => {
         overflow: hidden;
         padding: 0 0 20px 0;
         img {
-          width: 320px;
-          height: 300px;
+          width: 300px;
+          height: 250px;
         }
         
       `;
@@ -71,6 +71,8 @@ const NewProductPage = (props) => {
               <Grid container justify="center" spacing={3}>
               <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatar.url.replace(/http/g, "https")} alt={product.name} /></Grid>
               {product.avatartwo.url && <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatartwo.url.replace(/http/g, "https")} alt={product.name} />
+              </Grid>}
+              {product.avatarthree.url && <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatarthree.url.replace(/http/g, "https")} alt={product.name} />
               </Grid>}
               </Grid>
               <div><p style={{ marginBottom: '20px', marginTop: '30px'}}>

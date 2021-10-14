@@ -12,6 +12,7 @@ class AddProduct extends Component {
         this.state = {
             avatar: '',
             avatartwo: '',
+            avatarthree: '',
             description: '',
             price: '',
             name: '',
@@ -59,6 +60,12 @@ class AddProduct extends Component {
       })
   }
 
+  handleThirdFile = e => {
+    this.setState({
+        avatarthree: e.target.files[0]
+    })
+}
+
     editForm = (name, description, price, select, x) => {
       this.setState({
         show: true,
@@ -97,6 +104,7 @@ class AddProduct extends Component {
         const form_data = new FormData();
     form_data.append('avatar', this.state.avatar);
     form_data.append('avatartwo', this.state.avatartwo);
+    form_data.append('avatarthree', this.state.avatarthree);
     form_data.append('name', this.state.name);
     form_data.append('price', this.state.price);
     form_data.append('description', this.state.description);
@@ -117,6 +125,7 @@ class AddProduct extends Component {
         const form_data = new FormData();
         (this.state.avatar === '') ? console.log('null') : form_data.append('avatar', this.state.avatar);
         (this.state.avatartwo === '') ? console.log('null') : form_data.append('avatartwo', this.state.avatartwo);
+        (this.state.avatarthree === '') ? console.log('null') : form_data.append('avatarthree', this.state.avatarthree);
     form_data.append('name', document.querySelector('#name').value);
     form_data.append('price', document.querySelector('#price').value);
     form_data.append('description', document.querySelector('#description').value);
@@ -174,7 +183,7 @@ class AddProduct extends Component {
       <input className='fileUpload' required type="file" onChange={this.handleFile} accept="image/png, image/jpeg, image/jpg"/>
       custom upload
       </label>
-      <div style={{marginTop: '20px'}}>
+      <div style={{marginTop: '40px'}}>
       <p>Filename: {this.state.avatar.name}</p>
       <p>File type: {this.state.avatar.type}</p>
       <p>File size: {this.state.avatar.size} bytes</p>
@@ -192,7 +201,19 @@ class AddProduct extends Component {
       <p>File size: {this.state.avatartwo.size} bytes</p>
       </div>
       {this.state.avatartwo && <ImageThumb avatar={this.state.avatartwo} />}
-    </div>           
+    </div>
+    <div id="upload-box">
+               <label className="custom-file-upload">
+      <input className='fileUpload' type="file" onChange={this.handleThirdFile} accept="image/png, image/jpeg, image/jpg"/>
+      third image
+      </label>
+      <div style={{marginTop: '40px'}}>
+      <p>Filename: {this.state.avatarthree.name}</p>
+      <p>File type: {this.state.avatarthree.type}</p>
+      <p>File size: {this.state.avatarthree.size} bytes</p>
+      </div>
+      {this.state.avatarthree && <ImageThumb avatar={this.state.avatarthree} />}
+    </div>                
     <TextField fullWidth  required onChange={this.handleChange} type='text' id='name' placeholder='product Name' />
                    <TextField fullWidth required onChange={this.handleChange} multiline type='text' id='description' placeholder='description' />
                    <TextField fullWidth required onChange={this.handleChange} type='text' id='price' placeholder='product price' />
