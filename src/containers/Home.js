@@ -66,6 +66,11 @@ const Home = () => {
 const EjovialHeader = styled.div`
   margin-bottom: 10px;
   font-size: 1.5em;
+  p{
+    @media only screen and (max-width767px){
+      font-size: 12px;
+    }
+  }
 `;
 
   return (
