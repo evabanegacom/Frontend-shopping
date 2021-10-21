@@ -61,16 +61,16 @@ const Home = () => {
   text-align: center;
   margin-top: 10px;
   line-height: 30px;
+  p {
+    @media only screen and (max-width: 767px){
+      font-size: 14px;
+    }
+  }
 `;
 
 const EjovialHeader = styled.div`
   margin-bottom: 10px;
   font-size: 1.5em;
-  p{
-    @media only screen and (max-width767px){
-      font-size: 12px;
-    }
-  }
 `;
 
   return (
