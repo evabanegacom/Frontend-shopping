@@ -5,8 +5,7 @@ import { addToCart, removeFromOrder } from '../actions/actions';
 import { Button , Paper, TextField} from '@material-ui/core';
 import './orderCss.css';
 import dateFormat from 'dateformat';
-import { Formik } from "formik";
-import * as yup from 'yup';
+import styled from "styled-components";
 import { FaStar } from 'react-icons/fa'
 import 'react-notifications/lib/notifications.css';
 import {
@@ -34,7 +33,6 @@ useEffect(() => {
    dispatch(addToCart(product))
    NotificationManager.success('Item added to cart', 'success', 2000);
   }
-
   
   const [hover, setHover] = useState(null)
   
@@ -182,7 +180,7 @@ user.loggedIn === false && props.history.push('/login')
       })}
     </div>
     
-    {showForm && <Paper elevation={10}>
+    {showForm && <Paper className='PaperForm' elevation={10}>
             <h4>Make a review</h4>
           {/* <div className='avatarLogo'><Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar></div> */}
           <form onSubmit={handleSubmit}>
@@ -202,10 +200,11 @@ user.loggedIn === false && props.history.push('/login')
               label='comment'
               required
               fullWidth
+              multiline
             />
-            <Button className='signUpButton' type='submit' fullWidth >Submit Review</Button>
+            <Button style={{marginTop: '20px'}} color='primary' type='submit' variant='contained' fullWidth >Submit Review</Button>
             </form>
-            <Button className='signUpButton' onClick={closeRatingForm}type='button' fullWidth >Cancel</Button>
+            <Button className='secondary' onClick={closeRatingForm}type='button' fullWidth >Cancel</Button>
             </Paper>
     }
        <NotificationContainer />

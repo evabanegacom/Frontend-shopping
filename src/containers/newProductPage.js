@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getProducts, getReviews } from '../actions/actions';
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Grid } from '@material-ui/core';
+import { Button, Grid, Paper } from '@material-ui/core';
 import { addToCart } from '../actions/actions';
 import styled from "styled-components";
 import 'react-notifications/lib/notifications.css';
 import Zoom from 'react-reveal/Zoom';
+import { FaStar } from 'react-icons/fa'
 import {
    NotificationContainer,
    NotificationManager,
@@ -61,6 +62,48 @@ const NewProductPage = (props) => {
    font-size: 20px;
       `;
 
+   const Styledh3 = styled.h3`
+     margin-bottom: 20px;
+   `;
+
+    const Theinput = styled.input`
+      display: none;
+    `;
+
+    const DivRating = styled.div`
+      display: flex;
+      flex-direction: column;
+    `;
+
+    const StyledPaper = styled(Paper)`
+      margin-bottom: 20px;
+    `;
+
+    const starRating = (userRating) => {
+      return (
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
+        {[...Array(5)].map((star, i) =>{
+          const ratingValue = i + 1;
+          return (
+            <label>
+              <Theinput
+                type='radio'
+                name='rating'
+                value={ratingValue}
+              />
+              <FaStar 
+                className='star'
+                color={Number(ratingValue) <= Number(userRating) ? '#ffc107': '#e4e5e9'}
+                size={20}
+                
+              />
+            </label>
+          )
+        })}
+      </div>
+      )
+    }
+
     return (
         <>
         { filterProduct.length && filterProduct.map((product) =>
@@ -84,11 +127,14 @@ const NewProductPage = (props) => {
               
               <Button style={{ fontWeight: 700, color: '#fff', background: 'green', marginBottom: '20px'}} fullWidth onClick={() => handleAdd(product)} >Buy Now</Button>
               </Zoom>
-               <h3>Reviews and comments</h3>
+               <Styledh3>Reviews and comments</Styledh3>
               {productReview && productReview.map((reviews) =>(
-               <div>
+              <StyledPaper elevation={10}>
+               <DivRating>
                  <p style={{lineHeight: '40px'}}>{reviews.name} wrote:&nbsp;&nbsp;&nbsp;{reviews.comment}</p>
-               </div>
+                 {starRating(reviews.rating)}
+               </DivRating>
+               </StyledPaper>
               ))}
               <NotificationContainer />
           </ProductDiv>
