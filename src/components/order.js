@@ -49,6 +49,8 @@ useEffect(() => {
     (order) => order.user_id === parseInt(props.match.params.id, 10)
   );
 
+  const isInvalid = formValues.name === '' || formValues.comment === '';
+
   const onNameChange = (event) => {
     event.preventDefault()
     setFormValues((formValues) =>({
@@ -202,7 +204,7 @@ user.loggedIn === false && props.history.push('/login')
               fullWidth
               multiline
             />
-            <Button style={{marginTop: '20px'}} color='primary' type='submit' variant='contained' fullWidth >Submit Review</Button>
+            <Button disabled={isInvalid} style={{marginTop: '20px'}} color='primary' type='submit' variant='contained' fullWidth >Submit Review</Button>
             </form>
             <Button className='secondary' onClick={closeRatingForm}type='button' fullWidth >Cancel</Button>
             </Paper>
