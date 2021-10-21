@@ -72,7 +72,7 @@ useEffect(() => {
       ...formValues,
       product_id: id
     }))
-    setShowRating(true)
+    setShowRating(!showRating)
   }
 
   const onChangeRating = (rating) => {
@@ -83,7 +83,13 @@ useEffect(() => {
     setShowForm(true)
   }
 
-  const closeRatingForm = () => {
+  const closeRatingForm = (id) => {
+    document.querySelector('.form').reset()
+    setFormValues((formValues) =>({
+      ...formValues,
+      product_id: !id
+    }))
+
     setShowRating(false)
     setShowForm(false)
   }
@@ -93,6 +99,7 @@ useEffect(() => {
     console.log(formValues)
     dispatch(postReview(formValues))
     NotificationManager.success('Review submitted', 'success', 2000);
+    document.querySelector('.form').reset()
     setTimeout(() => {
       closeRatingForm()
     }, 2000);
@@ -147,9 +154,9 @@ user.loggedIn === false && props.history.push('/login')
               <p style={{ color:'white'}}>Quantity: &nbsp;{parsing.count}</p>
              
               <p style={{ color:'white'}}>Date: &nbsp;{dateFormat(x.created_at, "mmmm dS, yyyy")}</p>
-      <Button style={{color: 'yellow'}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
+      <Button style={{color: '#fff', fontWeight: 700}} type='submit' onClick={() => addingToCart(parsing)}>Re-Order</Button>
       <Button color='secondary' type='submit' onClick={() => dispatch(deleteOrder(x.id))}>Remove</Button>
-      <Button onClick= {() => onChangeId(parsing.id)} color='secondary' type='button' >make a review</Button>
+      <Button onClick= {() => onChangeId(parsing.id)} style={{ color: '#fff', fontWeight: 700}} type='button' >Rate Item</Button>
       {showRating && (parsing.id===formValues.product_id) && <div className='starDiv'>
         {[...Array(5)].map((star, i) =>{
           const ratingValue = i + 1;
@@ -185,7 +192,7 @@ user.loggedIn === false && props.history.push('/login')
     {showForm && <Paper className='PaperForm' elevation={10}>
             <h4>Make a review</h4>
           {/* <div className='avatarLogo'><Avatar style={ avatarStyle }><LockOutlinedIcon /></Avatar></div> */}
-          <form onSubmit={handleSubmit}>
+          <form className='form' onSubmit={handleSubmit}>
             <TextField
               placeholder="name"
               onChange={onNameChange}
@@ -206,7 +213,7 @@ user.loggedIn === false && props.history.push('/login')
             />
             <Button disabled={isInvalid} style={{marginTop: '20px'}} color='primary' type='submit' variant='contained' fullWidth >Submit Review</Button>
             </form>
-            <Button className='secondary' onClick={closeRatingForm}type='button' fullWidth >Cancel</Button>
+            <Button className='secondary' onClick={() => closeRatingForm(formValues.product_id)}type='button' fullWidth >Cancel</Button>
             </Paper>
     }
        <NotificationContainer />
