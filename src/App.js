@@ -5,7 +5,9 @@ import Header from './cart/header';
 import Footer from './components/footer';
 import { ThemeProvider } from '@material-ui/core'
 import theme from './utils/theme';
+import { ErrorBoundary } from 'react-error-boundary';
 import Loading from './components/loader';
+import Fallback from './components/fallback';
 
 const Login = lazy(() => import('./components/login'));
 const SignUp = lazy(() => import('./components/signUp'));
@@ -26,12 +28,16 @@ const Coolers = lazy(() => import('./categories/coolers'));
 const PageNotFound = lazy(() => import('./components/notFound'));
 
 function App() {
+  const errorHandler = (error, errorInfo) => {
+    console.log('logging', error, errorInfo)
+  }
   return (
     <Router>
      <Suspense fallback={<Loading />}>
      <ThemeProvider theme={theme}>
      <Header />
      </ThemeProvider>
+     <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signUp' component={SignUp} />
@@ -51,6 +57,7 @@ function App() {
         <Route exact path="/product/:id" component={NewProductPage} />
         <Route component={PageNotFound} />
       </Switch>
+      </ErrorBoundary>
       <Footer />
     </Suspense>
     </Router>
