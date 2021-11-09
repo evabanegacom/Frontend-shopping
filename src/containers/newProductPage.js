@@ -108,7 +108,7 @@ const NewProductPage = (props) => {
         <>
         { filterProduct.length && filterProduct.map((product) =>
           <ProductDiv>
-            <Zoom>
+            
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
               <div><p style={{ marginBottom: '20px'}}>&#8358; {Number(product.price).toLocaleString("en")}</p></div>
               <Grid container justify="center" spacing={3}>
@@ -118,7 +118,8 @@ const NewProductPage = (props) => {
               {product.avatarthree.url && <Grid item xs={12} sm={6} md={4} lg={3}><img src={product.avatarthree.url.replace(/http/g, "https")} alt={product.name} />
               </Grid>}
               </Grid>
-              <div><p style={{ marginBottom: '20px', marginTop: '30px'}}>
+              <div>
+              <p style={{ marginBottom: '20px', marginTop: '30px'}}>
               {readMore ? product.description.slice(0, 150) : product.description}
               <Thespan onClick={toggleReadMore}>{readMore ? "...read more" : " show less"}
               </Thespan>
@@ -126,7 +127,7 @@ const NewProductPage = (props) => {
               </div>
               
               <Button style={{ fontWeight: 700, color: '#fff', background: 'green', marginBottom: '20px'}} fullWidth onClick={() => handleAdd(product)} >Buy Now</Button>
-              </Zoom>
+              
                <Styledh3>Reviews and comments</Styledh3>
               {productReview && productReview.map((reviews) =>(
               <StyledPaper elevation={10}>
