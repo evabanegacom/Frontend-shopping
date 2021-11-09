@@ -108,7 +108,7 @@ const NewProductPage = (props) => {
         <>
         { filterProduct.length && filterProduct.map((product) =>
           <ProductDiv>
-            
+            <div>
               <div><p style={{ marginTop: '20px'}}>{product.name}</p></div>
               <div><p style={{ marginBottom: '20px'}}>&#8358; {Number(product.price).toLocaleString("en")}</p></div>
               <Grid container justify="center" spacing={3}>
@@ -127,7 +127,7 @@ const NewProductPage = (props) => {
               </div>
               
               <Button style={{ fontWeight: 700, color: '#fff', background: 'green', marginBottom: '20px'}} fullWidth onClick={() => handleAdd(product)} >Buy Now</Button>
-              
+              </div>
                <Styledh3>Reviews and comments</Styledh3>
               {productReview && productReview.map((reviews) =>(
               <StyledPaper elevation={10}>
