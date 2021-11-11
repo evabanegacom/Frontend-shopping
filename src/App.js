@@ -37,7 +37,6 @@ function App() {
      <ThemeProvider theme={theme}>
      <Header />
      </ThemeProvider>
-     <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signUp' component={SignUp} />
@@ -54,10 +53,11 @@ function App() {
         <Route exact path="/categories/Refrigerators-Freezers" component={Refrigerators} />
         <Route exact path="/categories/Power-Solutions-Generators" component={Generators} />
         <Route exact path="/categories/Airconditioners-Coolers" component={Coolers} />
+        <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
         <Route exact path="/product/:id" component={NewProductPage} />
+        </ErrorBoundary>
         <Route component={PageNotFound} />
       </Switch>
-      </ErrorBoundary>
       <Footer />
     </Suspense>
     </Router>
